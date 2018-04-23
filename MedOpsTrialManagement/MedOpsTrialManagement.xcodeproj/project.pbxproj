@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF5208D69FD001C4516 /* AppDelegate.swift */; };
+		C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF7208D69FD001C4516 /* ViewController.swift */; };
+		C91ACBFB208D69FD001C4516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91ACBF9208D69FD001C4516 /* Main.storyboard */; };
+		C91ACBFD208D69FE001C4516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C91ACBFC208D69FE001C4516 /* Assets.xcassets */; };
+		C91ACC00208D69FE001C4516 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91ACBFE208D69FE001C4516 /* LaunchScreen.storyboard */; };
+		C91ACC0B208D69FE001C4516 /* MedOpsTrialManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC0A208D69FE001C4516 /* MedOpsTrialManagementTests.swift */; };
+		C91ACC16208D69FE001C4516 /* MedOpsTrialManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C91ACC07208D69FE001C4516 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C91ACBEA208D69FD001C4516 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C91ACBF1208D69FD001C4516;
+			remoteInfo = MedOpsTrialManagement;
+		};
+		C91ACC12208D69FE001C4516 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C91ACBEA208D69FD001C4516 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C91ACBF1208D69FD001C4516;
+			remoteInfo = MedOpsTrialManagement;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C91ACBF2208D69FD001C4516 /* MedOpsTrialManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedOpsTrialManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C91ACBF5208D69FD001C4516 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C91ACBF7208D69FD001C4516 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C91ACBFA208D69FD001C4516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C91ACBFC208D69FE001C4516 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C91ACBFF208D69FE001C4516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C91ACC01208D69FE001C4516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C91ACC06208D69FE001C4516 /* MedOpsTrialManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedOpsTrialManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C91ACC0A208D69FE001C4516 /* MedOpsTrialManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedOpsTrialManagementTests.swift; sourceTree = "<group>"; };
+		C91ACC0C208D69FE001C4516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C91ACC11208D69FE001C4516 /* MedOpsTrialManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedOpsTrialManagementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedOpsTrialManagementUITests.swift; sourceTree = "<group>"; };
+		C91ACC17208D69FE001C4516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C91ACBEF208D69FD001C4516 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C91ACC03208D69FE001C4516 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C91ACC0E208D69FE001C4516 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C91ACBE9208D69FD001C4516 = {
+			isa = PBXGroup;
+			children = (
+				C91ACBF4208D69FD001C4516 /* MedOpsTrialManagement */,
+				C91ACC09208D69FE001C4516 /* MedOpsTrialManagementTests */,
+				C91ACC14208D69FE001C4516 /* MedOpsTrialManagementUITests */,
+				C91ACBF3208D69FD001C4516 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C91ACBF3208D69FD001C4516 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C91ACBF2208D69FD001C4516 /* MedOpsTrialManagement.app */,
+				C91ACC06208D69FE001C4516 /* MedOpsTrialManagementTests.xctest */,
+				C91ACC11208D69FE001C4516 /* MedOpsTrialManagementUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C91ACBF4208D69FD001C4516 /* MedOpsTrialManagement */ = {
+			isa = PBXGroup;
+			children = (
+				C91ACBF5208D69FD001C4516 /* AppDelegate.swift */,
+				C91ACBF7208D69FD001C4516 /* ViewController.swift */,
+				C91ACBF9208D69FD001C4516 /* Main.storyboard */,
+				C91ACBFC208D69FE001C4516 /* Assets.xcassets */,
+				C91ACBFE208D69FE001C4516 /* LaunchScreen.storyboard */,
+				C91ACC01208D69FE001C4516 /* Info.plist */,
+			);
+			path = MedOpsTrialManagement;
+			sourceTree = "<group>";
+		};
+		C91ACC09208D69FE001C4516 /* MedOpsTrialManagementTests */ = {
+			isa = PBXGroup;
+			children = (
+				C91ACC0A208D69FE001C4516 /* MedOpsTrialManagementTests.swift */,
+				C91ACC0C208D69FE001C4516 /* Info.plist */,
+			);
+			path = MedOpsTrialManagementTests;
+			sourceTree = "<group>";
+		};
+		C91ACC14208D69FE001C4516 /* MedOpsTrialManagementUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */,
+				C91ACC17208D69FE001C4516 /* Info.plist */,
+			);
+			path = MedOpsTrialManagementUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C91ACBF1208D69FD001C4516 /* MedOpsTrialManagement */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C91ACC1A208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagement" */;
+			buildPhases = (
+				C91ACBEE208D69FD001C4516 /* Sources */,
+				C91ACBEF208D69FD001C4516 /* Frameworks */,
+				C91ACBF0208D69FD001C4516 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MedOpsTrialManagement;
+			productName = MedOpsTrialManagement;
+			productReference = C91ACBF2208D69FD001C4516 /* MedOpsTrialManagement.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C91ACC05208D69FE001C4516 /* MedOpsTrialManagementTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C91ACC1D208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagementTests" */;
+			buildPhases = (
+				C91ACC02208D69FE001C4516 /* Sources */,
+				C91ACC03208D69FE001C4516 /* Frameworks */,
+				C91ACC04208D69FE001C4516 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C91ACC08208D69FE001C4516 /* PBXTargetDependency */,
+			);
+			name = MedOpsTrialManagementTests;
+			productName = MedOpsTrialManagementTests;
+			productReference = C91ACC06208D69FE001C4516 /* MedOpsTrialManagementTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C91ACC10208D69FE001C4516 /* MedOpsTrialManagementUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C91ACC20208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagementUITests" */;
+			buildPhases = (
+				C91ACC0D208D69FE001C4516 /* Sources */,
+				C91ACC0E208D69FE001C4516 /* Frameworks */,
+				C91ACC0F208D69FE001C4516 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C91ACC13208D69FE001C4516 /* PBXTargetDependency */,
+			);
+			name = MedOpsTrialManagementUITests;
+			productName = MedOpsTrialManagementUITests;
+			productReference = C91ACC11208D69FE001C4516 /* MedOpsTrialManagementUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C91ACBEA208D69FD001C4516 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Jaimin Patel";
+				TargetAttributes = {
+					C91ACBF1208D69FD001C4516 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					C91ACC05208D69FE001C4516 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = C91ACBF1208D69FD001C4516;
+					};
+					C91ACC10208D69FE001C4516 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = C91ACBF1208D69FD001C4516;
+					};
+				};
+			};
+			buildConfigurationList = C91ACBED208D69FD001C4516 /* Build configuration list for PBXProject "MedOpsTrialManagement" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C91ACBE9208D69FD001C4516;
+			productRefGroup = C91ACBF3208D69FD001C4516 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C91ACBF1208D69FD001C4516 /* MedOpsTrialManagement */,
+				C91ACC05208D69FE001C4516 /* MedOpsTrialManagementTests */,
+				C91ACC10208D69FE001C4516 /* MedOpsTrialManagementUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C91ACBF0208D69FD001C4516 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91ACC00208D69FE001C4516 /* LaunchScreen.storyboard in Resources */,
+				C91ACBFD208D69FE001C4516 /* Assets.xcassets in Resources */,
+				C91ACBFB208D69FD001C4516 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C91ACC04208D69FE001C4516 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C91ACC0F208D69FE001C4516 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C91ACBEE208D69FD001C4516 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
+				C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C91ACC02208D69FE001C4516 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91ACC0B208D69FE001C4516 /* MedOpsTrialManagementTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C91ACC0D208D69FE001C4516 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91ACC16208D69FE001C4516 /* MedOpsTrialManagementUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C91ACC08208D69FE001C4516 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C91ACBF1208D69FD001C4516 /* MedOpsTrialManagement */;
+			targetProxy = C91ACC07208D69FE001C4516 /* PBXContainerItemProxy */;
+		};
+		C91ACC13208D69FE001C4516 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C91ACBF1208D69FD001C4516 /* MedOpsTrialManagement */;
+			targetProxy = C91ACC12208D69FE001C4516 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C91ACBF9208D69FD001C4516 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C91ACBFA208D69FD001C4516 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C91ACBFE208D69FE001C4516 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C91ACBFF208D69FE001C4516 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C91ACC18208D69FE001C4516 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C91ACC19208D69FE001C4516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C91ACC1B208D69FE001C4516 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
+				INFOPLIST_FILE = MedOpsTrialManagement/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JP.MedOpsTrialManagement;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C91ACC1C208D69FE001C4516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
+				INFOPLIST_FILE = MedOpsTrialManagement/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JP.MedOpsTrialManagement;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C91ACC1E208D69FE001C4516 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
+				INFOPLIST_FILE = MedOpsTrialManagementTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JP.MedOpsTrialManagementTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MedOpsTrialManagement.app/MedOpsTrialManagement";
+			};
+			name = Debug;
+		};
+		C91ACC1F208D69FE001C4516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
+				INFOPLIST_FILE = MedOpsTrialManagementTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JP.MedOpsTrialManagementTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MedOpsTrialManagement.app/MedOpsTrialManagement";
+			};
+			name = Release;
+		};
+		C91ACC21208D69FE001C4516 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
+				INFOPLIST_FILE = MedOpsTrialManagementUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JP.MedOpsTrialManagementUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MedOpsTrialManagement;
+			};
+			name = Debug;
+		};
+		C91ACC22208D69FE001C4516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
+				INFOPLIST_FILE = MedOpsTrialManagementUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JP.MedOpsTrialManagementUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MedOpsTrialManagement;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C91ACBED208D69FD001C4516 /* Build configuration list for PBXProject "MedOpsTrialManagement" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C91ACC18208D69FE001C4516 /* Debug */,
+				C91ACC19208D69FE001C4516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C91ACC1A208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagement" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C91ACC1B208D69FE001C4516 /* Debug */,
+				C91ACC1C208D69FE001C4516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C91ACC1D208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagementTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C91ACC1E208D69FE001C4516 /* Debug */,
+				C91ACC1F208D69FE001C4516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C91ACC20208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagementUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C91ACC21208D69FE001C4516 /* Debug */,
+				C91ACC22208D69FE001C4516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C91ACBEA208D69FD001C4516 /* Project object */;
+}
