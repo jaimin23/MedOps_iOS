@@ -14,6 +14,7 @@
 		C91ACC00208D69FE001C4516 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91ACBFE208D69FE001C4516 /* LaunchScreen.storyboard */; };
 		C91ACC0B208D69FE001C4516 /* MedOpsTrialManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC0A208D69FE001C4516 /* MedOpsTrialManagementTests.swift */; };
 		C91ACC16208D69FE001C4516 /* MedOpsTrialManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */; };
+		C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A07208F9676003991A1 /* TriallMainController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		C91ACC11208D69FE001C4516 /* MedOpsTrialManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedOpsTrialManagementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedOpsTrialManagementUITests.swift; sourceTree = "<group>"; };
 		C91ACC17208D69FE001C4516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C99F9A07208F9676003991A1 /* TriallMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriallMainController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +99,8 @@
 		C91ACBF4208D69FD001C4516 /* MedOpsTrialManagement */ = {
 			isa = PBXGroup;
 			children = (
+				C99F9A06208F95A3003991A1 /* Controllers */,
 				C91ACBF5208D69FD001C4516 /* AppDelegate.swift */,
-				C91ACBF7208D69FD001C4516 /* ViewController.swift */,
 				C91ACBF9208D69FD001C4516 /* Main.storyboard */,
 				C91ACBFC208D69FE001C4516 /* Assets.xcassets */,
 				C91ACBFE208D69FE001C4516 /* LaunchScreen.storyboard */,
@@ -123,6 +125,16 @@
 				C91ACC17208D69FE001C4516 /* Info.plist */,
 			);
 			path = MedOpsTrialManagementUITests;
+			sourceTree = "<group>";
+		};
+		C99F9A06208F95A3003991A1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C91ACBF7208D69FD001C4516 /* ViewController.swift */,
+				C99F9A07208F9676003991A1 /* TriallMainController.swift */,
+			);
+			name = Controllers;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
 				C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */,
 			);
