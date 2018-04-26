@@ -1,5 +1,5 @@
 //
-//  TrailMainController.swift
+//  TrialDataMainPage.swift
 //  MedOpsTrialManagement
 //
 //  Created by Jaimin Patel on 2018-04-24.
@@ -8,10 +8,11 @@
 
 import UIKit
 
-class TrailMainController:UIViewController{
+class TrialDataMainPageController:UIViewController{
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -19,8 +20,9 @@ class TrailMainController:UIViewController{
     }
     
     
-    @IBAction func viewTrialBtnPressed(_ sender: Any){
-        let trialDataMain = storyboard?.instantiateViewController(withIdentifier: "TrialDataMainPage")
-        self.present(trialDataMain!, animated:true, completion: nil)
+    @IBAction func analyzeNewPatientBtnPressed(_ sender: Any){
+        let trialFromView = storyboard?.instantiateViewController(withIdentifier: "TrialDataCollectionForm")
+        self.present(trialFromView!, animated:true, completion: nil)
     }
+    
 }

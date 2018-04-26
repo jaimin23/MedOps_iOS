@@ -15,6 +15,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Code used from
+        //Setup a tap gesture which will dismiss the keyboard when done editing the text fields
+        let tap = (UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +53,6 @@ class ViewController: UIViewController {
         }))
         self.present(alertBox,animated: true,completion: nil)
     }
-
+    
 }
 

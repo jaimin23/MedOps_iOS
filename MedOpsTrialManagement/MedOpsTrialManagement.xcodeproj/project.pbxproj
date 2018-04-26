@@ -15,6 +15,10 @@
 		C91ACC0B208D69FE001C4516 /* MedOpsTrialManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC0A208D69FE001C4516 /* MedOpsTrialManagementTests.swift */; };
 		C91ACC16208D69FE001C4516 /* MedOpsTrialManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */; };
 		C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A07208F9676003991A1 /* TriallMainController.swift */; };
+		C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A09208FA8B1003991A1 /* TrialDataMainPageController.swift */; };
+		C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */; };
+		C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */; };
+		C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedOpsTrialManagementUITests.swift; sourceTree = "<group>"; };
 		C91ACC17208D69FE001C4516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C99F9A07208F9676003991A1 /* TriallMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriallMainController.swift; sourceTree = "<group>"; };
+		C99F9A09208FA8B1003991A1 /* TrialDataMainPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataMainPageController.swift; sourceTree = "<group>"; };
+		C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataCollectionFormViewController.swift; sourceTree = "<group>"; };
+		C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSignatureViewController.swift; sourceTree = "<group>"; };
+		C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialPatientSampleCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,10 @@
 			children = (
 				C91ACBF7208D69FD001C4516 /* ViewController.swift */,
 				C99F9A07208F9676003991A1 /* TriallMainController.swift */,
+				C99F9A09208FA8B1003991A1 /* TrialDataMainPageController.swift */,
+				C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */,
+				C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */,
+				C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */,
 			);
 			name = Controllers;
 			path = "New Group";
@@ -268,9 +280,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
+				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
+				C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */,
 				C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */,
+				C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
