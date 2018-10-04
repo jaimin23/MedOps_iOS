@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,11 +16,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MedOps Trial Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNB-Al-Hdk">
-                                <rect key="frame" x="106" y="86" width="163" height="21"/>
+                                <rect key="frame" x="430.5" y="86" width="163" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -32,13 +32,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yxc-vr-Z9R">
-                                <rect key="frame" x="38" y="244" width="231" height="30"/>
+                                <rect key="frame" x="38" y="244" width="555.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mrc-Yb-zhi">
-                                <rect key="frame" x="38" y="361" width="231" height="30"/>
+                                <rect key="frame" x="38" y="361" width="555.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTH-qL-GV2">
-                                <rect key="frame" x="132" y="439" width="110.5" height="30"/>
+                                <rect key="frame" x="132" y="439" width="759.5" height="30"/>
                                 <color key="backgroundColor" red="0.90623623132705688" green="0.97079533338546753" blue="0.96085673570632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Log In"/>
                                 <userDefinedRuntimeAttributes>
@@ -92,57 +92,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-690" y="91"/>
         </scene>
         <!--Trail Main Controller-->
         <scene sceneID="pUM-7t-tgc">
             <objects>
                 <viewController storyboardIdentifier="TrialMainPage" id="KaD-NX-qZn" customClass="TrailMainController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V9u-sF-1wK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Trial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSv-Bx-Xcf">
-                                <rect key="frame" x="16" y="64" width="95" height="21"/>
+                                <rect key="frame" x="16" y="64" width="744" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Trial Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwJ-JF-h3N">
-                                <rect key="frame" x="16" y="300" width="114" height="21"/>
+                                <rect key="frame" x="16" y="999" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGo-Uh-12m">
-                                <rect key="frame" x="16" y="328" width="343" height="30"/>
+                                <rect key="frame" x="16" y="1027" width="988" height="30"/>
                                 <color key="backgroundColor" red="0.91905194520950317" green="0.97838383913040161" blue="0.97724157571792603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="View Completed Trials"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNg-pF-sGG">
-                                <rect key="frame" x="16" y="366" width="343" height="30"/>
+                                <rect key="frame" x="16" y="1065" width="988" height="30"/>
                                 <color key="backgroundColor" red="0.90623623132705688" green="0.97079533338546753" blue="0.96085673570632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Upcoming Trials"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3o-VI-5oi">
-                                <rect key="frame" x="200" y="404" width="159" height="30"/>
+                                <rect key="frame" x="200" y="1103" width="804" height="30"/>
                                 <color key="backgroundColor" red="0.91905194520950317" green="0.97838383913040161" blue="0.97724157571792603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Search"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trial ID" clearsOnBeginEditing="YES" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="CXk-RU-u7w">
-                                <rect key="frame" x="126" y="404" width="66" height="30"/>
+                                <rect key="frame" x="126" y="1103" width="66" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ep4-Zv-dUN">
-                                <rect key="frame" x="16" y="409" width="102" height="21"/>
+                                <rect key="frame" x="16" y="1108" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AqU-xe-8hu">
-                                <rect key="frame" x="16" y="247" width="343" height="30"/>
+                                <rect key="frame" x="16" y="946" width="988" height="30"/>
                                 <color key="backgroundColor" red="0.90623623132705688" green="0.97079533338546753" blue="0.96085673570632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="View Trial"/>
                                 <connections>
@@ -150,23 +150,23 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpM-PP-mCc">
-                                <rect key="frame" x="16" y="475" width="60" height="21"/>
+                                <rect key="frame" x="16" y="1174" width="60" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-VN-vOW">
-                                <rect key="frame" x="16" y="508" width="343" height="30"/>
+                                <rect key="frame" x="16" y="1207" width="988" height="30"/>
                                 <color key="backgroundColor" red="0.91905194520950317" green="0.97838383913040161" blue="0.97724157571792603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Pair With External Device"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86f-nH-NiE">
-                                <rect key="frame" x="16" y="546" width="343" height="30"/>
+                                <rect key="frame" x="16" y="1245" width="988" height="30"/>
                                 <color key="backgroundColor" red="0.90623623132705688" green="0.97079533338546753" blue="0.96085673570632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="More Options"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wAq-Rn-EDz">
-                                <rect key="frame" x="16" y="93" width="343" height="107"/>
+                                <rect key="frame" x="16" y="93" width="988" height="806"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVY-bV-vdy">
                                         <rect key="frame" x="8" y="8" width="112" height="21"/>
@@ -224,6 +224,13 @@
                                     <constraint firstItem="MVY-bV-vdy" firstAttribute="top" secondItem="wAq-Rn-EDz" secondAttribute="topMargin" id="v5R-Me-yjx"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGn-e5-oFe">
+                                <rect key="frame" x="471" y="1297" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="nXi-ql-5dS" kind="show" id="469-uG-K7P"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -246,6 +253,7 @@
                             <constraint firstItem="TNg-pF-sGG" firstAttribute="trailing" secondItem="A3o-VI-5oi" secondAttribute="trailing" id="W0Q-zn-b8V"/>
                             <constraint firstItem="CXk-RU-u7w" firstAttribute="leading" secondItem="ep4-Zv-dUN" secondAttribute="trailing" constant="8" symbolic="YES" id="a8F-Ge-Ad2"/>
                             <constraint firstItem="j2Y-FP-ddU" firstAttribute="bottom" secondItem="86f-nH-NiE" secondAttribute="bottom" constant="91" id="bHm-yf-Amr"/>
+                            <constraint firstItem="xGn-e5-oFe" firstAttribute="top" secondItem="86f-nH-NiE" secondAttribute="bottom" constant="22" id="d1S-sQ-AQ7"/>
                             <constraint firstItem="ep4-Zv-dUN" firstAttribute="leading" secondItem="YpM-PP-mCc" secondAttribute="leading" id="d82-iT-DVz"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XwJ-JF-h3N" secondAttribute="trailing" constant="20" symbolic="YES" id="dEE-Ta-jEc"/>
                             <constraint firstItem="CXk-RU-u7w" firstAttribute="top" secondItem="A3o-VI-5oi" secondAttribute="top" id="do4-6v-XWw"/>
@@ -257,6 +265,7 @@
                             <constraint firstItem="wAq-Rn-EDz" firstAttribute="leading" secondItem="AqU-xe-8hu" secondAttribute="leading" id="itT-51-J1o"/>
                             <constraint firstItem="AqU-xe-8hu" firstAttribute="trailing" secondItem="hGo-Uh-12m" secondAttribute="trailing" id="jPm-PK-oDW"/>
                             <constraint firstItem="TNg-pF-sGG" firstAttribute="leading" secondItem="ep4-Zv-dUN" secondAttribute="leading" id="jqF-6x-9Mg"/>
+                            <constraint firstItem="xGn-e5-oFe" firstAttribute="leading" secondItem="j2Y-FP-ddU" secondAttribute="leading" constant="471" id="muf-Ek-OIY"/>
                             <constraint firstItem="TNg-pF-sGG" firstAttribute="top" secondItem="hGo-Uh-12m" secondAttribute="bottom" constant="8" symbolic="YES" id="o8m-TQ-eCl"/>
                             <constraint firstItem="A3o-VI-5oi" firstAttribute="trailing" secondItem="0ge-VN-vOW" secondAttribute="trailing" id="pYx-2e-OjD"/>
                             <constraint firstItem="j2Y-FP-ddU" firstAttribute="trailing" secondItem="JSv-Bx-Xcf" secondAttribute="trailing" constant="264" id="s9f-fN-Fa0"/>
@@ -268,28 +277,83 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Khc-2u-pid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949.60000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="531" y="122"/>
+        </scene>
+        <!--Trial List Screen-->
+        <scene sceneID="2ol-pc-Rgl">
+            <objects>
+                <viewController id="nXi-ql-5dS" userLabel="Trial List Screen" customClass="TrialListTableViewTableViewController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uCv-zZ-pMK">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0fP-mF-fqe">
+                                <rect key="frame" x="0.0" y="20" width="1024" height="1346"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrialCell" id="pLy-4t-UsR" customClass="TrialViewCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="1024" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pLy-4t-UsR" id="OnT-L7-OfL" customClass="TrialCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk7-0E-4Cv">
+                                                    <rect key="frame" x="27" y="39.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xk7-0E-4Cv" firstAttribute="leading" secondItem="OnT-L7-OfL" secondAttribute="leadingMargin" constant="12" id="niS-bG-WHv"/>
+                                                <constraint firstItem="xk7-0E-4Cv" firstAttribute="centerY" secondItem="OnT-L7-OfL" secondAttribute="centerY" id="zMx-g4-tUy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="xk7-0E-4Cv" id="7zh-oh-5la"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="u4s-gO-gNi" firstAttribute="trailing" secondItem="0fP-mF-fqe" secondAttribute="trailing" id="hJ4-qg-xDG"/>
+                            <constraint firstItem="u4s-gO-gNi" firstAttribute="bottom" secondItem="0fP-mF-fqe" secondAttribute="bottom" id="pLh-hV-40X"/>
+                            <constraint firstItem="0fP-mF-fqe" firstAttribute="top" secondItem="u4s-gO-gNi" secondAttribute="top" id="v2H-wD-eho"/>
+                            <constraint firstItem="0fP-mF-fqe" firstAttribute="leading" secondItem="u4s-gO-gNi" secondAttribute="leading" id="vF3-fl-59s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="u4s-gO-gNi"/>
+                    </view>
+                    <connections>
+                        <outlet property="trialList" destination="0fP-mF-fqe" id="o8d-SX-Pav"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DL2-5X-1Dv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926.95312499999989" y="1720.9370424597364"/>
         </scene>
         <!--Trial Data Collection Form View Controller-->
         <scene sceneID="RLH-O8-wfm">
             <objects>
                 <viewController storyboardIdentifier="TrialDataCollectionForm" id="rfW-eT-a0H" customClass="TrialDataCollectionFormViewController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mY6-Di-QRb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-iK-UEd">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="1024" height="1346"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNv-Jb-hMr">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nfu-8g-J3Z">
                                                 <rect key="frame" x="312" y="556" width="49" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </switch>
                                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TqM-SD-pmc">
-                                                <rect key="frame" x="19" y="265" width="335" height="145"/>
+                                                <rect key="frame" x="19" y="265" width="984" height="145"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="546384361.17434502">
                                                     <!--2018-04-25 21:26:01 +0000-->
@@ -378,7 +442,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CpO-RJ-tJw">
-                                                <rect key="frame" x="-1" y="0.0" width="375" height="44"/>
+                                                <rect key="frame" x="-1" y="0.0" width="1024" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <items>
                                                     <navigationItem id="6us-Qe-sgi">
@@ -428,11 +492,11 @@
             <objects>
                 <viewController storyboardIdentifier="TrialDataMainPage" id="egy-Hw-lh8" customClass="TrialDataMainPageController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6fk-el-HUg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zR-Yy-1uj">
-                                <rect key="frame" x="109" y="268" width="157" height="30"/>
+                                <rect key="frame" x="109" y="268" width="806" height="30"/>
                                 <color key="backgroundColor" red="0.90623623132705688" green="0.97079533338546753" blue="0.96085673570632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Analyze New Patient"/>
                                 <connections>
@@ -440,18 +504,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3u0-EO-Yq2">
-                                <rect key="frame" x="96" y="306" width="183" height="30"/>
+                                <rect key="frame" x="96" y="306" width="832" height="30"/>
                                 <color key="backgroundColor" red="0.90623623132705688" green="0.97079533338546753" blue="0.96085673570632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="View Participating Patients"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trial #123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aw-Y7-Jnk">
-                                <rect key="frame" x="150" y="239" width="75" height="21"/>
+                                <rect key="frame" x="150" y="239" width="724" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L26-EW-PQ3">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Trial Details" id="oXD-Fc-5nf">
@@ -491,7 +555,7 @@
             <objects>
                 <viewController storyboardIdentifier="PatientSignatureView" id="QPT-yH-wPy" customClass="PatientSignatureViewController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HEy-DF-kRa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Patient Signature Form" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeg-VV-VCS">
@@ -544,7 +608,7 @@
             <objects>
                 <viewController storyboardIdentifier="SampleCollectionView" id="cJ5-zy-fLL" customClass="TrialPatientSampleCollectionViewController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s7a-KU-UMp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Patient Data Entry 2/2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMI-X5-M1g">
