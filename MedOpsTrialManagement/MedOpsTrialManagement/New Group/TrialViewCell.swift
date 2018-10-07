@@ -11,10 +11,13 @@ import UIKit
 
 class TrialViewCell : UITableViewCell {
     
+    
+    var _trialId: Int = 0
 
     @IBOutlet weak var nameLabel: UILabel!
     
     func setTrial(trial : Trial){
+        _trialId = trial.id
         nameLabel.text = trial.name
     }
 }

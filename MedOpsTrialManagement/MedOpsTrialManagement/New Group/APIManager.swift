@@ -37,9 +37,10 @@ class APIManager {
                 for trial in jsonArray {
                     guard let title = trial["name"] as? String else {return}
                     guard let completed = trial["completed"] as? Bool else {return}
+                    guard let id = trial["trialId"] as? Int else {return}
                     
                     
-                    let newTrial = Trial(name: title, completed: completed)
+                    let newTrial = Trial(name: title, completed: completed, id: id)
                     parsedTrialData.append(newTrial)
                     print("Trial Details")
                     print(title)

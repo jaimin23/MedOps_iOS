@@ -9,11 +9,13 @@
 import Foundation
 
 class Trial {
+    var id: Int
     var name : String
     var completed: Bool
     
-    init(name: String, completed: Bool){
+    init(name: String, completed: Bool, id: Int){
         self.name = name
         self.completed = completed
+        self.id = id
     }
 }

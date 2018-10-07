@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56D788216A74F900FD576A /* TrialDetailsController.swift */; };
 		AED78E7D2165A125002104FF /* TrialListTableViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */; };
 		AED78E812165AB2E002104FF /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E802165AB2E002104FF /* Trial.swift */; };
 		AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E822165B35B002104FF /* TrialViewCell.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE56D788216A74F900FD576A /* TrialDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailsController.swift; sourceTree = "<group>"; };
 		AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialListTableViewTableViewController.swift; sourceTree = "<group>"; };
 		AED78E802165AB2E002104FF /* Trial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		AED78E822165B35B002104FF /* TrialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */,
 				AED78E822165B35B002104FF /* TrialViewCell.swift */,
 				AED78E842165B640002104FF /* APIManager.swift */,
+				AE56D788216A74F900FD576A /* TrialDetailsController.swift */,
 			);
 			name = Controllers;
 			path = "New Group";
@@ -301,6 +304,7 @@
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
 				AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */,
 				C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */,
+				AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */,
 				C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */,
 				C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */,
 			);

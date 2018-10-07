@@ -44,6 +44,11 @@ extension TrialListTableViewTableViewController: UITableViewDataSource, UITableV
         return _trials.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(_trials[indexPath.row])
+        performSegue(withIdentifier: "segue", sender: self)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let trial = _trials[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrialCell") as! TrialViewCell
