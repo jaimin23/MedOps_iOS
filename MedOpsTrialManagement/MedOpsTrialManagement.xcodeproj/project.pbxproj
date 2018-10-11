@@ -12,6 +12,8 @@
 		AED78E812165AB2E002104FF /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E802165AB2E002104FF /* Trial.swift */; };
 		AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E822165B35B002104FF /* TrialViewCell.swift */; };
 		AED78E852165B640002104FF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E842165B640002104FF /* APIManager.swift */; };
+		AEF7E2F1216ED31800671A14 /* QuestionaireListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7E2F0216ED31800671A14 /* QuestionaireListView.swift */; };
+		AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7E2F2216ED69100671A14 /* CreateQuestionView.swift */; };
 		C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF5208D69FD001C4516 /* AppDelegate.swift */; };
 		C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF7208D69FD001C4516 /* ViewController.swift */; };
 		C91ACBFB208D69FD001C4516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91ACBF9208D69FD001C4516 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		AED78E802165AB2E002104FF /* Trial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		AED78E822165B35B002104FF /* TrialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViewCell.swift; sourceTree = "<group>"; };
 		AED78E842165B640002104FF /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		AEF7E2F0216ED31800671A14 /* QuestionaireListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionaireListView.swift; sourceTree = "<group>"; };
+		AEF7E2F2216ED69100671A14 /* CreateQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionView.swift; sourceTree = "<group>"; };
 		C91ACBF2208D69FD001C4516 /* MedOpsTrialManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedOpsTrialManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91ACBF5208D69FD001C4516 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C91ACBF7208D69FD001C4516 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AEF7E2EF216ED2F800671A14 /* QuestionaireManagement */ = {
+			isa = PBXGroup;
+			children = (
+				AEF7E2F0216ED31800671A14 /* QuestionaireListView.swift */,
+				AEF7E2F2216ED69100671A14 /* CreateQuestionView.swift */,
+			);
+			path = QuestionaireManagement;
+			sourceTree = "<group>";
+		};
 		C91ACBE9208D69FD001C4516 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +130,7 @@
 		C91ACBF4208D69FD001C4516 /* MedOpsTrialManagement */ = {
 			isa = PBXGroup;
 			children = (
+				AEF7E2EF216ED2F800671A14 /* QuestionaireManagement */,
 				C99F9A06208F95A3003991A1 /* Controllers */,
 				C91ACBF5208D69FD001C4516 /* AppDelegate.swift */,
 				C91ACBF9208D69FD001C4516 /* Main.storyboard */,
@@ -301,12 +315,14 @@
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				AED78E852165B640002104FF /* APIManager.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
+				AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */,
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
 				AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */,
 				C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */,
 				AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */,
 				C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */,
 				C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */,
+				AEF7E2F1216ED31800671A14 /* QuestionaireListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +503,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JP.MedOpsTrialManagement;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medops.trialmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -506,7 +522,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JP.MedOpsTrialManagement;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medops.trialmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
