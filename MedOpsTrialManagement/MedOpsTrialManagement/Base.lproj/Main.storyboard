@@ -187,31 +187,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc5-9a-GH1">
-                                <rect key="frame" x="155" y="95" width="49" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y61-lG-Dlx">
                                 <rect key="frame" x="114" y="237" width="146" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Manage Questionaire"/>
                                 <connections>
-                                    <segue destination="62l-Di-erg" kind="show" id="jrd-tE-aZM"/>
+                                    <action selector="onManageQuestionaire:" destination="1ur-Vq-3XC" eventType="touchUpInside" id="CJg-lg-fyG"/>
+                                    <segue destination="62l-Di-erg" kind="show" identifier="showQuestions" id="jrd-tE-aZM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trial Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cs-pZ-GhM">
+                                <rect key="frame" x="16" y="83" width="343" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="X7P-ii-iSj" firstAttribute="trailing" secondItem="Nc5-9a-GH1" secondAttribute="trailing" constant="171" id="1JW-TA-XeP"/>
-                            <constraint firstItem="Nc5-9a-GH1" firstAttribute="top" secondItem="X7P-ii-iSj" secondAttribute="top" constant="31" id="KB8-ho-EZ0"/>
-                            <constraint firstItem="Nc5-9a-GH1" firstAttribute="leading" secondItem="X7P-ii-iSj" secondAttribute="leading" constant="155" id="ceh-AP-bTz"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="X7P-ii-iSj"/>
                     </view>
                     <connections>
-                        <outlet property="trialName" destination="Nc5-9a-GH1" id="V7c-ga-Vfk"/>
+                        <outlet property="trialNameLbl" destination="5Cs-pZ-GhM" id="GHJ-vV-LYc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJk-1q-dir" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,10 +431,10 @@
             </objects>
             <point key="canvasLocation" x="2578.125" y="121.66910688140555"/>
         </scene>
-        <!--Questionaire List View-->
+        <!--Questionnaire List View-->
         <scene sceneID="naJ-fn-WTx">
             <objects>
-                <viewController id="62l-Di-erg" customClass="QuestionaireListView" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="62l-Di-erg" customClass="QuestionnaireListView" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OOa-zI-h8W" customClass="Que">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -453,14 +450,24 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Questions for Trial #123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3il-Pw-02W">
+                                <rect key="frame" x="16" y="79" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jfe-Pa-ITg"/>
                     </view>
+                    <connections>
+                        <outlet property="headerLbl" destination="3il-Pw-02W" id="5kS-3y-CBn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agW-jq-1qv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="897"/>
+            <point key="canvasLocation" x="2316" y="896.40179910044981"/>
         </scene>
         <!--Create Question View-->
         <scene sceneID="8Z6-bd-Ryb">
@@ -492,7 +499,11 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Add Question" width="390" id="Usl-Sg-sVc"/>
+                                    <barButtonItem title="Add Question" width="390" id="Usl-Sg-sVc">
+                                        <connections>
+                                            <action selector="onAddQuestion:" destination="DZu-q2-Y6b" id="Te9-NN-47F"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rED-fj-OPY">
@@ -559,6 +570,7 @@
                         <viewLayoutGuide key="safeArea" id="qbY-ep-Eg8"/>
                     </view>
                     <connections>
+                        <outlet property="_addQuestionBtn" destination="oPN-Fz-xA8" id="DHB-Yb-NY8"/>
                         <outlet property="_answerFive" destination="e3h-YW-Cl1" id="O8u-Gd-kHc"/>
                         <outlet property="_answerFour" destination="LZk-Kx-EHL" id="b4i-Hr-85F"/>
                         <outlet property="_answerOne" destination="TmT-E4-zz4" id="V0K-Sf-NO1"/>

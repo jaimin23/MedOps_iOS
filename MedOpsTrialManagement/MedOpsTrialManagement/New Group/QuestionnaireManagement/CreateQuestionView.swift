@@ -13,7 +13,9 @@ class CreateQuestionView: UIViewController {
     let NUMERIC_ANSWER_TEXT  = "Numeric Answer"
     let SINGLE_SELECT_ANSWER  = "Single Select"
     
-    var _pickerItems : [String] = ["Numeric Answer", "Single-Select", "Multi-Select"]
+    var trialId: Int = 0 // Placeholder value
+    
+    var _pickerItems : [String] = [ "Multi-Select", "Numeric Answer", "Single-Select"]
 
     
 
@@ -28,6 +30,7 @@ class CreateQuestionView: UIViewController {
     @IBOutlet weak var _answerFour: UITextField!
     @IBOutlet weak var _answerFive: UITextField!
     
+    @IBOutlet weak var _addQuestionBtn: UIToolbar!
     
     override func viewDidLoad() {
         
@@ -36,6 +39,7 @@ class CreateQuestionView: UIViewController {
         _questionTypeSelector.delegate = self
         super.viewDidLoad()
         
+        _questionText.delegate = self
         _answerOne.delegate = self
         _answerTwo.delegate = self
         _answerThree.delegate = self
@@ -45,9 +49,33 @@ class CreateQuestionView: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
     
-
+    @IBAction func onAddQuestion(_ sender: Any) {
+        
+        let questionId = _questionTypeSelector.selectedRow(inComponent: 0)
+        let questionString = _questionText.text!
+        let question = Question(text: questionString, questionType: questionId, trialId: self.trialId)
+        
+        let apiCaller = APIManager()
+        
+        apiCaller.postQuestion(question: question) { (error) in
+            let alert: UIAlertController
+            if let error = error {
+                alert = UIAlertController(title: "Result", message: "Bad response \(self.trialId)", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                    // TODO
+                }))
+                print(error)
+                
+            } else{
+                alert = UIAlertController(title: "Result", message: "Good response \(self.trialId)", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+            }
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
 extension CreateQuestionView: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {

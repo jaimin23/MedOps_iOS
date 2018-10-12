@@ -10,10 +10,10 @@ import Foundation
 
 
 class APIManager {
-    var urlString : String = "https://medopscloud.azurewebsites.net/api/trial/"
-    
+    let cloudDomain: String = "medopscloud.azurewebsites.net"
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
+        var urlString : String = "https://medopscloud.azurewebsites.net/api/trial/"
         var parsedTrialData : [Trial] = []
         
         
@@ -55,6 +55,55 @@ class APIManager {
             
         }
         
+        task.resume()
+    }
+    
+    func postQuestion(question: Question, completion:((Error?) -> Void)?){
+        
+        // Create URL
+        var url = URLComponents()
+        url.scheme = "https"
+        url.host = cloudDomain
+        url.path = "/api/trial/question/"
+        
+        guard let urlString = url.url else {fatalError("Unable to make url from string")}
+        
+        // Create Request
+        var postRequest = URLRequest(url: urlString)
+        
+        postRequest.httpMethod = "POST"
+        
+        // TODO delete debug statement
+        print(urlString.absoluteString)
+        
+        var headers = postRequest.allHTTPHeaderFields ?? [:]
+        headers["Content-Type"] = "application/json"
+        postRequest.allHTTPHeaderFields = headers
+        
+        // Serialize question to JSON
+        let jsonEncoder = JSONEncoder()
+        do {
+            let postData =  try jsonEncoder.encode(question)
+            print(postData)
+            postRequest.httpBody = postData
+        } catch {
+            completion?(error)
+        }
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        let task = session.dataTask(with: postRequest) { (responseData, response, responseError) in
+            guard responseError == nil else {
+                completion?(responseError!)
+                return
+            }
+            print("printing response")
+            print(responseData)
+            print(response)
+            print(responseError)
+            
+        }
         task.resume()
     }
 }

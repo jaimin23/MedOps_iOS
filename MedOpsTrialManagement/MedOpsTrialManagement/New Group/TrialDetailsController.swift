@@ -9,11 +9,14 @@
 import UIKit
 
 class TrialDetailsController: UIViewController {
+    
+    var _trial : Trial?
 
-    @IBOutlet weak var trialName: UILabel!
+
+    @IBOutlet weak var trialNameLbl: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        trialNameLbl.text = _trial?.name
         // Do any additional setup after loading the view.
     }
 
@@ -22,7 +25,15 @@ class TrialDetailsController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func onManageQuestionaire(_ sender: Any) {
+//        performSegue(withIdentifier: "showQuestions", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let questionaireList = segue.destination as? QuestionnaireListView
+        questionaireList?.trial = _trial
+    }
+    
     /*
     // MARK: - Navigation
 
