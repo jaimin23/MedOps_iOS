@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		83361977468E8B30CD799D19 /* Pods_MedOpsTrialManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F4DED14CD1A1C58027DB168 /* Pods_MedOpsTrialManagement.framework */; };
-		B2380BC6B8C8BAA3A3E77A3A /* Pods_MedOpsTrialManagementUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1421624C58608E63EE862D9F /* Pods_MedOpsTrialManagementUITests.framework */; };
-		C2287ABB19853C3BC9851249 /* Pods_MedOpsTrialManagementTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7CAD2FBCBF6B4F13EFD52D /* Pods_MedOpsTrialManagementTests.framework */; };
 		C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF5208D69FD001C4516 /* AppDelegate.swift */; };
 		C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF7208D69FD001C4516 /* ViewController.swift */; };
 		C91ACBFB208D69FD001C4516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91ACBF9208D69FD001C4516 /* Main.storyboard */; };
@@ -19,7 +16,7 @@
 		C91ACC16208D69FE001C4516 /* MedOpsTrialManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */; };
 		C92D60662166F2DE00A6F985 /* Diseases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D60652166F2DE00A6F985 /* Diseases.swift */; };
 		C92D60682166F67000A6F985 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D60672166F67000A6F985 /* API.swift */; };
-		C92D606A216708FE00A6F985 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D6069216708FE00A6F985 /* Trial.swift */; };
+		C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D6069216708FE00A6F985 /* TrialModel.swift */; };
 		C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */; };
 		C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A07208F9676003991A1 /* TriallMainController.swift */; };
 		C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A09208FA8B1003991A1 /* TrialDataMainPageController.swift */; };
@@ -46,14 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1421624C58608E63EE862D9F /* Pods_MedOpsTrialManagementUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedOpsTrialManagementUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B330CEA15D88C6470A970C1 /* Pods-MedOpsTrialManagementUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementUITests/Pods-MedOpsTrialManagementUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		2E7CAD2FBCBF6B4F13EFD52D /* Pods_MedOpsTrialManagementTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedOpsTrialManagementTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		68902CE0AC891583830084A4 /* Pods-MedOpsTrialManagement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagement.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagement/Pods-MedOpsTrialManagement.release.xcconfig"; sourceTree = "<group>"; };
-		6F4DED14CD1A1C58027DB168 /* Pods_MedOpsTrialManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedOpsTrialManagement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		76304A13495AE2934AF2B062 /* Pods-MedOpsTrialManagement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagement.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagement/Pods-MedOpsTrialManagement.debug.xcconfig"; sourceTree = "<group>"; };
-		7835392BF0E83385FE1F2FBA /* Pods-MedOpsTrialManagementTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementTests/Pods-MedOpsTrialManagementTests.release.xcconfig"; sourceTree = "<group>"; };
-		C20C237ED6C1AA4093690CD9 /* Pods-MedOpsTrialManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementTests/Pods-MedOpsTrialManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C91ACBF2208D69FD001C4516 /* MedOpsTrialManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedOpsTrialManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91ACBF5208D69FD001C4516 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C91ACBF7208D69FD001C4516 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,14 +58,13 @@
 		C91ACC17208D69FE001C4516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C92D60652166F2DE00A6F985 /* Diseases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diseases.swift; sourceTree = "<group>"; };
 		C92D60672166F67000A6F985 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		C92D6069216708FE00A6F985 /* Trial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
+		C92D6069216708FE00A6F985 /* TrialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialModel.swift; sourceTree = "<group>"; };
 		C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrialViewController.swift; sourceTree = "<group>"; };
 		C99F9A07208F9676003991A1 /* TriallMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriallMainController.swift; sourceTree = "<group>"; };
 		C99F9A09208FA8B1003991A1 /* TrialDataMainPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataMainPageController.swift; sourceTree = "<group>"; };
 		C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataCollectionFormViewController.swift; sourceTree = "<group>"; };
 		C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSignatureViewController.swift; sourceTree = "<group>"; };
 		C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialPatientSampleCollectionViewController.swift; sourceTree = "<group>"; };
-		E622D37CE74420D904FF28B3 /* Pods-MedOpsTrialManagementUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementUITests/Pods-MedOpsTrialManagementUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83361977468E8B30CD799D19 /* Pods_MedOpsTrialManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2287ABB19853C3BC9851249 /* Pods_MedOpsTrialManagementTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2380BC6B8C8BAA3A3E77A3A /* Pods_MedOpsTrialManagementUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,8 +99,6 @@
 				C91ACC09208D69FE001C4516 /* MedOpsTrialManagementTests */,
 				C91ACC14208D69FE001C4516 /* MedOpsTrialManagementUITests */,
 				C91ACBF3208D69FD001C4516 /* Products */,
-				CE1FA9C79D7EB2482C82A1D0 /* Pods */,
-				D8D2D44B26FB886F69F7EFAD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				C92D60652166F2DE00A6F985 /* Diseases.swift */,
-				C92D6069216708FE00A6F985 /* Trial.swift */,
+				C92D6069216708FE00A6F985 /* TrialModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,29 +169,6 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		CE1FA9C79D7EB2482C82A1D0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				76304A13495AE2934AF2B062 /* Pods-MedOpsTrialManagement.debug.xcconfig */,
-				68902CE0AC891583830084A4 /* Pods-MedOpsTrialManagement.release.xcconfig */,
-				C20C237ED6C1AA4093690CD9 /* Pods-MedOpsTrialManagementTests.debug.xcconfig */,
-				7835392BF0E83385FE1F2FBA /* Pods-MedOpsTrialManagementTests.release.xcconfig */,
-				1B330CEA15D88C6470A970C1 /* Pods-MedOpsTrialManagementUITests.debug.xcconfig */,
-				E622D37CE74420D904FF28B3 /* Pods-MedOpsTrialManagementUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		D8D2D44B26FB886F69F7EFAD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6F4DED14CD1A1C58027DB168 /* Pods_MedOpsTrialManagement.framework */,
-				2E7CAD2FBCBF6B4F13EFD52D /* Pods_MedOpsTrialManagementTests.framework */,
-				1421624C58608E63EE862D9F /* Pods_MedOpsTrialManagementUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -216,7 +176,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C91ACC1A208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagement" */;
 			buildPhases = (
-				59458EA767483D83EC0B831A /* [CP] Check Pods Manifest.lock */,
 				C91ACBEE208D69FD001C4516 /* Sources */,
 				C91ACBEF208D69FD001C4516 /* Frameworks */,
 				C91ACBF0208D69FD001C4516 /* Resources */,
@@ -234,7 +193,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C91ACC1D208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagementTests" */;
 			buildPhases = (
-				4C3112BEE709B12FD93F7B86 /* [CP] Check Pods Manifest.lock */,
 				C91ACC02208D69FE001C4516 /* Sources */,
 				C91ACC03208D69FE001C4516 /* Frameworks */,
 				C91ACC04208D69FE001C4516 /* Resources */,
@@ -253,7 +211,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C91ACC20208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagementUITests" */;
 			buildPhases = (
-				D184E640F4B255A1DD82AE5A /* [CP] Check Pods Manifest.lock */,
 				C91ACC0D208D69FE001C4516 /* Sources */,
 				C91ACC0E208D69FE001C4516 /* Frameworks */,
 				C91ACC0F208D69FE001C4516 /* Resources */,
@@ -338,63 +295,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		4C3112BEE709B12FD93F7B86 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MedOpsTrialManagementTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		59458EA767483D83EC0B831A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MedOpsTrialManagement-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D184E640F4B255A1DD82AE5A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MedOpsTrialManagementUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		C91ACBEE208D69FD001C4516 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -405,7 +305,7 @@
 				C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				C92D60682166F67000A6F985 /* API.swift in Sources */,
-				C92D606A216708FE00A6F985 /* Trial.swift in Sources */,
+				C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
 				C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */,
@@ -581,7 +481,6 @@
 		};
 		C91ACC1B208D69FE001C4516 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76304A13495AE2934AF2B062 /* Pods-MedOpsTrialManagement.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -600,7 +499,6 @@
 		};
 		C91ACC1C208D69FE001C4516 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68902CE0AC891583830084A4 /* Pods-MedOpsTrialManagement.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -619,7 +517,6 @@
 		};
 		C91ACC1E208D69FE001C4516 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C20C237ED6C1AA4093690CD9 /* Pods-MedOpsTrialManagementTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -641,7 +538,6 @@
 		};
 		C91ACC1F208D69FE001C4516 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7835392BF0E83385FE1F2FBA /* Pods-MedOpsTrialManagementTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -663,7 +559,6 @@
 		};
 		C91ACC21208D69FE001C4516 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B330CEA15D88C6470A970C1 /* Pods-MedOpsTrialManagementUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -684,7 +579,6 @@
 		};
 		C91ACC22208D69FE001C4516 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E622D37CE74420D904FF28B3 /* Pods-MedOpsTrialManagementUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
