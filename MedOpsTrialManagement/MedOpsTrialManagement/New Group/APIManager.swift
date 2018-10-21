@@ -138,7 +138,6 @@ class APIManager {
         
         postRequest.httpMethod = "PATCH"
         
-        
         var headers = postRequest.allHTTPHeaderFields ?? [:]
         headers["Content-Type"] = "application/json"
         postRequest.allHTTPHeaderFields = headers
