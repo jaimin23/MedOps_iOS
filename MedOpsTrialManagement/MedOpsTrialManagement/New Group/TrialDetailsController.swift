@@ -35,8 +35,17 @@ class TrialDetailsController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let questionaireList = segue.destination as? QuestionnaireListView
-        questionaireList?.trial = _trial
+        
+        if segue.identifier == "showEvals"{
+            let evalList = segue.destination as? RecentEvaluationsView
+            if let id = _trial?.id{
+                evalList?._trialId = id
+            }
+        
+        } else {
+            let questionaireList = segue.destination as? QuestionnaireListView
+            questionaireList?.trial = _trial
+        }
     }
     
     /*

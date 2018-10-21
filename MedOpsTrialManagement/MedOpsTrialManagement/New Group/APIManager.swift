@@ -10,7 +10,7 @@ import Foundation
 
 
 class APIManager {
-    let cloudDomain: String = "medopscloud.azurewebsites.net"
+    let cloudDomain: String = "https://medopscloud.azurewebsites.net"
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
         var urlString : String = "https://medopscloud.azurewebsites.net/api/trial/"
@@ -124,7 +124,6 @@ class APIManager {
             print("printing response")
             print(responseData!)
             print(response!)
-            print(responseError!)
             
         }
         task.resume()
@@ -175,4 +174,52 @@ class APIManager {
         task.resume()
         
     }
+    
+    func getTrialEvaluations(trialId: Int, onComplete evalData: @escaping (_ evalData: [Evaluation]) -> Void){
+        let urlString = cloudDomain + "/api/data/completed?trialId=\(trialId)"
+        
+        print(urlString)
+        
+        var parsedEvalData : [Evaluation] = []
+        
+        let requestString = URL(string: urlString)
+        
+        let request = URLRequest(url: requestString!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+            guard let dataRes = data, error == nil else {
+                // handle error
+                return
+            }
+            
+            do {
+                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+                
+                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                    return
+                }
+                
+                print(jsonArray)
+                for eval in jsonArray {
+                    guard let id = eval["id"] as? Int else {return}
+                    guard let date = eval["date"] as? String else {return}
+            
+                    
+                    let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user")
+                    
+                    parsedEvalData.append(evaluation)
+                }
+                
+                
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+            evalData(parsedEvalData)
+            
+        }
+        
+        task.resume()
+    }
 }
+
