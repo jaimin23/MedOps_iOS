@@ -29,6 +29,7 @@
 		C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */; };
 		C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */; };
 		C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */; };
+		C9C1227B21740135004D502E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C1227A21740135004D502E /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataCollectionFormViewController.swift; sourceTree = "<group>"; };
 		C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSignatureViewController.swift; sourceTree = "<group>"; };
 		C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialPatientSampleCollectionViewController.swift; sourceTree = "<group>"; };
+		C9C1227A21740135004D502E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				AED78E802165AB2E002104FF /* Trial.swift */,
 				AEF7E2F5217025B100671A14 /* Question.swift */,
+				C9C1227A21740135004D502E /* User.swift */,
 				AEF7E2F7217039F900671A14 /* Answer.swift */,
 			);
 			path = Models;
@@ -330,6 +333,7 @@
 				AED78E812165AB2E002104FF /* Trial.swift in Sources */,
 				AED78E7D2165A125002104FF /* TrialListTableViewTableViewController.swift in Sources */,
 				C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */,
+				C9C1227B21740135004D502E /* User.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				AED78E852165B640002104FF /* APIManager.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
@@ -516,7 +520,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7SMR7CHT9;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
 				INFOPLIST_FILE = MedOpsTrialManagement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -535,7 +539,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7SMR7CHT9;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
 				INFOPLIST_FILE = MedOpsTrialManagement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
