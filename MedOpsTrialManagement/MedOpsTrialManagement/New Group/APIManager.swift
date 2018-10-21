@@ -14,7 +14,7 @@ class APIManager {
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
         var urlString : String = "https://medopscloud.azurewebsites.net/api/trial/"
-        //let urlString: String = "http://192.168.0.107:32768/api/trial/"
+        //let urlString: String = "{}/api/trial/"
         var parsedTrialData : [Trial] = []
         var usersList : [User] = []
         
@@ -131,7 +131,7 @@ class APIManager {
     }
     
     func selectPatients(patients: [User], completion:((Error?) -> Void)?){
-        let urlString: String = "{}}/api/user/patients/"
+        let urlString: String = "https://medopscloud.azurewebsites.net/api/user/patients/"
         let requestString = URL(string: urlString)
         // Create Request
         var postRequest = URLRequest(url: requestString!)

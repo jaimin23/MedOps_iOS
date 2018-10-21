@@ -15,12 +15,15 @@ struct CellData{
 class TrialListTableViewTableViewController: UIViewController {
     
     @IBOutlet weak var trialList: UITableView!
-    
+    var pullToRefresh = UIRefreshControl()
     var _trials : [Trial] = []
-    
+    let api = APIManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let api = APIManager()
+        pullToRefresh.attributedTitle = NSAttributedString(string: "Fetching Data")
+        pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.trialList.addSubview(pullToRefresh)
+        
         
         api.getTrials { trialData in
             print("Printing trial data")
@@ -35,6 +38,17 @@ class TrialListTableViewTableViewController: UIViewController {
         trialList.delegate = self
         trialList.dataSource = self
         
+        
+    }
+    @objc func refresh(_ sender: Any){
+        api.getTrials { trialData in
+            self._trials = trialData
+            DispatchQueue.main.async {
+                self.trialList.reloadData()
+                self.pullToRefresh.endRefreshing()
+            }
+        }
+
     }
 
 }

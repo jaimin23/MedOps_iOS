@@ -127,6 +127,8 @@
 		AEF7E2F42170259600671A14 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C92D6069216708FE00A6F985 /* TrialModel.swift */,
+				C92D60652166F2DE00A6F985 /* Diseases.swift */,
 				AED78E802165AB2E002104FF /* Trial.swift */,
 				AEF7E2F5217025B100671A14 /* Question.swift */,
 				C9C1227A21740135004D502E /* User.swift */,
@@ -159,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				AEF7E2F42170259600671A14 /* Models */,
-				C92D60642166F2C000A6F985 /* Model */,
 				C99F9A06208F95A3003991A1 /* Controllers */,
 				C91ACBF5208D69FD001C4516 /* AppDelegate.swift */,
 				C91ACBF9208D69FD001C4516 /* Main.storyboard */,
@@ -186,15 +187,6 @@
 				C91ACC17208D69FE001C4516 /* Info.plist */,
 			);
 			path = MedOpsTrialManagementUITests;
-			sourceTree = "<group>";
-		};
-		C92D60642166F2C000A6F985 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C92D60652166F2DE00A6F985 /* Diseases.swift */,
-				C92D6069216708FE00A6F985 /* TrialModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		C99F9A06208F95A3003991A1 /* Controllers */ = {
