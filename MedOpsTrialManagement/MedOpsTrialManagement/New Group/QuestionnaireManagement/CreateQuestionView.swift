@@ -15,7 +15,7 @@ class CreateQuestionView: UIViewController {
     
     var trialId: Int = 0 // Placeholder value
     
-    var _pickerItems : [String] = [ "Multi-Select", "Numeric Answer", "Single-Select"]
+    var _pickerItems : [String] = [ "Single-Select", "Numeric Answer", "Multi-Select"]
 
     
 

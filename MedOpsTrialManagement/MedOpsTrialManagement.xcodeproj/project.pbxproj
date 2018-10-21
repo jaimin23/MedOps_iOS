@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56D788216A74F900FD576A /* TrialDetailsController.swift */; };
+		AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBABD1221758E9B0060B4DE /* QuestionCell.swift */; };
 		AED78E7D2165A125002104FF /* TrialListTableViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */; };
 		AED78E812165AB2E002104FF /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E802165AB2E002104FF /* Trial.swift */; };
 		AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E822165B35B002104FF /* TrialViewCell.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		AE56D788216A74F900FD576A /* TrialDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailsController.swift; sourceTree = "<group>"; };
+		AEBABD1221758E9B0060B4DE /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialListTableViewTableViewController.swift; sourceTree = "<group>"; };
 		AED78E802165AB2E002104FF /* Trial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		AED78E822165B35B002104FF /* TrialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				AEF7E2F0216ED31800671A14 /* QuestionnaireListView.swift */,
 				AEF7E2F2216ED69100671A14 /* CreateQuestionView.swift */,
+				AEBABD1221758E9B0060B4DE /* QuestionCell.swift */,
 			);
 			path = QuestionnaireManagement;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				AED78E852165B640002104FF /* APIManager.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
+				AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */,
 				AEF7E2F8217039F900671A14 /* Answer.swift in Sources */,
 				AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */,
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
