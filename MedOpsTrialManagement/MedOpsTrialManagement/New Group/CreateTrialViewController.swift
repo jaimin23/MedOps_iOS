@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate{
     
     @IBOutlet weak var trialNameField : UITextField!
     @IBOutlet weak var trialDescription: UITextView!
@@ -33,7 +33,8 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var trialDiseasesData = [Diseases]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.trialDescription.text = "Enter Description"
+        self.trialDescription.delegate = self
         self.trialPrivacyType.delegate = self
         self.trialPrivacyType.dataSource = self
         
@@ -64,7 +65,8 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
             Description: trialDescription.text,
             DiseaseId: trialDiseasePicker.selectedRow(inComponent: 0),
             Procedure: trialProcedureType.selectedRow(inComponent: 0),
-            AvailableResults: trialPrivacyType.selectedRow(inComponent: 0) )
+            AvailableResults: trialPrivacyType.selectedRow(inComponent: 0),
+            UserUniqueId: "Random123")
         
         api.createTrial(trial: trialData){ (error) in
             if let error = error{
@@ -78,7 +80,7 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int{
-        return 1
+        return 0
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -102,6 +104,14 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
         else{
             return trialDiseasesData[row].name
+        }
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.trialDescription.text = nil
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if(self.trialDescription.text.isEmpty){
+            textView.text = "Enter Description"
         }
     }
     

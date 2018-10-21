@@ -13,4 +13,5 @@ struct TrialModel: Codable{
     let DiseaseId: Int
     let Procedure: Int
     let AvailableResults: Int
+    let UserUniqueId: String
 }
