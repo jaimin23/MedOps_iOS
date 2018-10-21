@@ -54,27 +54,50 @@ class CreateQuestionView: UIViewController {
         
         let questionId = _questionTypeSelector.selectedRow(inComponent: 0)
         let questionString = _questionText.text!
-        let question = Question(text: questionString, questionType: questionId, trialId: self.trialId)
+        var question = Question(text: questionString, questionType: questionId, trialId: self.trialId)
         
         let apiCaller = APIManager()
         
-        apiCaller.postQuestion(question: question) { (error) in
+        if (questionId == 0 || questionId == 2){
+            if (_answerOne.text! != ""){
+                let answer = Answer(value: _answerOne.text!)
+                question.answers.append(answer)
+            }
+            if (_answerTwo.text != ""){
+                let answer = Answer(value: _answerTwo.text!)
+                question.answers.append(answer)
+            }
+            if (_answerThree.text! != ""){
+                let answer = Answer(value: _answerThree.text!)
+                question.answers.append(answer)
+            }
+            if (_answerFour.text! != ""){
+                let answer = Answer(value: _answerFour.text!)
+                question.answers.append(answer)
+            }
+            if (_answerFive.text! != ""){
+                let answer = Answer(value: _answerFive.text!)
+                question.answers.append(answer)
+            }
+        }
+        
+        apiCaller.postQuestion(question: question, onComplete: {(success) in
             let alert: UIAlertController
-            if let error = error {
+            if(!success) {
                 alert = UIAlertController(title: "Result", message: "Bad response \(self.trialId)", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
                     // TODO
                 }))
-                print(error)
-                
-            } else{
-                alert = UIAlertController(title: "Result", message: "Good response \(self.trialId)", preferredStyle: UIAlertControllerStyle.alert)
+            } else {
+                alert = UIAlertController(title: "Save Complete", message: "Questionnaire Successfully Saved!", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                     self.navigationController?.popViewController(animated: true)
                 }))
             }
-            self.present(alert, animated: true, completion: nil)
-        }
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
 }
 

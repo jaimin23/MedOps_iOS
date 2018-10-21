@@ -81,7 +81,7 @@ class APIManager {
         task.resume()
     }
     
-    func postQuestion(question: Question, completion:((Error?) -> Void)?){
+    func postQuestion(question: Question, onComplete isSuccess: @escaping (_ result: Bool) -> Void){
         
         // Create URL
         var url = URLComponents()
@@ -110,7 +110,7 @@ class APIManager {
             print(postData)
             postRequest.httpBody = postData
         } catch {
-            completion?(error)
+            // TODO error handle
         }
         
         let config = URLSessionConfiguration.default
@@ -118,7 +118,7 @@ class APIManager {
         
         let task = session.dataTask(with: postRequest) { (responseData, response, responseError) in
             guard responseError == nil else {
-                completion?(responseError!)
+                // TODO error handle
                 return
             }
             print("printing response")
@@ -172,7 +172,6 @@ class APIManager {
             print(responseData)
             print(response)
             print(responseError)
-            
         }
         task.resume()
         

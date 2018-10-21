@@ -15,6 +15,7 @@
 		AEF7E2F1216ED31800671A14 /* QuestionnaireListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7E2F0216ED31800671A14 /* QuestionnaireListView.swift */; };
 		AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7E2F2216ED69100671A14 /* CreateQuestionView.swift */; };
 		AEF7E2F6217025B100671A14 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7E2F5217025B100671A14 /* Question.swift */; };
+		AEF7E2F8217039F900671A14 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7E2F7217039F900671A14 /* Answer.swift */; };
 		C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF5208D69FD001C4516 /* AppDelegate.swift */; };
 		C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF7208D69FD001C4516 /* ViewController.swift */; };
 		C91ACBFB208D69FD001C4516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91ACBF9208D69FD001C4516 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		AEF7E2F0216ED31800671A14 /* QuestionnaireListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireListView.swift; sourceTree = "<group>"; };
 		AEF7E2F2216ED69100671A14 /* CreateQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionView.swift; sourceTree = "<group>"; };
 		AEF7E2F5217025B100671A14 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		AEF7E2F7217039F900671A14 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		C91ACBF2208D69FD001C4516 /* MedOpsTrialManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedOpsTrialManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91ACBF5208D69FD001C4516 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C91ACBF7208D69FD001C4516 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				AED78E802165AB2E002104FF /* Trial.swift */,
 				AEF7E2F5217025B100671A14 /* Question.swift */,
 				C9C1227A21740135004D502E /* User.swift */,
+				AEF7E2F7217039F900671A14 /* Answer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				AED78E852165B640002104FF /* APIManager.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
+				AEF7E2F8217039F900671A14 /* Answer.swift in Sources */,
 				AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */,
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
 				AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */,
