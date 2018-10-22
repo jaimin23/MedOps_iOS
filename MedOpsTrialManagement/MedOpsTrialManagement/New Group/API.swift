@@ -10,7 +10,7 @@ import Foundation
 class API {
     
     func getDiseases(completion: @escaping (_ diseases: [Diseases]) -> ()){
-        let urlString : String = "https://medopscloud.azurewebsites.net/api/medical/disease"
+        let urlString : String = "https://medopscloud.azurewebsites.net/api/data/disease"
         var parsedDiseases : [Diseases] = []
         
         

@@ -18,6 +18,7 @@ class TrialDetailsController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var userView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        usersArray.removeAll()
         trialNameLbl.text = _trial?.name
         // Do any additional setup after loading the view.
         self.userView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -93,7 +94,9 @@ class TrialDetailsController: UIViewController, UITableViewDelegate, UITableView
             cell.accessoryType = .none
         }
         if(usersArray.count != 0 ){
-            usersArray.remove(at: indexPath.row)
+//            self.usersArray.remove(at: usersArray.index(after: self._trial?.users[indexPath.row]))
+            usersArray.removeAll()
+            
             print(usersArray)
         }
     }
