@@ -86,7 +86,7 @@ class APIManager {
         // Create URL
         var url = URLComponents()
         url.scheme = "https"
-        url.host = cloudDomain
+        url.host = "medopscloud.azurewebsites.net"
         url.path = "/api/trial/question/"
         
         guard let urlString = url.url else {fatalError("Unable to make url from string")}
