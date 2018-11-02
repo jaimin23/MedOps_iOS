@@ -10,10 +10,10 @@ import Foundation
 
 
 class APIManager {
-    let cloudDomain: String = "https://medopscloud.azurewebsites.net"
+    let cloudDomain: String = "http://167.99.231.175"
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
-        var urlString : String = "https://medopscloud.azurewebsites.net/api/trial/"
+        var urlString : String = "http://167.99.231.175/api/trial/"
         //let urlString: String = "{}/api/trial/"
         var parsedTrialData : [Trial] = []
         var usersList : [User] = []
@@ -85,8 +85,8 @@ class APIManager {
         
         // Create URL
         var url = URLComponents()
-        url.scheme = "https"
-        url.host = "medopscloud.azurewebsites.net"
+        url.scheme = "http"
+        url.host = "167.99.231.175"
         url.path = "/api/trial/question/"
         
         guard let urlString = url.url else {fatalError("Unable to make url from string")}
@@ -130,7 +130,7 @@ class APIManager {
     }
     
     func selectPatients(patients: [User], completion:((Error?) -> Void)?){
-        let urlString: String = "https://medopscloud.azurewebsites.net/api/user/patients/"
+        let urlString: String = "http://167.99.231.175/api/user/patients/"
         let requestString = URL(string: urlString)
         // Create Request
         var postRequest = URLRequest(url: requestString!)
