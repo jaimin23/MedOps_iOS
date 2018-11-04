@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Szu-Rl-HQI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Szu-Rl-HQI">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -171,7 +171,7 @@
         <!--Trial List Screen-->
         <scene sceneID="2ol-pc-Rgl">
             <objects>
-                <viewController id="nXi-ql-5dS" userLabel="Trial List Screen" customClass="TrialListTableViewTableViewController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nXi-ql-5dS" userLabel="Trial List Screen" customClass="TrialListController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uCv-zZ-pMK">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +180,7 @@
                                 <rect key="frame" x="0.0" y="70" width="768" height="954"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrialCell" id="pLy-4t-UsR" customClass="TrialViewCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrialCell" id="pLy-4t-UsR" customClass="TrialViewCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="768" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pLy-4t-UsR" id="OnT-L7-OfL" customClass="TrialCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
@@ -253,8 +253,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HT4-mL-MqO">
-                                <rect key="frame" x="324" y="466" width="119" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HT4-mL-MqO">
+                                <rect key="frame" x="324" y="466" width="120" height="30"/>
                                 <state key="normal" title="Accept Patient(s)"/>
                                 <connections>
                                     <action selector="selectPatients:" destination="1ur-Vq-3XC" eventType="touchUpInside" id="jCM-G7-DeP"/>
@@ -276,6 +276,17 @@
                                     <segue destination="KRs-Kq-7Dl" kind="show" identifier="showEvals" id="WgM-5W-m0g"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzu-ut-ns1">
+                                <rect key="frame" x="-1" y="974" width="768" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Trial Status" width="75" id="8pH-zO-3UJ">
+                                        <connections>
+                                            <action selector="onChangeTrialStatus:" destination="1ur-Vq-3XC" id="Agf-uF-yzW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -297,6 +308,7 @@
                     </view>
                     <connections>
                         <outlet property="trialNameLbl" destination="5Cs-pZ-GhM" id="GHJ-vV-LYc"/>
+                        <outlet property="trialStatusBtn" destination="8pH-zO-3UJ" id="8xq-Hj-WbW"/>
                         <outlet property="userView" destination="2AD-5O-slm" id="KYR-dq-fvZ"/>
                     </connections>
                 </viewController>
@@ -412,7 +424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLp-sq-5zO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454.6875" y="1686.9140625"/>
+            <point key="canvasLocation" x="-312" y="1630"/>
         </scene>
         <!--Trial Data Collection Form View Controller-->
         <scene sceneID="RLH-O8-wfm">
@@ -657,7 +669,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" rowHeight="68" id="PTQ-5Q-nkq" customClass="QuestionCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" rowHeight="68" id="PTQ-5Q-nkq" customClass="QuestionCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="768" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PTQ-5Q-nkq" id="1iG-Nn-uF4" customClass="QuestionCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
@@ -704,7 +716,7 @@
                                 <rect key="frame" x="0.0" y="70" width="768" height="954"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentEvalCell" rowHeight="100" id="eMX-6j-JII" customClass="RecentEvalTableViewCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentEvalCell" rowHeight="100" id="eMX-6j-JII" customClass="RecentEvalTableViewCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="768" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eMX-6j-JII" id="yHK-ic-Lwq" customClass="RecentEvalTableViewCell" customModule="MedOpsTrialManagement" customModuleProvider="target">
