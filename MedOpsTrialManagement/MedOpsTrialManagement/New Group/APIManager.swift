@@ -90,6 +90,44 @@ class APIManager {
         task.resume()
     }
     
+    func getQuestions(trialId: Int, onComplete questions: @escaping (_ questions: [Question]) -> Void){
+        let urlString: String = cloudDomain + "/api/trial/question?trialId=" + String(trialId)
+        var parsedQuestionData : [Question] = []
+        
+        let requestString = URL(string: urlString)
+        
+        let request = URLRequest(url: requestString!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+            guard let dataRes = data, error == nil else {
+                // handle error
+                return
+            }
+            do {
+                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                    return
+                }
+                for question in jsonArray {
+                    guard let text = question["text"] as? String else {return}
+                    guard let questionType = question["questionType"] as? Int else {return}
+                    
+                    let question = Question(text: text, questionType: questionType, trialId: trialId)
+                    //TODO add questions
+                    parsedQuestionData.append(question)
+                    
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+            questions(parsedQuestionData)
+        }
+        
+        task.resume()
+        
+    }
+    
     func postQuestion(question: Question, onComplete isSuccess: @escaping (_ result: Bool) -> Void){
         
         // Create URL
