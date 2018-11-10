@@ -102,7 +102,14 @@ class TrialDetailsController: UIViewController, UITableViewDelegate, UITableView
                 evalList?._trialId = id
             }
         
-        } else {
+        }
+        else if segue.identifier == "branch"{
+            let branchList = segue.destination as? BranchListController
+            if let id = _trial?.id {
+                branchList?.trialId = id
+            }
+        }
+        else {
             let questionaireList = segue.destination as? QuestionnaireListView
             questionaireList?.trial = _trial
         }
