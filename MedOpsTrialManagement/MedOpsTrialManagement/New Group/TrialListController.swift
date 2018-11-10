@@ -71,6 +71,7 @@ extension TrialListController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let trial = _trials[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrialCell") as! TrialViewCell

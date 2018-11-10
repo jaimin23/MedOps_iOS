@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0F821966599004F8FEA /* BranchListController.swift */; };
+		AE31E0FE2196681F004F8FEA /* BranchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0FD2196681F004F8FEA /* BranchCell.swift */; };
 		AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56D788216A74F900FD576A /* TrialDetailsController.swift */; };
 		AEA88C3A217D163600D32E67 /* Evalution.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C39217D163600D32E67 /* Evalution.swift */; };
 		AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */; };
 		AEA88C3F217D1BE800D32E67 /* RecentEvalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */; };
+		AEABE2F02194FC35005D6BFB /* CreateBranchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEABE2EF2194FC35005D6BFB /* CreateBranchController.swift */; };
+		AEABE2F221951964005D6BFB /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEABE2F121951964005D6BFB /* Branch.swift */; };
+		AEABE2F421951992005D6BFB /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEABE2F321951992005D6BFB /* Step.swift */; };
 		AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBABD1221758E9B0060B4DE /* QuestionCell.swift */; };
 		AED78E7D2165A125002104FF /* TrialListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E7C2165A125002104FF /* TrialListController.swift */; };
 		AED78E812165AB2E002104FF /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E802165AB2E002104FF /* Trial.swift */; };
@@ -56,10 +61,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE31E0F821966599004F8FEA /* BranchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchListController.swift; sourceTree = "<group>"; };
+		AE31E0FD2196681F004F8FEA /* BranchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCell.swift; sourceTree = "<group>"; };
 		AE56D788216A74F900FD576A /* TrialDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailsController.swift; sourceTree = "<group>"; };
 		AEA88C39217D163600D32E67 /* Evalution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evalution.swift; sourceTree = "<group>"; };
 		AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEvaluationsView.swift; sourceTree = "<group>"; };
 		AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEvalTableViewCell.swift; sourceTree = "<group>"; };
+		AEABE2EF2194FC35005D6BFB /* CreateBranchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBranchController.swift; sourceTree = "<group>"; };
+		AEABE2F121951964005D6BFB /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		AEABE2F321951992005D6BFB /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		AEBABD1221758E9B0060B4DE /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		AED78E7C2165A125002104FF /* TrialListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialListController.swift; sourceTree = "<group>"; };
 		AED78E802165AB2E002104FF /* Trial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
@@ -118,6 +128,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE31E0FA21966700004F8FEA /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		AEA88C3B217D178600D32E67 /* EvaluationManagement */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +142,17 @@
 				AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */,
 			);
 			path = EvaluationManagement;
+			sourceTree = "<group>";
+		};
+		AEABE2EE2194FC13005D6BFB /* BranchManagement */ = {
+			isa = PBXGroup;
+			children = (
+				AE31E0FA21966700004F8FEA /* New Group */,
+				AEABE2EF2194FC35005D6BFB /* CreateBranchController.swift */,
+				AE31E0F821966599004F8FEA /* BranchListController.swift */,
+				AE31E0FD2196681F004F8FEA /* BranchCell.swift */,
+			);
+			path = BranchManagement;
 			sourceTree = "<group>";
 		};
 		AEF7E2EF216ED2F800671A14 /* QuestionnaireManagement */ = {
@@ -147,6 +175,8 @@
 				C9C1227A21740135004D502E /* User.swift */,
 				AEF7E2F7217039F900671A14 /* Answer.swift */,
 				AEA88C39217D163600D32E67 /* Evalution.swift */,
+				AEABE2F121951964005D6BFB /* Branch.swift */,
+				AEABE2F321951992005D6BFB /* Step.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +236,7 @@
 		C99F9A06208F95A3003991A1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AEABE2EE2194FC13005D6BFB /* BranchManagement */,
 				AEA88C3B217D178600D32E67 /* EvaluationManagement */,
 				AEF7E2EF216ED2F800671A14 /* QuestionnaireManagement */,
 				C91ACBF7208D69FD001C4516 /* ViewController.swift */,
@@ -368,10 +399,14 @@
 				C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */,
 				C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
+				AE31E0FE2196681F004F8FEA /* BranchCell.swift in Sources */,
+				AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */,
+				AEABE2F221951964005D6BFB /* Branch.swift in Sources */,
 				C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
 				AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */,
 				AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */,
+				AEABE2F421951992005D6BFB /* Step.swift in Sources */,
 				AEF7E2F8217039F900671A14 /* Answer.swift in Sources */,
 				AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */,
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
@@ -379,6 +414,7 @@
 				C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */,
 				AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */,
 				C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */,
+				AEABE2F02194FC35005D6BFB /* CreateBranchController.swift in Sources */,
 				C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */,
 				AEF7E2F1216ED31800671A14 /* QuestionnaireListView.swift in Sources */,
 			);
