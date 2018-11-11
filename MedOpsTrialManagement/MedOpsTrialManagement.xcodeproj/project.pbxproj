@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0F821966599004F8FEA /* BranchListController.swift */; };
 		AE31E0FE2196681F004F8FEA /* BranchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0FD2196681F004F8FEA /* BranchCell.swift */; };
+		AE31E1002198B1FB004F8FEA /* EvaluationDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0FF2198B1FB004F8FEA /* EvaluationDetailsController.swift */; };
 		AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56D788216A74F900FD576A /* TrialDetailsController.swift */; };
 		AEA88C3A217D163600D32E67 /* Evalution.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C39217D163600D32E67 /* Evalution.swift */; };
 		AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		AE31E0F821966599004F8FEA /* BranchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchListController.swift; sourceTree = "<group>"; };
 		AE31E0FD2196681F004F8FEA /* BranchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCell.swift; sourceTree = "<group>"; };
+		AE31E0FF2198B1FB004F8FEA /* EvaluationDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationDetailsController.swift; sourceTree = "<group>"; };
 		AE56D788216A74F900FD576A /* TrialDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailsController.swift; sourceTree = "<group>"; };
 		AEA88C39217D163600D32E67 /* Evalution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evalution.swift; sourceTree = "<group>"; };
 		AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEvaluationsView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */,
 				AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */,
+				AE31E0FF2198B1FB004F8FEA /* EvaluationDetailsController.swift */,
 			);
 			path = EvaluationManagement;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
 				AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */,
 				C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */,
+				AE31E1002198B1FB004F8FEA /* EvaluationDetailsController.swift in Sources */,
 				AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */,
 				C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */,
 				AEABE2F02194FC35005D6BFB /* CreateBranchController.swift in Sources */,

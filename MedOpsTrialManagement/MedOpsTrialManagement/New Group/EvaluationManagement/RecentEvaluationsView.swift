@@ -51,6 +51,7 @@ extension RecentEvaluationsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO
         print(indexPath.row)
+        performSegue(withIdentifier: "showEval", sender: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,6 +59,14 @@ extension RecentEvaluationsView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecentEvalCell") as! RecentEvalTableViewCell
         cell.setCell(eval: eval)
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let evalDetailsView = segue.destination as? EvaluationDetailsController
+        if let indexPath = self.evaluationList.indexPathForSelectedRow {
+            let selectedEval = _evaluations[indexPath.row]
+            evalDetailsView?.evaluation = selectedEval
+        }
     }
     
 
