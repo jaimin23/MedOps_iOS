@@ -349,11 +349,15 @@ class APIManager {
                 for eval in jsonArray {
                     guard let id = eval["id"] as? Int else {return}
                     guard let date = eval["date"] as? String else {return}
+                    guard let encodedData = eval["encodedImage"] as? String else {return}
             
+                    if let decodedData = Data(base64Encoded: encodedData, options: .ignoreUnknownCharacters) {
+                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData)
+                        parsedEvalData.append(evaluation)
+                    }
                     
-                    let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user")
                     
-                    parsedEvalData.append(evaluation)
+            
                 }
                 
                 

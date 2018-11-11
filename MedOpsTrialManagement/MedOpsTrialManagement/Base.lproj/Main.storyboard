@@ -639,11 +639,36 @@
                     </view>
                     <connections>
                         <outlet property="evaluationList" destination="fl0-iP-VhK" id="1k9-dp-Pwc"/>
+                        <segue destination="Ocz-qo-vHD" kind="show" identifier="showEval" id="gTH-TS-tQ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OhB-Nx-NxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300.78125" y="1665.8203125"/>
+            <point key="canvasLocation" x="1302" y="1706"/>
+        </scene>
+        <!--Evaluation Details Controller-->
+        <scene sceneID="JrF-Kl-fXs">
+            <objects>
+                <viewController id="Ocz-qo-vHD" customClass="EvaluationDetailsController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tR7-h7-38D">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gbu-3W-NMU">
+                                <rect key="frame" x="20" y="70" width="728" height="637"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0x3-Mb-biJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="evalDataImage" destination="Gbu-3W-NMU" id="wOx-a1-AaM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aWU-iE-gpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301.5625" y="2432.8125"/>
         </scene>
         <!--Create Question View-->
         <scene sceneID="8Z6-bd-Ryb">
