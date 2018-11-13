@@ -497,7 +497,7 @@
                     <navigationItem key="navigationItem" title="Trial Branches" id="RXZ-ha-NqB">
                         <barButtonItem key="rightBarButtonItem" title="Add New Branch" id="ssx-nz-eKo">
                             <connections>
-                                <segue destination="yvx-86-I7K" kind="show" id="dH5-gh-jjA"/>
+                                <segue destination="yvx-86-I7K" kind="show" identifier="createBranchSegue" id="dH5-gh-jjA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -568,6 +568,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="hypoTextField" destination="zH3-Mx-lTY" id="x4Y-Oy-vac"/>
                         <outlet property="noBranchLbl" destination="j6h-eO-BoD" id="6pp-4N-dH9"/>
                     </connections>
                 </viewController>

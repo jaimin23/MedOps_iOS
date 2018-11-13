@@ -21,7 +21,7 @@ class APIManager {
     }
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
-        let urlString : String = "http://167.99.231.175/api/trial/"
+        let urlString : String = "\(scheme)://\(domain)/api/trial/"
         //let urlString: String = "{}/api/trial/"
         var parsedTrialData : [Trial] = []
         var usersList : [User] = []
@@ -74,8 +74,7 @@ class APIManager {
                     }
                     let newTrial = Trial(name: title, completed: completed, id: id, users:usersList, status: status)
                     parsedTrialData.append(newTrial)
-                    print("Trial Details")
-                    print(title)
+                    
                 }
 
                 
@@ -166,7 +165,7 @@ class APIManager {
                         branchSteps.append(newStep)
                     }
                     
-                    let newBranch = Branch(id: id, hyp: text, steps: branchSteps)
+                    let newBranch = Branch(id: id, hyp: text, steps: branchSteps, trialId: trialId)
                     
                     parsedData.append(newBranch)
                     
@@ -185,8 +184,8 @@ class APIManager {
         
         // Create URL
         var url = URLComponents()
-        url.scheme = "http"
-        url.host = "167.99.231.175"
+        url.scheme = scheme
+        url.host = domain
         url.path = "/api/trial/question/"
         
         guard let urlString = url.url else {fatalError("Unable to make url from string")}
@@ -196,9 +195,6 @@ class APIManager {
         
         postRequest.httpMethod = "POST"
         
-        // TODO delete debug statement
-        print(urlString.absoluteString)
-        
         var headers = postRequest.allHTTPHeaderFields ?? [:]
         headers["Content-Type"] = "application/json"
         postRequest.allHTTPHeaderFields = headers
@@ -207,7 +203,52 @@ class APIManager {
         let jsonEncoder = JSONEncoder()
         do {
             let postData =  try jsonEncoder.encode(question)
-            print(postData)
+            postRequest.httpBody = postData
+        } catch {
+            // TODO error handle
+        }
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        let task = session.dataTask(with: postRequest) { (responseData, response, responseError) in
+            guard responseError == nil else {
+                // TODO error handle
+                return
+            }
+            print("printing response")
+            print(responseData!)
+            print(response!)
+            
+            isSuccess(true)
+            
+        }
+        task.resume()
+    }
+    
+    func postBranch(branch: Branch, onComplete isSuccess: @escaping (_ result: Bool) -> Void){
+        
+        // Create URL
+        var url = URLComponents()
+        url.scheme = scheme
+        url.host = domain
+        url.path = "/api/trial/branch/"
+        
+        guard let urlString = url.url else {fatalError("Unable to create url from string")}
+        
+        // Create Request
+        var postRequest = URLRequest(url: urlString)
+        
+        postRequest.httpMethod = "POST"
+        
+        var headers = postRequest.allHTTPHeaderFields ?? [:]
+        headers["Content-Type"] = "application/json"
+        postRequest.allHTTPHeaderFields = headers
+        
+        // Serialize question to JSON
+        let jsonEncoder = JSONEncoder()
+        do {
+            let postData =  try jsonEncoder.encode(branch)
             postRequest.httpBody = postData
         } catch {
             // TODO error handle
@@ -232,7 +273,7 @@ class APIManager {
     }
     
     func selectPatients(patients: [User], completion:((Error?) -> Void)?){
-        let urlString: String = "http://167.99.231.175/api/user/patients/"
+        let urlString: String = "\(scheme)://\(domain)/api/user/patients/"
         let requestString = URL(string: urlString)
         // Create Request
         var postRequest = URLRequest(url: requestString!)
@@ -284,7 +325,7 @@ class APIManager {
 //        url.host = self.domain
 //        url.path = "c
         
-        let urlString: String = "http://167.99.231.175/api/trial/begin?trialId="+String(trialId)
+        let urlString: String = "\(scheme)://\(domain)/api/trial/begin?trialId="+String(trialId)
         let requestString = URL(string: urlString)
         
 //        guard let urlString = url.url else {fatalError("Unable to make url from string")}
@@ -324,7 +365,6 @@ class APIManager {
     func getTrialEvaluations(trialId: Int, onComplete evalData: @escaping (_ evalData: [Evaluation]) -> Void){
         let urlString = cloudDomain + "/api/data/completed?trialId=\(trialId)"
         
-        print(urlString)
         
         var parsedEvalData : [Evaluation] = []
         
@@ -345,7 +385,6 @@ class APIManager {
                     return
                 }
                 
-                print(jsonArray)
                 for eval in jsonArray {
                     guard let id = eval["id"] as? Int else {return}
                     guard let date = eval["date"] as? String else {return}
@@ -447,7 +486,6 @@ class APIManager {
                 completion?(responseError!)
                 return
             }
-            print(responseData)
             
             if let data = responseData, let utf8Representation = String(data: data, encoding: .utf8){
                 print("Response", utf8Representation)
@@ -457,5 +495,6 @@ class APIManager {
         }
         task.resume()
     }
+    
 }
 

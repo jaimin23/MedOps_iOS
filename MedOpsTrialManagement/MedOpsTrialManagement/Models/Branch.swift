@@ -8,14 +8,16 @@
 
 import Foundation
 
-class Branch {
+struct Branch: Codable {
     var id: Int
     var hypothesis: String
     var steps: [Step]
+    var trialId: Int
     
-    init(id: Int, hyp: String, steps: [Step]){
+    init(id: Int, hyp: String, steps: [Step], trialId: Int){
         self.id = id
         self.hypothesis = hyp
         self.steps = steps
+        self.trialId = trialId
     }
 }

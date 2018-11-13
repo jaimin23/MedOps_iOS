@@ -26,8 +26,6 @@ class TrialListController: UIViewController {
         
         
         api.getTrials { trialData in
-            print("Printing trial data")
-            print(trialData)
             self._trials = trialData
             DispatchQueue.main.async {
                 self.trialList.reloadData()
