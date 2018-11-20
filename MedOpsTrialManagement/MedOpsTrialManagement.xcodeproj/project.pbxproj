@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		44D9F1C2C2E98FD6ED9356F2 /* Pods_MedOpsTrialManagementUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E748302C1D310B716347EB49 /* Pods_MedOpsTrialManagementUITests.framework */; };
+		AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0F821966599004F8FEA /* BranchListController.swift */; };
+		AE31E0FE2196681F004F8FEA /* BranchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0FD2196681F004F8FEA /* BranchCell.swift */; };
+		AE31E1002198B1FB004F8FEA /* EvaluationDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0FF2198B1FB004F8FEA /* EvaluationDetailsController.swift */; };
 		AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56D788216A74F900FD576A /* TrialDetailsController.swift */; };
 		AEA88C3A217D163600D32E67 /* Evalution.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C39217D163600D32E67 /* Evalution.swift */; };
 		AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */; };
 		AEA88C3F217D1BE800D32E67 /* RecentEvalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */; };
+		AEABE2F02194FC35005D6BFB /* CreateBranchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEABE2EF2194FC35005D6BFB /* CreateBranchController.swift */; };
+		AEABE2F221951964005D6BFB /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEABE2F121951964005D6BFB /* Branch.swift */; };
+		AEABE2F421951992005D6BFB /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEABE2F321951992005D6BFB /* Step.swift */; };
 		AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBABD1221758E9B0060B4DE /* QuestionCell.swift */; };
-		AED78E7D2165A125002104FF /* TrialListTableViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */; };
+		AED78E7D2165A125002104FF /* TrialListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E7C2165A125002104FF /* TrialListController.swift */; };
 		AED78E812165AB2E002104FF /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E802165AB2E002104FF /* Trial.swift */; };
 		AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E822165B35B002104FF /* TrialViewCell.swift */; };
 		AED78E852165B640002104FF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E842165B640002104FF /* APIManager.swift */; };
@@ -30,7 +36,6 @@
 		C91ACC0B208D69FE001C4516 /* MedOpsTrialManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC0A208D69FE001C4516 /* MedOpsTrialManagementTests.swift */; };
 		C91ACC16208D69FE001C4516 /* MedOpsTrialManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */; };
 		C92D60662166F2DE00A6F985 /* Diseases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D60652166F2DE00A6F985 /* Diseases.swift */; };
-		C92D60682166F67000A6F985 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D60672166F67000A6F985 /* API.swift */; };
 		C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D6069216708FE00A6F985 /* TrialModel.swift */; };
 		C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */; };
 		C99C6FC021A26A0800504980 /* TrialTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FBF21A26A0800504980 /* TrialTabController.swift */; };
@@ -68,12 +73,18 @@
 		956AC6EE104472D0CF92E102 /* Pods-MedOpsTrialManagement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagement.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagement/Pods-MedOpsTrialManagement.release.xcconfig"; sourceTree = "<group>"; };
 		9F2E65F8EAAB0D4CB0B9E7C2 /* Pods-MedOpsTrialManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementTests/Pods-MedOpsTrialManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7E0C1E21CCE7EBF9B3A202E /* Pods-MedOpsTrialManagementUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementUITests/Pods-MedOpsTrialManagementUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE31E0F821966599004F8FEA /* BranchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchListController.swift; sourceTree = "<group>"; };
+		AE31E0FD2196681F004F8FEA /* BranchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCell.swift; sourceTree = "<group>"; };
+		AE31E0FF2198B1FB004F8FEA /* EvaluationDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationDetailsController.swift; sourceTree = "<group>"; };
 		AE56D788216A74F900FD576A /* TrialDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailsController.swift; sourceTree = "<group>"; };
 		AEA88C39217D163600D32E67 /* Evalution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evalution.swift; sourceTree = "<group>"; };
 		AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEvaluationsView.swift; sourceTree = "<group>"; };
 		AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEvalTableViewCell.swift; sourceTree = "<group>"; };
+		AEABE2EF2194FC35005D6BFB /* CreateBranchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBranchController.swift; sourceTree = "<group>"; };
+		AEABE2F121951964005D6BFB /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		AEABE2F321951992005D6BFB /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		AEBABD1221758E9B0060B4DE /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
-		AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialListTableViewTableViewController.swift; sourceTree = "<group>"; };
+		AED78E7C2165A125002104FF /* TrialListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialListController.swift; sourceTree = "<group>"; };
 		AED78E802165AB2E002104FF /* Trial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		AED78E822165B35B002104FF /* TrialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViewCell.swift; sourceTree = "<group>"; };
 		AED78E842165B640002104FF /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -97,7 +108,6 @@
 		C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedOpsTrialManagementUITests.swift; sourceTree = "<group>"; };
 		C91ACC17208D69FE001C4516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C92D60652166F2DE00A6F985 /* Diseases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diseases.swift; sourceTree = "<group>"; };
-		C92D60672166F67000A6F985 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C92D6069216708FE00A6F985 /* TrialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialModel.swift; sourceTree = "<group>"; };
 		C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrialViewController.swift; sourceTree = "<group>"; };
 		C99C6FBF21A26A0800504980 /* TrialTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialTabController.swift; sourceTree = "<group>"; };
@@ -169,8 +179,20 @@
 			children = (
 				AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */,
 				AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */,
+				AE31E0FF2198B1FB004F8FEA /* EvaluationDetailsController.swift */,
 			);
 			path = EvaluationManagement;
+			sourceTree = "<group>";
+		};
+		AEABE2EE2194FC13005D6BFB /* BranchManagement */ = {
+			isa = PBXGroup;
+			children = (
+				AE31E0FA21966700004F8FEA /* New Group */,
+				AEABE2EF2194FC35005D6BFB /* CreateBranchController.swift */,
+				AE31E0F821966599004F8FEA /* BranchListController.swift */,
+				AE31E0FD2196681F004F8FEA /* BranchCell.swift */,
+			);
+			path = BranchManagement;
 			sourceTree = "<group>";
 		};
 		AEF7E2EF216ED2F800671A14 /* QuestionnaireManagement */ = {
@@ -193,6 +215,8 @@
 				C9C1227A21740135004D502E /* User.swift */,
 				AEF7E2F7217039F900671A14 /* Answer.swift */,
 				AEA88C39217D163600D32E67 /* Evalution.swift */,
+				AEABE2F121951964005D6BFB /* Branch.swift */,
+				AEABE2F321951992005D6BFB /* Step.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				C9124E1921A20E96006B4AA2 /* PatientManagement */,
+				AEABE2EE2194FC13005D6BFB /* BranchManagement */,
 				AEA88C3B217D178600D32E67 /* EvaluationManagement */,
 				AEF7E2EF216ED2F800671A14 /* QuestionnaireManagement */,
 				C91ACBF7208D69FD001C4516 /* ViewController.swift */,
@@ -280,7 +305,7 @@
 				C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */,
 				C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */,
 				C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */,
-				AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */,
+				AED78E7C2165A125002104FF /* TrialListController.swift */,
 				AED78E822165B35B002104FF /* TrialViewCell.swift */,
 				AED78E842165B640002104FF /* APIManager.swift */,
 				AE56D788216A74F900FD576A /* TrialDetailsController.swift */,
@@ -513,6 +538,7 @@
 				AEA88C3A217D163600D32E67 /* Evalution.swift in Sources */,
 				AED78E7D2165A125002104FF /* TrialListTableViewTableViewController.swift in Sources */,
 				C9C6CA5521A228E100273028 /* PatientsListViewController.swift in Sources */,
+				AED78E7D2165A125002104FF /* TrialListController.swift in Sources */,
 				AEA88C3F217D1BE800D32E67 /* RecentEvalTableViewCell.swift in Sources */,
 				C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */,
 				C9C1227B21740135004D502E /* User.swift in Sources */,
@@ -522,20 +548,25 @@
 				C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */,
 				C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
-				C92D60682166F67000A6F985 /* API.swift in Sources */,
+				AE31E0FE2196681F004F8FEA /* BranchCell.swift in Sources */,
+				AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */,
+				AEABE2F221951964005D6BFB /* Branch.swift in Sources */,
 				C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
 				AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */,
 				AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */,
+				AEABE2F421951992005D6BFB /* Step.swift in Sources */,
 				AEF7E2F8217039F900671A14 /* Answer.swift in Sources */,
 				C99C6FC021A26A0800504980 /* TrialTabController.swift in Sources */,
 				AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */,
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
 				AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */,
 				C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */,
+				AE31E1002198B1FB004F8FEA /* EvaluationDetailsController.swift in Sources */,
 				AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */,
 				C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */,
 				C9124E1B21A20FC6006B4AA2 /* PatientsViewCell.swift in Sources */,
+				AEABE2F02194FC35005D6BFB /* CreateBranchController.swift in Sources */,
 				C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */,
 				AEF7E2F1216ED31800671A14 /* QuestionnaireListView.swift in Sources */,
 			);

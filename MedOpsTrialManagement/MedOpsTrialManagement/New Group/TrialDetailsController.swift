@@ -18,6 +18,8 @@ class TrialDetailsController: UIViewController{
     @IBOutlet weak var trialNameLbl: UILabel!
     //@IBOutlet var userView: UITableView!
     @IBOutlet weak var barChart: BarChartView!
+    @IBOutlet var userView: UITableView!
+    @IBOutlet weak var trialStatusBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,66 @@ class TrialDetailsController: UIViewController{
 //        userView.dataSource = self
 //        self.userView.isHidden = true
         self.barChartUpdate()
+        self.userView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        userView.delegate = self
+        userView.dataSource = self
+        changeStatusButton()
+    }
+    
+    @IBAction func onChangeTrialStatus(_ sender: Any) {
+        var title = ""
+        var message = ""
+        var action : UIAlertAction
+        if (_trial?.status == Status.Todo){
+            title = "Begin Trial"
+            message = "Are you sure you wish to begin the trial? This action cannot be reversed and certain management features will be lost!"
+            action = UIAlertAction(title: "Begin Trial", style: .destructive, handler: { action in
+                self.beginTrial()
+            })
+        } else {
+            title = "Complete Trial"
+            message = "You are about to complete the trial. Patient evaluations will be archived. Please ensure any evaluations which remain are completed."
+            action = UIAlertAction(title: "Complete Trial", style: .destructive, handler: {action in
+                self.completeTrial()
+            })
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func beginTrial(){
+        if let trial = _trial{
+            API.StartTrial(trialId: trial.id, onComplete: {(success) in
+                if (success) {
+                    self.displayMessage(header: "Success", message: "Trial successfully started!")
+                    self._trial?.status = Status.InProgress
+                    self.changeStatusButton()
+                } else {
+                    self.displayMessage(header: "Failure", message: "Unable to begin the trial. Please try again")
+                }
+            })
+        }
+    }
+    
+    func displayMessage(header: String, message: String){
+        let alert = UIAlertController(title: header, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func completeTrial(){
+        
+    }
+    
+    func changeStatusButton(){
+        if (_trial?.status == Status.Todo){
+            trialStatusBtn.title = "Start Trial"
+        } else if (_trial?.status == Status.InProgress){
+            trialStatusBtn.title = "Complete Trial"
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +110,14 @@ class TrialDetailsController: UIViewController{
                 evalList?._trialId = id
             }
         
-        } else {
+        }
+        else if segue.identifier == "branch"{
+            let branchList = segue.destination as? BranchListController
+            if let id = _trial?.id {
+                branchList?.trialId = id
+            }
+        }
+        else {
             let questionaireList = segue.destination as? QuestionnaireListView
             questionaireList?.trial = _trial
         }

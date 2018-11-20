@@ -34,7 +34,7 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         "Visual Sample",
         "Audio Sample"
     ]
-    let api = API()
+    let api = APIManager()
     var trialDiseasesData = [Diseases]()
     override func viewDidLoad() {
         super.viewDidLoad()

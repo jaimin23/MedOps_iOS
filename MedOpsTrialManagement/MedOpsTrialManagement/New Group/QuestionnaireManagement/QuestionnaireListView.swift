@@ -29,28 +29,24 @@ class QuestionnaireListView: UIViewController {
         } else {
             print("BIG ERROR")
         }
-        
-        // Load trials
-        var question = Question(text: "What is the severity of your cough?", questionType: 3, trialId:  self._trialId, questionPhase: 1)
-        question.answers = []
-        var questionTwo = Question(text: "What is the temperature of the patient?", questionType: 3, trialId:  self._trialId, questionPhase: 1)
-        questionTwo.answers = []
-        
+    
         questionnaireList.delegate = self
         questionnaireList.dataSource = self
-        
-        _questions.append(question)
-        _questions.append(questionTwo)
-
-        // Do any additional setup after loading the view.
+        let api = APIManager()
+        // Load trials
+        api.getQuestions(trialId: _trialId, onComplete: { (questions) in
+            self._questions = questions;
+            
+            DispatchQueue.main.async {
+                self.questionnaireList.reloadData()
+            }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let createQuestionView = segue.destination as? CreateQuestionView
         createQuestionView?.trialId = _trialId
     }
-    
-
 }
 
 extension QuestionnaireListView: UITableViewDelegate, UITableViewDataSource {

@@ -12,7 +12,7 @@ struct CellData{
     let name : String
 }
 
-class TrialListTableViewTableViewController: UIViewController {
+class TrialListController: UIViewController {
     
     @IBOutlet weak var trialList: UITableView!
     var pullToRefresh = UIRefreshControl()
@@ -53,7 +53,7 @@ class TrialListTableViewTableViewController: UIViewController {
 
 }
 
-extension TrialListTableViewTableViewController: UITableViewDataSource, UITableViewDelegate {
+extension TrialListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return _trials.count
     }
@@ -70,6 +70,7 @@ extension TrialListTableViewTableViewController: UITableViewDataSource, UITableV
             tabViewController?._trial = selectedTrial
         }
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let trial = _trials[indexPath.row]
