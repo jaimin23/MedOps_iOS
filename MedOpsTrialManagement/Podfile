@@ -1,0 +1,24 @@
+project 'MedOpsTrialManagement.xcodeproj'
+
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'MedOpsTrialManagement' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for MedOpsTrialManagement
+  pod 'Charts', '~> 3.2.1'
+  pod 'IBMWatsonSpeechToTextV1', '~> 0.38.1'
+
+  target 'MedOpsTrialManagementTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MedOpsTrialManagementUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

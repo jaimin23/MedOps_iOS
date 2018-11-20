@@ -21,6 +21,8 @@ class QuestionnaireListView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tbvc = self.tabBarController as! TrialTabController
+        trial = tbvc._trial
         if let trialId = trial?.id {
             headerLbl.text = "Questions for Trial #\(trialId)"
             _trialId = trialId
@@ -29,9 +31,9 @@ class QuestionnaireListView: UIViewController {
         }
         
         // Load trials
-        var question = Question(text: "What is the severity of your cough?", questionType: 3, trialId:  self._trialId)
+        var question = Question(text: "What is the severity of your cough?", questionType: 3, trialId:  self._trialId, questionPhase: 1)
         question.answers = []
-        var questionTwo = Question(text: "What is the temperature of the patient?", questionType: 3, trialId:  self._trialId)
+        var questionTwo = Question(text: "What is the temperature of the patient?", questionType: 3, trialId:  self._trialId, questionPhase: 1)
         questionTwo.answers = []
         
         questionnaireList.delegate = self

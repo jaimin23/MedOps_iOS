@@ -13,10 +13,10 @@ class APIManager {
     let cloudDomain: String = "https://medopscloud.azurewebsites.net"
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
-        var urlString : String = "https://medopscloud.azurewebsites.net/api/trial/"
+        var urlString : String = "http://167.99.231.175/api/trial/"
         //let urlString: String = "{}/api/trial/"
         var parsedTrialData : [Trial] = []
-        var usersList : [User] = []
+        
         
         let requestString = URL(string: urlString)
         
@@ -35,6 +35,7 @@ class APIManager {
                     return
                 }
                 for trial in jsonArray {
+                    var usersList : [User] = []
                     guard let title = trial["name"] as? String else {return}
                     guard let completed = trial["completed"] as? Bool else {return}
                     guard let id = trial["trialId"] as? Int else {return}
@@ -64,6 +65,7 @@ class APIManager {
                         usersList.append(newUser)
                     }
                     let newTrial = Trial(name: title, completed: completed, id: id, users:usersList)
+                    print(newTrial.users.count)
                     parsedTrialData.append(newTrial)
                     print("Trial Details")
                     print(title)
@@ -84,20 +86,23 @@ class APIManager {
     func postQuestion(question: Question, onComplete isSuccess: @escaping (_ result: Bool) -> Void){
         
         // Create URL
-        var url = URLComponents()
-        url.scheme = "https"
-        url.host = "medopscloud.azurewebsites.net"
-        url.path = "/api/trial/question/"
+        //var url = URLComponents()
+//        url.scheme = "https"
+//        url.host = "medopscloud.azurewebsites.net"
+//        url.scheme = "http"
+//        url.host = "192.168.0.107:32771"
+//        url.path = "/api/trial/question/"
         
-        guard let urlString = url.url else {fatalError("Unable to make url from string")}
-        
+        //guard let urlString = url.url else {fatalError("Unable to make url from string")}
+        let urlString: String = "http://192.168.0.107:32770/api/trial/question/"
+        let requestString = URL(string: urlString)
         // Create Request
-        var postRequest = URLRequest(url: urlString)
+        var postRequest = URLRequest(url: requestString!)
         
         postRequest.httpMethod = "POST"
         
         // TODO delete debug statement
-        print(urlString.absoluteString)
+        //print(urlString.absoluteString)
         
         var headers = postRequest.allHTTPHeaderFields ?? [:]
         headers["Content-Type"] = "application/json"

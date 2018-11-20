@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Foundation
+import SpeechToText
+import AVFoundation
 
 class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate{
     
@@ -17,17 +18,21 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var trialProcedureType: UIPickerView!
     @IBOutlet weak var trialPrivacyType: UIPickerView!
     @IBOutlet weak var trialDate: UIDatePicker!
+    @IBOutlet weak var micButton: UIButton!
     
+    var speechToTextService: SpeechToText!
+    var isStreaming = false
+    var accumulator = SpeechRecognitionResultsAccumulator()
     var diseaseData = [Diseases]()
-    let trialPrivacyTypeData: [Int: String] = [
-        1:"Results are kept private",
-        2:"Results are limited to participating patients",
-        3:"Results are released publically"
+    let trialPrivacyTypeData: [String] = [
+        "Results are kept private",
+        "Results are limited to participating patients",
+        "Results are released publically"
     ]
-    let trialProcedureTypeData: [Int: String] = [
-        1:"Blood Sample",
-        2:"Visual Sample",
-        3:"Audio Sample"
+    let trialProcedureTypeData: [String] = [
+        "Blood Sample",
+        "Visual Sample",
+        "Audio Sample"
     ]
     let api = API()
     var trialDiseasesData = [Diseases]()
@@ -79,6 +84,39 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func didPressMicButton(_ sender: UIButton){
+//        speechToTextService = SpeechToText(apiKey: "6SR8RaGBRjXnAOKKimj09gbtJfIuQ9SQyjpM6ITDNP9T", iamUrl: "https://stream.watsonplatform.net/speech-to-text/api")
+        speechToTextService = SpeechToText(apiKey: "6SR8RaGBRjXnAOKKimj09gbtJfIuQ9SQyjpM6ITDNP9T")
+        if !isStreaming{
+            isStreaming = true
+            micButton.setImage(UIImage(named: "icons8-mute-30"), for: .normal)
+            let failure = {
+                (error: Error) in print(error)
+            }
+            var settings = RecognitionSettings(contentType: "audio/ogg;codecs=opus")
+            settings.interimResults = true
+            speechToTextService.recognizeMicrophone(settings: settings, failure: failure) {
+                
+                results in
+                self.accumulator.add(results: results)
+                print(self.accumulator.bestTranscript)
+                let title = sender.title(for: .normal)!
+                if(title == "NameMicBtn"){
+                    self.trialNameField.text = self.accumulator.bestTranscript
+                }
+                else{
+                    self.trialDescription.text = self.accumulator.bestTranscript
+                }
+                
+            }
+        }
+        else{
+            isStreaming = false
+            micButton.setImage(UIImage(named: "icons8-microphone-30"), for: .normal)
+            speechToTextService.stopRecognizeMicrophone()
+        }
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int{
         return 1
     }
@@ -107,14 +145,14 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
-        self.trialDescription.text = nil
+        if(self.trialDescription.text.isEmpty){
+            self.trialDescription.text = nil
+        }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if(self.trialDescription.text.isEmpty){
             textView.text = "Enter Description"
         }
     }
-    
-    
     
 }
