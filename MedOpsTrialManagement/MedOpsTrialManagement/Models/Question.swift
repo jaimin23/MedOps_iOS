@@ -14,11 +14,13 @@ struct Question: Codable{
     var questionType : Int
     var trialId: Int
     var answers : [Answer]
-    init(id: Int = 0, text: String, questionType: Int, trialId : Int){
+    var questionPhase: Int
+    init(id: Int = 0, text: String, questionType: Int, trialId : Int, questionPhase: Int){
         self.id = id
         self.text = text
         self.questionType = questionType
         self.trialId = trialId
         self.answers = []
+        self.questionPhase = questionPhase
     }
 }

@@ -21,6 +21,8 @@ class QuestionnaireListView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tbvc = self.tabBarController as! TrialTabController
+        trial = tbvc._trial
         if let trialId = trial?.id {
             headerLbl.text = "Questions for Trial #\(trialId)"
             _trialId = trialId

@@ -21,6 +21,9 @@ class BranchListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tbvc = self.tabBarController as! TrialTabController
+        
+        guard let trialId = tbvc._trial?.id else {return}
         pullToRefresh.attributedTitle = NSAttributedString(string: "Fetching branch data...")
         pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.branchTable.addSubview(pullToRefresh)

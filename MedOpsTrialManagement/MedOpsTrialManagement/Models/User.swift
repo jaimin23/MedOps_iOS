@@ -8,6 +8,7 @@
 
 import Foundation
 class User: Codable {
+    var id: Int?
     var firstName: String?
     var lastName: String?
     var userType: Int?
@@ -19,7 +20,8 @@ class User: Codable {
     var age: Int?
     var password: String?
     
-    init(firstName: String, lastName: String, userType: Int, userUniqueId: String, status: Int, email: String, address: String, ethnicity: String, age: Int, password: String) {
+    init(id: Int, firstName: String, lastName: String, userType: Int, userUniqueId: String, status: Int, email: String, address: String, ethnicity: String, age: Int, password: String) {
+        self.id = id
         self.firstName = firstName
         self.lastName = lastName
         self.userType = userType
