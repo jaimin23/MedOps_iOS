@@ -17,18 +17,20 @@ class BranchListController: UIViewController {
     
     @IBOutlet weak var branchTable: UITableView!
     
-
+    @IBAction func onAddNewBranch(_ sender: Any) {
+        performSegue(withIdentifier: "createBranch", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let tbvc = self.tabBarController as! TrialTabController
         
-        guard let trialId = tbvc._trial?.id else {return}
+        guard let id = tbvc._trial?.id else {return}
+        self.trialId = id
         pullToRefresh.attributedTitle = NSAttributedString(string: "Fetching branch data...")
         pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.branchTable.addSubview(pullToRefresh)
-        
-        
         
         api.getBranches(trialId: trialId, onComplete: {(branches) in
             self.branches = branches
@@ -53,7 +55,7 @@ class BranchListController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createBranchSegue"{
+        if segue.identifier == "createBranch"{
             let destination = segue.destination as? CreateBranchController
             destination?.trialId = trialId
         } 
