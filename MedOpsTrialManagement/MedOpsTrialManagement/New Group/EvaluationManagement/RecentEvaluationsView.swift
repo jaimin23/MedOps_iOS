@@ -12,6 +12,8 @@ class RecentEvaluationsView: UIViewController {
     
     var _trialId = 0;
     
+    var _patientId = 0;
+    
     var _evaluations: [Evaluation] = []
     
     var activityIndi: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -31,7 +33,9 @@ class RecentEvaluationsView: UIViewController {
         
         activityIndi.startAnimating()
         
-        api.getTrialEvaluations(trialId: _trialId, onComplete: { (evals) in
+
+        
+        api.getPatientEvaluations(patientId: _patientId, onComplete: { (evals) in
             self._evaluations = evals
             DispatchQueue.main.async {
                 self.evaluationList.reloadData()

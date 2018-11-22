@@ -12,6 +12,9 @@ class QuestionnaireListView: UIViewController {
     
     var trial : Trial?
     
+    @IBAction func createQuestionBtn(_ sender: Any) {
+        performSegue(withIdentifier: "createQuestion", sender: self)
+    }
     var _trialId : Int = 0;
     
     var _questions : [Question] = []
@@ -44,8 +47,10 @@ class QuestionnaireListView: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let createQuestionView = segue.destination as? CreateQuestionView
-        createQuestionView?.trialId = _trialId
+        if segue.identifier == "createQuestion"{
+            let createQuestionView = segue.destination as? CreateQuestionView
+            createQuestionView?.trialId = _trialId
+        }
     }
 }
 

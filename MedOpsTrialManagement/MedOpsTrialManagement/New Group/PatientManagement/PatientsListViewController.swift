@@ -68,6 +68,18 @@ class PatientsListViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPatientEval"{
+            let evalView = segue.destination as? RecentEvaluationsView
+            if let indexPath = self.patientTableView.indexPathForSelectedRow {
+                let selectedPatient = _trial?.users[indexPath.row]
+                
+                guard let patientId = selectedPatient?.id else {return}
+                evalView?._patientId = patientId
+            }
+        }
+    }
+    
     func displayBranchSelection(patient: User){
         let alert = UIAlertController(title: "Add to Branch", message: "Please select the branch of the trial which this patient will participate in", preferredStyle: .alert)
         

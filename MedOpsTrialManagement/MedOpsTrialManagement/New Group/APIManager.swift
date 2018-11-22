@@ -509,6 +509,55 @@ class APIManager {
         task.resume()
     }
     
+    func getPatientEvaluations(patientId: Int, onComplete evalData: @escaping (_ evalData: [Evaluation]) -> Void){
+        let urlString = cloudDomain + "/api/data/patientEvaluations?patientId=\(patientId)"
+        
+        
+        var parsedEvalData : [Evaluation] = []
+        
+        let requestString = URL(string: urlString)
+        
+        let request = URLRequest(url: requestString!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+            guard let dataRes = data, error == nil else {
+                // handle error
+                return
+            }
+            
+            do {
+                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+                
+                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                    return
+                }
+                
+                for eval in jsonArray {
+                    guard let id = eval["id"] as? Int else {return}
+                    guard let date = eval["date"] as? String else {return}
+                    guard let encodedData = eval["encodedImage"] as? String else {return}
+                    
+                    if let decodedData = Data(base64Encoded: encodedData, options: .ignoreUnknownCharacters) {
+                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData)
+                        parsedEvalData.append(evaluation)
+                    }
+                    
+                    
+                    
+                }
+                
+                
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+            evalData(parsedEvalData)
+            
+        }
+        
+        task.resume()
+    }
+    
     func createTrial(trial: TrialModel, completion:((Error?) -> Void)?){
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
