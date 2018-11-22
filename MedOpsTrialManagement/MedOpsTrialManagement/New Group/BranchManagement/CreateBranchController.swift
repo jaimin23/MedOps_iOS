@@ -13,8 +13,10 @@ class CreateBranchController: UIViewController {
     var pivot: CGFloat = 0
     var screenWidth: CGFloat = 0
     var stepTexts : [UITextField] = []
+    var trialId : Int = 0
     
 
+    @IBOutlet weak var hypoTextField: UITextField!
     @IBOutlet weak var noBranchLbl: UILabel!
     @IBAction func addStep(_ sender: Any) {
         if (noBranchLbl != nil){
@@ -42,6 +44,40 @@ class CreateBranchController: UIViewController {
             
             self.present(alert, animated: true, completion: nil)
             return
+        } else {
+            var steps: [Step] = []
+            var counter : Int = 1
+            for field in stepTexts {
+                guard let stepSumary = field.text else {return}
+                let newStep = Step(id: 0, summary: stepSumary, stepNumber: counter)
+                counter+=1
+                steps.append(newStep)
+            }
+            
+            guard let hypoText = hypoTextField.text else {return}
+            
+            var branch = Branch(id: 0, hyp: hypoText, steps: steps, trialId: self.trialId)
+            
+            let api = APIManager()
+            
+            api.postBranch(branch: branch, onComplete:{(success) in
+            let alert: UIAlertController
+                if(!success) {
+                    alert = UIAlertController(title: "Result", message: "Bad response", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                        // TODO
+                    }))
+                } else {
+                    alert = UIAlertController(title: "Save Complete", message: "The branch with its steps was successfully saved!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                }
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
+            
         }
     }
     

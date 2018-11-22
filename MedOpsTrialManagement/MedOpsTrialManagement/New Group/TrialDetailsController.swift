@@ -31,9 +31,9 @@ class TrialDetailsController: UIViewController{
 //        userView.dataSource = self
 //        self.userView.isHidden = true
         self.barChartUpdate()
-        self.userView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        userView.delegate = self
-        userView.dataSource = self
+////        self.userView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        userView.delegate = self as! UITableViewDelegate
+//        userView.dataSource = self as! UITableViewDataSource
         changeStatusButton()
     }
     
