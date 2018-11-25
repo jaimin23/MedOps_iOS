@@ -98,6 +98,9 @@ class PatientsListViewController: UIViewController {
         api.approvePatient(patientId: id, branchId: branch.id, onComplete: { isSuccess in
             if (isSuccess){
                 patient.status = 1
+                DispatchQueue.main.async {
+                    self.patientTableView.reloadData()
+                }
             } else {
                 // handle
             }
@@ -112,7 +115,7 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "patientsCell") as! PatientsViewCell
-        cell.uniqueIdLbl.text = _trial?.users[indexPath.row].userUniqueId
+        cell.uniqueIdLbl.text = (_trial?.users[indexPath.row].firstName)! + " " + (_trial?.users[indexPath.row].lastName)!
         cell.applicationStatusLbl.text = getApplicationStatusValue(status: _trial?.users[indexPath.row].status ?? 2)
         cell.userType.text = getUserTypeValue(userType: _trial?.users[indexPath.row].userType ?? 4)
         return cell
