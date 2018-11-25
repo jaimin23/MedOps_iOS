@@ -113,7 +113,7 @@ class APIManager {
                     guard let text = question["text"] as? String else {return}
                     guard let questionType = question["questionType"] as? Int else {return}
                     
-                    let question = Question(text: text, questionType: questionType, trialId: trialId)
+                    let question = Question(text: text, questionType: questionType, trialId: trialId, questionPhase: 1)
                     //TODO add questions
                     parsedQuestionData.append(question)
                     
@@ -193,7 +193,7 @@ class APIManager {
         guard let urlString = url.url else {fatalError("Unable to make url from string")}
         
         // Create Request
-        var postRequest = URLRequest(url: requestString!)
+        var postRequest = URLRequest(url: urlString)
         
         postRequest.httpMethod = "POST"
         

@@ -172,26 +172,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Trial Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cs-pZ-GhM">
-                                <rect key="frame" x="213" y="100" width="343" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="R4H-Bm-le3"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trial Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cs-pZ-GhM">
+                                <rect key="frame" x="267" y="20" width="235" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XID-rg-2md" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="73" y="281" width="644" height="577"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zNa-eY-Th4">
+                                <rect key="frame" x="0.0" y="49" width="768" height="855"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5Cs-pZ-GhM" firstAttribute="leading" secondItem="X7P-ii-iSj" secondAttribute="leading" constant="213" id="QvC-nz-PmE"/>
-                            <constraint firstItem="5Cs-pZ-GhM" firstAttribute="centerX" secondItem="POF-8r-UXH" secondAttribute="centerX" id="RxE-x5-4Xi"/>
-                            <constraint firstItem="5Cs-pZ-GhM" firstAttribute="top" secondItem="X7P-ii-iSj" secondAttribute="top" constant="30" id="vOG-qW-lTS"/>
+                            <constraint firstItem="zNa-eY-Th4" firstAttribute="top" secondItem="5Cs-pZ-GhM" secondAttribute="bottom" constant="8" id="AYj-d6-PTR"/>
+                            <constraint firstItem="zNa-eY-Th4" firstAttribute="leading" secondItem="X7P-ii-iSj" secondAttribute="leading" id="CzX-DN-fKW"/>
+                            <constraint firstItem="5Cs-pZ-GhM" firstAttribute="leading" secondItem="X7P-ii-iSj" secondAttribute="leading" constant="267" id="LMc-Jn-72b"/>
+                            <constraint firstItem="X7P-ii-iSj" firstAttribute="trailing" secondItem="5Cs-pZ-GhM" secondAttribute="trailing" constant="266" id="eJH-rc-MYd"/>
+                            <constraint firstItem="5Cs-pZ-GhM" firstAttribute="top" secondItem="X7P-ii-iSj" secondAttribute="top" constant="20" id="kee-yv-wXi"/>
+                            <constraint firstItem="X7P-ii-iSj" firstAttribute="trailing" secondItem="zNa-eY-Th4" secondAttribute="trailing" id="ppy-KP-wS5"/>
+                            <constraint firstItem="zNa-eY-Th4" firstAttribute="bottom" secondItem="X7P-ii-iSj" secondAttribute="bottom" id="s0k-0Q-dZf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X7P-ii-iSj"/>
                     </view>
@@ -199,7 +199,7 @@
                     <tabBarItem key="tabBarItem" title="Trial Details" image="icons8-experiment-trial-50" landscapeImage="icons8-experiment-trial-50" id="gjW-wx-iDB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="barChart" destination="XID-rg-2md" id="kbo-3U-Udc"/>
+                        <outlet property="trialDetailViewTable" destination="zNa-eY-Th4" id="UGG-RA-3Rv"/>
                         <outlet property="trialNameLbl" destination="5Cs-pZ-GhM" id="GHJ-vV-LYc"/>
                     </connections>
                 </viewController>
@@ -312,7 +312,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="DescriptionMicBtn" image="icons8-microphone-30"/>
                                 <connections>
-                                    <action selector="didPressMicButton:" destination="TBW-KG-ttQ" eventType="touchUpInside" id="I9q-dw-bMn"/>
+                                    <action selector="didPressMicButton:" destination="TBW-KG-ttQ" eventType="touchUpInside" id="tdf-64-rZb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -321,7 +321,8 @@
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="micButton" destination="bn6-jN-VQC" id="Dfx-Pv-4yh"/>
+                        <outlet property="micButtonDescription" destination="F1n-BZ-RIi" id="xdf-H9-nA4"/>
+                        <outlet property="micButtonTitle" destination="bn6-jN-VQC" id="Nbi-Q1-BZu"/>
                         <outlet property="trialDate" destination="BbT-UK-qvr" id="y8a-E8-Kj1"/>
                         <outlet property="trialDescription" destination="Fal-k4-laZ" id="Ntm-1K-nGd"/>
                         <outlet property="trialDiseasePicker" destination="6au-yt-cwe" id="K3v-bI-O2s"/>
@@ -750,7 +751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IqN-UL-pEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2340.625" y="608.7890625"/>
+            <point key="canvasLocation" x="2067" y="1620"/>
         </scene>
         <!--Add  Branch-->
         <scene sceneID="X9N-6f-Oe6">
