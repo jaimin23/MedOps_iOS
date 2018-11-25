@@ -18,7 +18,8 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var trialProcedureType: UIPickerView!
     @IBOutlet weak var trialPrivacyType: UIPickerView!
     @IBOutlet weak var trialDate: UIDatePicker!
-    @IBOutlet weak var micButton: UIButton!
+    @IBOutlet weak var micButtonTitle: UIButton!
+    @IBOutlet weak var micButtonDescription: UIButton!
     
     var speechToTextService: SpeechToText!
     var isStreaming = false
@@ -85,11 +86,15 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func didPressMicButton(_ sender: UIButton){
-//        speechToTextService = SpeechToText(apiKey: "6SR8RaGBRjXnAOKKimj09gbtJfIuQ9SQyjpM6ITDNP9T", iamUrl: "https://stream.watsonplatform.net/speech-to-text/api")
         speechToTextService = SpeechToText(apiKey: "6SR8RaGBRjXnAOKKimj09gbtJfIuQ9SQyjpM6ITDNP9T")
         if !isStreaming{
             isStreaming = true
-            micButton.setImage(UIImage(named: "icons8-mute-30"), for: .normal)
+            if(title == "NameMicBtn"){
+                micButtonTitle.setImage(UIImage(named: "icons8-mute-30"), for: .normal)
+            }
+            else{
+                micButtonDescription.setImage(UIImage(named: "icons8-mute-30"), for: .normal)
+            }
             let failure = {
                 (error: Error) in print(error)
             }
@@ -112,7 +117,12 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
         else{
             isStreaming = false
-            micButton.setImage(UIImage(named: "icons8-microphone-30"), for: .normal)
+            if(title == "NameMicBtn"){
+                micButtonTitle.setImage(UIImage(named: "icons8-microphone-30"), for: .normal)
+            }
+            else{
+                micButtonDescription.setImage(UIImage(named: "icons8-microphone-30"), for: .normal)
+            }
             speechToTextService.stopRecognizeMicrophone()
         }
     }

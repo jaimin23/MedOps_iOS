@@ -43,6 +43,15 @@
 		C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D6069216708FE00A6F985 /* TrialModel.swift */; };
 		C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */; };
 		C99C6FC021A26A0800504980 /* TrialTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FBF21A26A0800504980 /* TrialTabController.swift */; };
+		C99C6FC221A7791900504980 /* GraphMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = C99C6FC121A7791800504980 /* GraphMockData.json */; };
+		C99C6FC421A77AA600504980 /* MockGraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FC321A77AA600504980 /* MockGraphData.swift */; };
+		C99C6FCB21AA48FB00504980 /* TrialDetailViewModelItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FCA21AA48FB00504980 /* TrialDetailViewModelItemType.swift */; };
+		C99C6FCF21AA611F00504980 /* BarChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C6FCE21AA611E00504980 /* BarChartCell.xib */; };
+		C99C6FD121AA61DB00504980 /* PieChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C6FD021AA61DB00504980 /* PieChartCell.xib */; };
+		C99C6FD521AA66F300504980 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FD421AA66F300504980 /* BarChartCell.swift */; };
+		C99C6FD721AA6A7700504980 /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FD621AA6A7700504980 /* PieChartCell.swift */; };
+		C99C6FE021AA7B6700504980 /* QuestionNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FDF21AA7B6700504980 /* QuestionNameCell.swift */; };
+		C99C6FE221AA7C4800504980 /* QuestionNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C6FE121AA7C4800504980 /* QuestionNameCell.xib */; };
 		C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A07208F9676003991A1 /* TriallMainController.swift */; };
 		C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A09208FA8B1003991A1 /* TrialDataMainPageController.swift */; };
 		C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */; };
@@ -119,6 +128,15 @@
 		C92D6069216708FE00A6F985 /* TrialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialModel.swift; sourceTree = "<group>"; };
 		C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrialViewController.swift; sourceTree = "<group>"; };
 		C99C6FBF21A26A0800504980 /* TrialTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialTabController.swift; sourceTree = "<group>"; };
+		C99C6FC121A7791800504980 /* GraphMockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GraphMockData.json; sourceTree = "<group>"; };
+		C99C6FC321A77AA600504980 /* MockGraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGraphData.swift; sourceTree = "<group>"; };
+		C99C6FCA21AA48FB00504980 /* TrialDetailViewModelItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailViewModelItemType.swift; sourceTree = "<group>"; };
+		C99C6FCE21AA611E00504980 /* BarChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartCell.xib; sourceTree = "<group>"; };
+		C99C6FD021AA61DB00504980 /* PieChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartCell.xib; sourceTree = "<group>"; };
+		C99C6FD421AA66F300504980 /* BarChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
+		C99C6FD621AA6A7700504980 /* PieChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
+		C99C6FDF21AA7B6700504980 /* QuestionNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionNameCell.swift; sourceTree = "<group>"; };
+		C99C6FE121AA7C4800504980 /* QuestionNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionNameCell.xib; sourceTree = "<group>"; };
 		C99F9A07208F9676003991A1 /* TriallMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriallMainController.swift; sourceTree = "<group>"; };
 		C99F9A09208FA8B1003991A1 /* TrialDataMainPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataMainPageController.swift; sourceTree = "<group>"; };
 		C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataCollectionFormViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +244,7 @@
 				AEA88C39217D163600D32E67 /* Evalution.swift */,
 				AEABE2F121951964005D6BFB /* Branch.swift */,
 				AEABE2F321951992005D6BFB /* Step.swift */,
+				C99C6FC321A77AA600504980 /* MockGraphData.swift */,
 				AE51E47021A9FF3800195AB9 /* Questionnaire.swift */,
 			);
 			path = Models;
@@ -234,6 +253,12 @@
 		C9124E18219A95C3006B4AA2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C99C6FCE21AA611E00504980 /* BarChartCell.xib */,
+				C99C6FD021AA61DB00504980 /* PieChartCell.xib */,
+				C99C6FD421AA66F300504980 /* BarChartCell.swift */,
+				C99C6FD621AA6A7700504980 /* PieChartCell.swift */,
+				C99C6FDF21AA7B6700504980 /* QuestionNameCell.swift */,
+				C99C6FE121AA7C4800504980 /* QuestionNameCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,6 +275,7 @@
 		C91ACBE9208D69FD001C4516 = {
 			isa = PBXGroup;
 			children = (
+				C99C6FC121A7791800504980 /* GraphMockData.json */,
 				C91ACBF4208D69FD001C4516 /* MedOpsTrialManagement */,
 				C91ACC09208D69FE001C4516 /* MedOpsTrialManagementTests */,
 				C91ACC14208D69FE001C4516 /* MedOpsTrialManagementUITests */,
@@ -302,9 +328,18 @@
 			path = MedOpsTrialManagementUITests;
 			sourceTree = "<group>";
 		};
+		C99C6FC521AA46F600504980 /* TrialDetails */ = {
+			isa = PBXGroup;
+			children = (
+				C99C6FCA21AA48FB00504980 /* TrialDetailViewModelItemType.swift */,
+			);
+			path = TrialDetails;
+			sourceTree = "<group>";
+		};
 		C99F9A06208F95A3003991A1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C99C6FC521AA46F600504980 /* TrialDetails */,
 				C9124E1921A20E96006B4AA2 /* PatientManagement */,
 				AEABE2EE2194FC13005D6BFB /* BranchManagement */,
 				AEA88C3B217D178600D32E67 /* EvaluationManagement */,
@@ -435,9 +470,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C99C6FCF21AA611F00504980 /* BarChartCell.xib in Resources */,
+				C99C6FD121AA61DB00504980 /* PieChartCell.xib in Resources */,
+				C99C6FC221A7791900504980 /* GraphMockData.json in Resources */,
 				C91ACC00208D69FE001C4516 /* LaunchScreen.storyboard in Resources */,
 				C91ACBFD208D69FE001C4516 /* Assets.xcassets in Resources */,
 				C91ACBFB208D69FD001C4516 /* Main.storyboard in Resources */,
+				C99C6FE221AA7C4800504980 /* QuestionNameCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +508,7 @@
 				"${BUILT_PRODUCTS_DIR}/IBMWatsonRestKit/RestKit.framework",
 				"${BUILT_PRODUCTS_DIR}/IBMWatsonSpeechToTextV1/SpeechToText.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftRangeSlider/SwiftRangeSlider.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -476,6 +516,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RestKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpeechToText.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRangeSlider.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -553,6 +594,7 @@
 				AED78E7D2165A125002104FF /* TrialListController.swift in Sources */,
 				AEA88C3F217D1BE800D32E67 /* RecentEvalTableViewCell.swift in Sources */,
 				C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */,
+				C99C6FE021AA7B6700504980 /* QuestionNameCell.swift in Sources */,
 				C9C1227B21740135004D502E /* User.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				AED78E852165B640002104FF /* APIManager.swift in Sources */,
@@ -561,6 +603,7 @@
 				C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				AE31E0FE2196681F004F8FEA /* BranchCell.swift in Sources */,
+				C99C6FC421A77AA600504980 /* MockGraphData.swift in Sources */,
 				AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */,
 				AEABE2F221951964005D6BFB /* Branch.swift in Sources */,
 				C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */,
@@ -582,7 +625,10 @@
 				C9124E1B21A20FC6006B4AA2 /* PatientsViewCell.swift in Sources */,
 				AEABE2F02194FC35005D6BFB /* CreateBranchController.swift in Sources */,
 				C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */,
+				C99C6FD721AA6A7700504980 /* PieChartCell.swift in Sources */,
 				AEF7E2F1216ED31800671A14 /* QuestionnaireListView.swift in Sources */,
+				C99C6FD521AA66F300504980 /* BarChartCell.swift in Sources */,
+				C99C6FCB21AA48FB00504980 /* TrialDetailViewModelItemType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
