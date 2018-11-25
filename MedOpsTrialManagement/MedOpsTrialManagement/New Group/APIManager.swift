@@ -92,8 +92,137 @@ class APIManager {
         task.resume()
     }
     
-    func getQuestions(trialId: Int, onComplete questions: @escaping (_ questions: [Question]) -> Void){
-        let urlString: String = cloudDomain + "/api/trial/question?trialId=" + String(trialId)
+    func getQuestionnaires(trialId: Int, onComplete questionnaires: @escaping (_ questions: [Questionnaire]) -> Void){
+        let urlString: String = cloudDomain + "/api/questionnaire/trialQuestionnaires?trialId=" + String(trialId)
+        var parsedQuestionnaires : [Questionnaire] = []
+        
+        let requestString = URL(string: urlString)
+        
+        let request = URLRequest(url: requestString!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+            guard let dataRes = data, error == nil else {
+                // handle error
+                return
+            }
+            do {
+                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                    return
+                }
+                for questionnaire in jsonArray {
+                   
+                    guard let title = questionnaire["title"] as? String else {return}
+                    guard let id = questionnaire["questionnaireId"] as? Int else {return}
+                    
+                    // Todo populate
+                    let q = Questionnaire(id: id, title: title, questions: [], trialId: trialId)
+                    parsedQuestionnaires.append(q)
+                    
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+            questionnaires(parsedQuestionnaires)
+        }
+        
+        task.resume()
+        
+    }
+    
+    func postQuestionnaire(questionnaire: Questionnaire, onComplete returnedValues: @escaping (_ returnedQuestionnaire: Bool) -> Void){
+        var url = URLComponents()
+        url.scheme = scheme
+        url.host = domain
+        url.path = "/api/questionnaire/add/"
+        
+        guard let urlString = url.url else {fatalError("Unable to create url from string")}
+        
+        // Create Request
+        var postRequest = URLRequest(url: urlString)
+        
+        postRequest.httpMethod = "POST"
+        
+        var headers = postRequest.allHTTPHeaderFields ?? [:]
+        headers["Content-Type"] = "application/json"
+        postRequest.allHTTPHeaderFields = headers
+        
+        // Serialize question to JSON
+        let jsonEncoder = JSONEncoder()
+        do {
+            let postData =  try jsonEncoder.encode(questionnaire)
+            postRequest.httpBody = postData
+        } catch {
+            // TODO error handle
+        }
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        let task = session.dataTask(with: postRequest) { (responseData, response, responseError) in
+            guard responseError == nil else {
+                // TODO error handle
+                return
+            }
+            
+            guard let data = responseData else {return}
+            
+            do {
+                print(responseData!)
+                print(response!)
+
+                returnedValues(true)
+            } catch {
+                print(error)
+            }
+            
+        }
+        task.resume()
+        
+    }
+    
+//    func getQuestions(questionnaireId: Int, onComplete questions: @escaping (_ questions: [Question]) -> Void){
+//        let urlString: String = cloudDomain + "/api/trial/question?trialId=" + String(questionnaireId)
+//        var parsedQuestionData : [Question] = []
+//
+//        let requestString = URL(string: urlString)
+//
+//        let request = URLRequest(url: requestString!)
+//
+//        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+//            guard let dataRes = data, error == nil else {
+//                // handle error
+//                return
+//            }
+//            do {
+//                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+//                guard let jsonArray = jsonRes as? [[String: Any]] else {
+//                    return
+//                }
+//                for question in jsonArray {
+//                    guard let text = question["text"] as? String else {return}
+//                    guard let questionType = question["questionType"] as? Int else {return}
+//                    guard let questionPhase = question["questionPhase"] as? Int else {return}
+//
+//                    let question = Question(text: text, questionType: questionType, questionnaireId: questionnaireId, questionPhase: questionPhase)
+//                    //TODO add questions
+//                    parsedQuestionData.append(question)
+//
+//                }
+//            } catch let parsingError {
+//                print("Error", parsingError)
+//            }
+//
+//            questions(parsedQuestionData)
+//        }
+//
+//        task.resume()
+//
+//    }
+    
+    func getQuestions(questionnaireId: Int, onComplete questions: @escaping (_ questions: [Question]) -> Void){
+        let urlString: String = cloudDomain + "/api/trial/question?trialId=" + String(questionnaireId)
         var parsedQuestionData : [Question] = []
         
         let requestString = URL(string: urlString)
@@ -112,11 +241,14 @@ class APIManager {
                 }
                 for question in jsonArray {
                     guard let text = question["text"] as? String else {return}
+                    guard let id = question["id"] as? Int else {return}
                     guard let questionType = question["questionType"] as? Int else {return}
-//                    
-//                    let question = Question(text: text, questionType: questionType, trialId: trialId)
-//                    //TODO add questions
-//                    parsedQuestionData.append(question)
+                    guard let questionPhase = question["questionPhase"] as? Int else {return}
+                    
+                    
+                    let q = Question(id: id, text: text, questionType: questionType, questionnaireId: questionnaireId, questionPhase: questionPhase)
+                    
+                    parsedQuestionData.append(q)
                     
                 }
             } catch let parsingError {
@@ -163,8 +295,9 @@ class APIManager {
                         guard let summary = step["summary"] as? String else {return}
                         guard let stepNumber = step["stepNumber"] as? Int else {return}
                         guard let stepId = step["stepID"] as? Int else {return}
+                        guard let questionnaireId = step["questionnaireId"] as? Int else {return}
                         
-                        let newStep = Step(id: stepId, summary: summary, stepNumber: stepNumber)
+                        let newStep = Step(id: stepId, summary: summary, stepNumber: stepNumber, questionnaireId: questionnaireId)
                         branchSteps.append(newStep)
                     }
                     
