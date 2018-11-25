@@ -8,14 +8,16 @@
 
 import Foundation
 
-class Step {
-    var id: Int
+struct Step: Codable {
+    var stepId: Int
     var summary: String
     var stepNumber: Int
+    var questionnaireId: Int
     
-    init(id: Int, summary: String, stepNumber: Int){
-        self.id = id
+    init(id: Int, summary: String, stepNumber: Int, questionnaireId: Int){
+        self.stepId = id
         self.summary = summary
         self.stepNumber = stepNumber
+        self.questionnaireId = questionnaireId
     }
 }

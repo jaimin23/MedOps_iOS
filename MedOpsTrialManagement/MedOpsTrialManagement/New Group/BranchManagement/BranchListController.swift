@@ -12,29 +12,53 @@ class BranchListController: UIViewController {
     
     var trialId: Int = 0
     var branches: [Branch] = []
+    var pullToRefresh = UIRefreshControl()
+    let api = APIManager()
     
     @IBOutlet weak var branchTable: UITableView!
     
-
+    @IBAction func onAddNewBranch(_ sender: Any) {
+        performSegue(withIdentifier: "createBranch", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var api = APIManager()
+        let tbvc = self.tabBarController as! TrialTabController
+        
+        guard let id = tbvc._trial?.id else {return}
+        self.trialId = id
+        pullToRefresh.attributedTitle = NSAttributedString(string: "Fetching branch data...")
+        pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.branchTable.addSubview(pullToRefresh)
         
         api.getBranches(trialId: trialId, onComplete: {(branches) in
             self.branches = branches
             DispatchQueue.main.async {
-               self.branchTable.reloadData()
+                self.branchTable.reloadData()
+                self.pullToRefresh.endRefreshing()
             }
         })
         
         branchTable.dataSource = self
         branchTable.delegate = self
+    }
+    
+    @objc func refresh(_ sender: Any){
+        api.getBranches(trialId: trialId, onComplete: {(branches) in
+            self.branches = branches
+            DispatchQueue.main.async {
+                self.branchTable.reloadData()
+            }
+        })
         
-        
-        
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createBranch"{
+            let destination = segue.destination as? CreateBranchController
+            destination?.trialId = trialId
+        } 
     }
     
 

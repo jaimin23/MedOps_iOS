@@ -13,7 +13,7 @@ class CreateQuestionView: UIViewController {
     let NUMERIC_ANSWER_TEXT  = "Numeric Answer"
     let SINGLE_SELECT_ANSWER  = "Single Select"
     
-    var trialId: Int = 0 // Placeholder value
+    var questionniareId: Int  = 0
     
     var _pickerItems : [String] = [ "Single-Select", "Numeric Answer", "Multi-Select"]
     var _pickerQuestionnairePhase : [String] = ["Before Trial", "Before Evaluation"]
@@ -58,7 +58,7 @@ class CreateQuestionView: UIViewController {
         let questionId = _questionTypeSelector.selectedRow(inComponent: 0)
         let questionPhaseId = _questionPhaseSelector.selectedRow(inComponent: 0)
         let questionString = _questionText.text!
-        var question = Question(text: questionString, questionType: questionId+1, trialId: self.trialId, questionPhase: questionPhaseId)
+        var question = Question(text: questionString, questionType: questionId+1, questionnaireId: self.questionniareId, questionPhase: questionPhaseId)
         
         let apiCaller = APIManager()
         
@@ -88,7 +88,7 @@ class CreateQuestionView: UIViewController {
         apiCaller.postQuestion(question: question, onComplete: {(success) in
             let alert: UIAlertController
             if(!success) {
-                alert = UIAlertController(title: "Result", message: "Bad response \(self.trialId)", preferredStyle: UIAlertControllerStyle.alert)
+                alert = UIAlertController(title: "Result", message: "Bad response \(self.questionniareId)", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
                     // TODO
                 }))

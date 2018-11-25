@@ -10,6 +10,9 @@ import UIKit
 
 class PatientsListViewController: UIViewController {
     var _trial : Trial?
+    var _branches: [Branch] = []
+    var api = APIManager()
+    
     @IBOutlet weak var patientTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +20,13 @@ class PatientsListViewController: UIViewController {
         _trial = tbvc._trial
         patientTableView.delegate = self
         patientTableView.dataSource = self
+        // TODO switch to api call
+        
+        guard let trialId = _trial?.id else {return}
+        
+        api.getBranches(trialId: trialId, onComplete: {result in
+            self._branches = result
+        })
         
         // Do any additional setup after loading the view.
     }
@@ -57,6 +67,42 @@ class PatientsListViewController: UIViewController {
             return "No value founc"
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPatientEval"{
+            let evalView = segue.destination as? RecentEvaluationsView
+            if let indexPath = self.patientTableView.indexPathForSelectedRow {
+                let selectedPatient = _trial?.users[indexPath.row]
+                
+                guard let patientId = selectedPatient?.id else {return}
+                evalView?._patientId = patientId
+            }
+        }
+    }
+    
+    func displayBranchSelection(patient: User){
+        let alert = UIAlertController(title: "Add to Branch", message: "Please select the branch of the trial which this patient will participate in", preferredStyle: .alert)
+        
+        for b in _branches {
+            alert.addAction(UIAlertAction(title: b.hypothesis, style: .default, handler: { action in
+                self.approvePatient(branch: b, patient: patient)
+            }))
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func approvePatient(branch: Branch, patient: User){
+        guard let id = patient.id else {return}
+        api.approvePatient(patientId: id, branchId: branch.id, onComplete: { isSuccess in
+            if (isSuccess){
+                patient.status = 1
+            } else {
+                // handle
+            }
+        })
+    }
 
 }
 extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate{
@@ -74,6 +120,20 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(_trial?.users[indexPath.row])
+        guard let user = _trial?.users[indexPath.row] else {return}
+        
+        if (user.status == 0){
+            let alert = UIAlertController(title: "Approve Patient", message: "This patient is currently pending approval. Would you like to approve them?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { action in
+                self.displayBranchSelection(patient: user)
+            }))
+                
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        } else {
+            performSegue(withIdentifier: "showPatientEval", sender: self)
+        }
     }
     
     

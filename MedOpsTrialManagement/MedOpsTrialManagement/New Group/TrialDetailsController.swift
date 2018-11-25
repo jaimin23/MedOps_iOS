@@ -32,6 +32,15 @@ class TrialDetailsController: UIViewController{
         trialDetailViewTable.register(BarChartCell.nib, forCellReuseIdentifier: BarChartCell.identifier)
         trialDetailViewTable.register(PieChartCell.nib, forCellReuseIdentifier: PieChartCell.identifier)
         //changeStatusButton()
+        // Do any additional setup after loading the view.
+//        self.userView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        userView.delegate = self
+//        userView.dataSource = self
+//        self.userView.isHidden = true
+////        self.userView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        userView.delegate = self as! UITableViewDelegate
+//        userView.dataSource = self as! UITableViewDataSource
+        //changeStatusButton()
     }
     
     @IBAction func onChangeTrialStatus(_ sender: Any) {
