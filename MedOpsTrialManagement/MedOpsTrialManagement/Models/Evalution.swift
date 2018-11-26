@@ -13,10 +13,12 @@ class Evaluation {
     var id: Int
     var date: String
     var patientName: String
+    var imageData: Data
 
-    init(id: Int, date: String, name: String){
+    init(id: Int, date: String, name: String, image: Data){
         self.id = id
         self.date = date
         self.patientName = name
+        self.imageData = image
     }
 }

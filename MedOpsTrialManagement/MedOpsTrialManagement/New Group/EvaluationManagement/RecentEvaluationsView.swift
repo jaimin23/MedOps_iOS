@@ -12,6 +12,8 @@ class RecentEvaluationsView: UIViewController {
     
     var _trialId = 0;
     
+    var _patientId = 0;
+    
     var _evaluations: [Evaluation] = []
     
     var activityIndi: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -31,7 +33,9 @@ class RecentEvaluationsView: UIViewController {
         
         activityIndi.startAnimating()
         
-        api.getTrialEvaluations(trialId: _trialId, onComplete: { (evals) in
+
+        
+        api.getPatientEvaluations(patientId: _patientId, onComplete: { (evals) in
             self._evaluations = evals
             DispatchQueue.main.async {
                 self.evaluationList.reloadData()
@@ -51,6 +55,7 @@ extension RecentEvaluationsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO
         print(indexPath.row)
+        performSegue(withIdentifier: "showEval", sender: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,6 +63,14 @@ extension RecentEvaluationsView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecentEvalCell") as! RecentEvalTableViewCell
         cell.setCell(eval: eval)
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let evalDetailsView = segue.destination as? EvaluationDetailsController
+        if let indexPath = self.evaluationList.indexPathForSelectedRow {
+            let selectedEval = _evaluations[indexPath.row]
+            evalDetailsView?.evaluation = selectedEval
+        }
     }
     
 

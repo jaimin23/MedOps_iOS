@@ -1,0 +1,176 @@
+[
+    {
+        "question": "How harsh is the cough?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answers": [
+          {
+            "gender": "male",
+            "option": "5",
+            "age": 45
+          },
+          {
+            "gender": "male",
+            "option": "3",
+            "age": 23
+          },
+          {
+            "gender": "female",
+            "option": "4",
+            "age": 67
+          },
+          {
+            "gender": "female",
+            "option": "3",
+            "age": 40
+          },
+          {
+            "gender": "male",
+            "option": "2",
+            "age": 28
+          },
+          {
+            "gender": "female",
+            "option": "3",
+            "age": 25
+          },
+          {
+            "gender": "male",
+            "option": "4",
+            "age": 25
+          },
+          {
+            "gender": "male",
+            "option": "5",
+            "age": 35
+          },
+          {
+            "gender": "male",
+            "option": "1",
+            "age": 36
+          },
+          {
+            "gender": "female",
+            "option": "1",
+            "age": 45
+          },
+          {
+            "gender": "male",
+            "option": "3",
+            "age": 34
+          },
+          {
+            "gender": "female",
+            "option": "1",
+            "age": 23
+          },
+          {
+            "gender": "male",
+            "option": "2",
+            "age": 46
+          },
+          {
+            "gender": "female",
+            "option": "4",
+            "age": 54
+          },
+          {
+            "gender": "male",
+            "option": "2",
+            "age": 30
+          },
+          {
+            "gender": "female",
+            "option": "4",
+            "age": 32
+          },
+          {
+            "gender": "female",
+            "option": "2",
+            "age": 27
+          }
+        ]
+    },
+    {
+        "question": "How do you after last evaluation?",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answers": [
+            {
+                "gender": "male",
+                "option": "5",
+                "age": 45
+            },
+            {
+                "gender": "male",
+                "option": "3",
+                "age": 23
+            },
+            {
+                "gender": "female",
+                "option": "4",
+                "age": 67
+            },
+            {
+                "gender": "female",
+                "option": "3",
+                "age": 40
+            },
+            {
+                "gender": "male",
+                "option": "2",
+                "age": 28
+            },
+            {
+                "gender": "female",
+                "option": "3",
+                "age": 25
+            },
+            {
+                "gender": "male",
+                "option": "4",
+                "age": 25
+            },
+            {
+                "gender": "male",
+                "option": "5",
+                "age": 35
+            },
+            {
+                "gender": "male",
+                "option": "1",
+                "age": 36
+            },
+            {
+                "gender": "female",
+                "option": "1",
+                "age": 45
+            },
+            {
+                "gender": "male",
+                "option": "3",
+                "age": 34
+            },
+            {
+                "gender": "female",
+                "option": "1",
+                "age": 23
+            },
+            {
+                "gender": "male",
+                "option": "2",
+                "age": 46
+            }
+        ]
+    }
+]

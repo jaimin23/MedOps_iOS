@@ -13,13 +13,15 @@ class CreateQuestionView: UIViewController {
     let NUMERIC_ANSWER_TEXT  = "Numeric Answer"
     let SINGLE_SELECT_ANSWER  = "Single Select"
     
-    var trialId: Int = 0 // Placeholder value
+    var questionniareId: Int  = 0
     
     var _pickerItems : [String] = [ "Single-Select", "Numeric Answer", "Multi-Select"]
+    var _pickerQuestionnairePhase : [String] = ["Before Trial", "Before Evaluation"]
 
     
 
     @IBOutlet weak var _questionTypeSelector: UIPickerView!
+    @IBOutlet weak var _questionPhaseSelector: UIPickerView!
     
     @IBOutlet weak var _questionText: UITextField!
     
@@ -37,6 +39,8 @@ class CreateQuestionView: UIViewController {
         
         _questionTypeSelector.dataSource = self
         _questionTypeSelector.delegate = self
+        _questionPhaseSelector.delegate = self
+        _questionPhaseSelector.dataSource = self
         super.viewDidLoad()
         
         _questionText.delegate = self
@@ -45,7 +49,6 @@ class CreateQuestionView: UIViewController {
         _answerThree.delegate = self
         _answerFour.delegate = self
         _answerFive.delegate = self
-
         // Do any additional setup after loading the view.
     }
     
@@ -53,8 +56,9 @@ class CreateQuestionView: UIViewController {
     @IBAction func onAddQuestion(_ sender: Any) {
         
         let questionId = _questionTypeSelector.selectedRow(inComponent: 0)
+        let questionPhaseId = _questionPhaseSelector.selectedRow(inComponent: 0)
         let questionString = _questionText.text!
-        var question = Question(text: questionString, questionType: questionId, trialId: self.trialId)
+        var question = Question(text: questionString, questionType: questionId+1, questionnaireId: self.questionniareId, questionPhase: questionPhaseId)
         
         let apiCaller = APIManager()
         
@@ -84,7 +88,7 @@ class CreateQuestionView: UIViewController {
         apiCaller.postQuestion(question: question, onComplete: {(success) in
             let alert: UIAlertController
             if(!success) {
-                alert = UIAlertController(title: "Result", message: "Bad response \(self.trialId)", preferredStyle: UIAlertControllerStyle.alert)
+                alert = UIAlertController(title: "Result", message: "Bad response \(self.questionniareId)", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
                     // TODO
                 }))
@@ -107,7 +111,15 @@ extension CreateQuestionView: UIPickerViewDelegate, UIPickerViewDataSource, UITe
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return _pickerItems.count
+        if pickerView == _questionTypeSelector{
+            return _pickerItems.count
+        }
+        else if pickerView == _questionPhaseSelector{
+            return _pickerQuestionnairePhase.count
+        }
+        else{
+            return 0
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -115,7 +127,15 @@ extension CreateQuestionView: UIPickerViewDelegate, UIPickerViewDataSource, UITe
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return _pickerItems[row]
+        if pickerView == _questionTypeSelector{
+            return _pickerItems[row]
+        }
+        else if pickerView == _questionPhaseSelector{
+            return _pickerQuestionnairePhase[row]
+        }
+        else{
+            return ""
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

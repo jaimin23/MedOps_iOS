@@ -12,7 +12,7 @@ struct CellData{
     let name : String
 }
 
-class TrialListTableViewTableViewController: UIViewController {
+class TrialListController: UIViewController {
     
     @IBOutlet weak var trialList: UITableView!
     var pullToRefresh = UIRefreshControl()
@@ -26,8 +26,6 @@ class TrialListTableViewTableViewController: UIViewController {
         
         
         api.getTrials { trialData in
-            print("Printing trial data")
-            print(trialData)
             self._trials = trialData
             DispatchQueue.main.async {
                 self.trialList.reloadData()
@@ -53,7 +51,7 @@ class TrialListTableViewTableViewController: UIViewController {
 
 }
 
-extension TrialListTableViewTableViewController: UITableViewDataSource, UITableViewDelegate {
+extension TrialListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return _trials.count
     }
@@ -64,12 +62,13 @@ extension TrialListTableViewTableViewController: UITableViewDataSource, UITableV
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let trialDetailsView = segue.destination as? TrialDetailsController
+        let tabViewController = segue.destination as? TrialTabController
         if let indexPath = self.trialList.indexPathForSelectedRow {
             let selectedTrial = _trials[indexPath.row]
-            trialDetailsView?._trial = selectedTrial
+            tabViewController?._trial = selectedTrial
         }
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let trial = _trials[indexPath.row]

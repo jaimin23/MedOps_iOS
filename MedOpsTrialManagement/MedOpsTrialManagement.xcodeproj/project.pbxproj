@@ -7,12 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44D9F1C2C2E98FD6ED9356F2 /* Pods_MedOpsTrialManagementUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E748302C1D310B716347EB49 /* Pods_MedOpsTrialManagementUITests.framework */; };
+		AE10458D21A5CED900CB88AE /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE10458C21A5CED900CB88AE /* NavController.swift */; };
+		AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0F821966599004F8FEA /* BranchListController.swift */; };
+		AE31E0FE2196681F004F8FEA /* BranchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0FD2196681F004F8FEA /* BranchCell.swift */; };
+		AE31E1002198B1FB004F8FEA /* EvaluationDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31E0FF2198B1FB004F8FEA /* EvaluationDetailsController.swift */; };
+		AE51E46D21A9F92800195AB9 /* ListOfQuestionnairesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE51E46C21A9F92800195AB9 /* ListOfQuestionnairesController.swift */; };
+		AE51E46F21A9FAF000195AB9 /* QuestionnaireCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE51E46E21A9FAF000195AB9 /* QuestionnaireCell.swift */; };
+		AE51E47121A9FF3800195AB9 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE51E47021A9FF3800195AB9 /* Questionnaire.swift */; };
 		AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56D788216A74F900FD576A /* TrialDetailsController.swift */; };
 		AEA88C3A217D163600D32E67 /* Evalution.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C39217D163600D32E67 /* Evalution.swift */; };
 		AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */; };
 		AEA88C3F217D1BE800D32E67 /* RecentEvalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */; };
+		AEABE2F02194FC35005D6BFB /* CreateBranchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEABE2EF2194FC35005D6BFB /* CreateBranchController.swift */; };
+		AEABE2F221951964005D6BFB /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEABE2F121951964005D6BFB /* Branch.swift */; };
+		AEABE2F421951992005D6BFB /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEABE2F321951992005D6BFB /* Step.swift */; };
 		AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBABD1221758E9B0060B4DE /* QuestionCell.swift */; };
-		AED78E7D2165A125002104FF /* TrialListTableViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */; };
+		AED78E7D2165A125002104FF /* TrialListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E7C2165A125002104FF /* TrialListController.swift */; };
 		AED78E812165AB2E002104FF /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E802165AB2E002104FF /* Trial.swift */; };
 		AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E822165B35B002104FF /* TrialViewCell.swift */; };
 		AED78E852165B640002104FF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED78E842165B640002104FF /* APIManager.swift */; };
@@ -20,6 +31,7 @@
 		AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7E2F2216ED69100671A14 /* CreateQuestionView.swift */; };
 		AEF7E2F6217025B100671A14 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7E2F5217025B100671A14 /* Question.swift */; };
 		AEF7E2F8217039F900671A14 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7E2F7217039F900671A14 /* Answer.swift */; };
+		C9124E1B21A20FC6006B4AA2 /* PatientsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9124E1A21A20FC6006B4AA2 /* PatientsViewCell.swift */; };
 		C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF5208D69FD001C4516 /* AppDelegate.swift */; };
 		C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACBF7208D69FD001C4516 /* ViewController.swift */; };
 		C91ACBFB208D69FD001C4516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91ACBF9208D69FD001C4516 /* Main.storyboard */; };
@@ -28,15 +40,27 @@
 		C91ACC0B208D69FE001C4516 /* MedOpsTrialManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC0A208D69FE001C4516 /* MedOpsTrialManagementTests.swift */; };
 		C91ACC16208D69FE001C4516 /* MedOpsTrialManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */; };
 		C92D60662166F2DE00A6F985 /* Diseases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D60652166F2DE00A6F985 /* Diseases.swift */; };
-		C92D60682166F67000A6F985 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D60672166F67000A6F985 /* API.swift */; };
 		C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D6069216708FE00A6F985 /* TrialModel.swift */; };
 		C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */; };
+		C99C6FC021A26A0800504980 /* TrialTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FBF21A26A0800504980 /* TrialTabController.swift */; };
+		C99C6FC221A7791900504980 /* GraphMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = C99C6FC121A7791800504980 /* GraphMockData.json */; };
+		C99C6FC421A77AA600504980 /* MockGraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FC321A77AA600504980 /* MockGraphData.swift */; };
+		C99C6FCB21AA48FB00504980 /* TrialDetailViewModelItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FCA21AA48FB00504980 /* TrialDetailViewModelItemType.swift */; };
+		C99C6FCF21AA611F00504980 /* BarChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C6FCE21AA611E00504980 /* BarChartCell.xib */; };
+		C99C6FD121AA61DB00504980 /* PieChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C6FD021AA61DB00504980 /* PieChartCell.xib */; };
+		C99C6FD521AA66F300504980 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FD421AA66F300504980 /* BarChartCell.swift */; };
+		C99C6FD721AA6A7700504980 /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FD621AA6A7700504980 /* PieChartCell.swift */; };
+		C99C6FE021AA7B6700504980 /* QuestionNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6FDF21AA7B6700504980 /* QuestionNameCell.swift */; };
+		C99C6FE221AA7C4800504980 /* QuestionNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C6FE121AA7C4800504980 /* QuestionNameCell.xib */; };
 		C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A07208F9676003991A1 /* TriallMainController.swift */; };
 		C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A09208FA8B1003991A1 /* TrialDataMainPageController.swift */; };
 		C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */; };
 		C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */; };
 		C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */; };
 		C9C1227B21740135004D502E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C1227A21740135004D502E /* User.swift */; };
+		C9C6CA5521A228E100273028 /* PatientsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C6CA5421A228E100273028 /* PatientsListViewController.swift */; };
+		DCD52E8E8590E5F22041DC4C /* Pods_MedOpsTrialManagementTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB8FF813501BBAFBD0F03A8 /* Pods_MedOpsTrialManagementTests.framework */; };
+		F744DAEFFEA60001F8F7EBEC /* Pods_MedOpsTrialManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F4DF12E1BA249CA21F1FA9 /* Pods_MedOpsTrialManagement.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,12 +81,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2BB8FF813501BBAFBD0F03A8 /* Pods_MedOpsTrialManagementTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedOpsTrialManagementTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DAF88FD12563F6558AAFE2A /* Pods-MedOpsTrialManagementTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementTests/Pods-MedOpsTrialManagementTests.release.xcconfig"; sourceTree = "<group>"; };
+		956AC6EE104472D0CF92E102 /* Pods-MedOpsTrialManagement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagement.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagement/Pods-MedOpsTrialManagement.release.xcconfig"; sourceTree = "<group>"; };
+		9F2E65F8EAAB0D4CB0B9E7C2 /* Pods-MedOpsTrialManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementTests/Pods-MedOpsTrialManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A7E0C1E21CCE7EBF9B3A202E /* Pods-MedOpsTrialManagementUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementUITests/Pods-MedOpsTrialManagementUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE10458C21A5CED900CB88AE /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		AE31E0F821966599004F8FEA /* BranchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchListController.swift; sourceTree = "<group>"; };
+		AE31E0FD2196681F004F8FEA /* BranchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCell.swift; sourceTree = "<group>"; };
+		AE31E0FF2198B1FB004F8FEA /* EvaluationDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationDetailsController.swift; sourceTree = "<group>"; };
+		AE51E46C21A9F92800195AB9 /* ListOfQuestionnairesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfQuestionnairesController.swift; sourceTree = "<group>"; };
+		AE51E46E21A9FAF000195AB9 /* QuestionnaireCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireCell.swift; sourceTree = "<group>"; };
+		AE51E47021A9FF3800195AB9 /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		AE56D788216A74F900FD576A /* TrialDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailsController.swift; sourceTree = "<group>"; };
 		AEA88C39217D163600D32E67 /* Evalution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evalution.swift; sourceTree = "<group>"; };
 		AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEvaluationsView.swift; sourceTree = "<group>"; };
 		AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEvalTableViewCell.swift; sourceTree = "<group>"; };
+		AEABE2EF2194FC35005D6BFB /* CreateBranchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBranchController.swift; sourceTree = "<group>"; };
+		AEABE2F121951964005D6BFB /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		AEABE2F321951992005D6BFB /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		AEBABD1221758E9B0060B4DE /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
-		AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialListTableViewTableViewController.swift; sourceTree = "<group>"; };
+		AED78E7C2165A125002104FF /* TrialListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialListController.swift; sourceTree = "<group>"; };
 		AED78E802165AB2E002104FF /* Trial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
 		AED78E822165B35B002104FF /* TrialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViewCell.swift; sourceTree = "<group>"; };
 		AED78E842165B640002104FF /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -70,6 +109,8 @@
 		AEF7E2F2216ED69100671A14 /* CreateQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionView.swift; sourceTree = "<group>"; };
 		AEF7E2F5217025B100671A14 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		AEF7E2F7217039F900671A14 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		B3568FD1F72CC08904A91BB1 /* Pods-MedOpsTrialManagementUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagementUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagementUITests/Pods-MedOpsTrialManagementUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C9124E1A21A20FC6006B4AA2 /* PatientsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewCell.swift; sourceTree = "<group>"; };
 		C91ACBF2208D69FD001C4516 /* MedOpsTrialManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedOpsTrialManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91ACBF5208D69FD001C4516 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C91ACBF7208D69FD001C4516 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,15 +125,28 @@
 		C91ACC15208D69FE001C4516 /* MedOpsTrialManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedOpsTrialManagementUITests.swift; sourceTree = "<group>"; };
 		C91ACC17208D69FE001C4516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C92D60652166F2DE00A6F985 /* Diseases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diseases.swift; sourceTree = "<group>"; };
-		C92D60672166F67000A6F985 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C92D6069216708FE00A6F985 /* TrialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialModel.swift; sourceTree = "<group>"; };
 		C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrialViewController.swift; sourceTree = "<group>"; };
+		C99C6FBF21A26A0800504980 /* TrialTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialTabController.swift; sourceTree = "<group>"; };
+		C99C6FC121A7791800504980 /* GraphMockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GraphMockData.json; sourceTree = "<group>"; };
+		C99C6FC321A77AA600504980 /* MockGraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGraphData.swift; sourceTree = "<group>"; };
+		C99C6FCA21AA48FB00504980 /* TrialDetailViewModelItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailViewModelItemType.swift; sourceTree = "<group>"; };
+		C99C6FCE21AA611E00504980 /* BarChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartCell.xib; sourceTree = "<group>"; };
+		C99C6FD021AA61DB00504980 /* PieChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartCell.xib; sourceTree = "<group>"; };
+		C99C6FD421AA66F300504980 /* BarChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
+		C99C6FD621AA6A7700504980 /* PieChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
+		C99C6FDF21AA7B6700504980 /* QuestionNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionNameCell.swift; sourceTree = "<group>"; };
+		C99C6FE121AA7C4800504980 /* QuestionNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionNameCell.xib; sourceTree = "<group>"; };
 		C99F9A07208F9676003991A1 /* TriallMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriallMainController.swift; sourceTree = "<group>"; };
 		C99F9A09208FA8B1003991A1 /* TrialDataMainPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataMainPageController.swift; sourceTree = "<group>"; };
 		C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataCollectionFormViewController.swift; sourceTree = "<group>"; };
 		C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSignatureViewController.swift; sourceTree = "<group>"; };
 		C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialPatientSampleCollectionViewController.swift; sourceTree = "<group>"; };
 		C9C1227A21740135004D502E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C9C6CA5421A228E100273028 /* PatientsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListViewController.swift; sourceTree = "<group>"; };
+		D3F4DF12E1BA249CA21F1FA9 /* Pods_MedOpsTrialManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedOpsTrialManagement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6B0FD84582CCCA760EDE705 /* Pods-MedOpsTrialManagement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedOpsTrialManagement.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedOpsTrialManagement/Pods-MedOpsTrialManagement.debug.xcconfig"; sourceTree = "<group>"; };
+		E748302C1D310B716347EB49 /* Pods_MedOpsTrialManagementUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedOpsTrialManagementUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F744DAEFFEA60001F8F7EBEC /* Pods_MedOpsTrialManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD52E8E8590E5F22041DC4C /* Pods_MedOpsTrialManagementTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,19 +170,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D9F1C2C2E98FD6ED9356F2 /* Pods_MedOpsTrialManagementUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E064F4C4C8F63FCF73742F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3F4DF12E1BA249CA21F1FA9 /* Pods_MedOpsTrialManagement.framework */,
+				2BB8FF813501BBAFBD0F03A8 /* Pods_MedOpsTrialManagementTests.framework */,
+				E748302C1D310B716347EB49 /* Pods_MedOpsTrialManagementUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F89345FC9EBFB1B9FD51271 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0FD84582CCCA760EDE705 /* Pods-MedOpsTrialManagement.debug.xcconfig */,
+				956AC6EE104472D0CF92E102 /* Pods-MedOpsTrialManagement.release.xcconfig */,
+				9F2E65F8EAAB0D4CB0B9E7C2 /* Pods-MedOpsTrialManagementTests.debug.xcconfig */,
+				5DAF88FD12563F6558AAFE2A /* Pods-MedOpsTrialManagementTests.release.xcconfig */,
+				A7E0C1E21CCE7EBF9B3A202E /* Pods-MedOpsTrialManagementUITests.debug.xcconfig */,
+				B3568FD1F72CC08904A91BB1 /* Pods-MedOpsTrialManagementUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AEA88C3B217D178600D32E67 /* EvaluationManagement */ = {
 			isa = PBXGroup;
 			children = (
 				AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */,
 				AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */,
+				AE31E0FF2198B1FB004F8FEA /* EvaluationDetailsController.swift */,
 			);
 			path = EvaluationManagement;
+			sourceTree = "<group>";
+		};
+		AEABE2EE2194FC13005D6BFB /* BranchManagement */ = {
+			isa = PBXGroup;
+			children = (
+				AEABE2EF2194FC35005D6BFB /* CreateBranchController.swift */,
+				AE31E0F821966599004F8FEA /* BranchListController.swift */,
+				AE31E0FD2196681F004F8FEA /* BranchCell.swift */,
+			);
+			path = BranchManagement;
 			sourceTree = "<group>";
 		};
 		AEF7E2EF216ED2F800671A14 /* QuestionnaireManagement */ = {
@@ -135,6 +226,8 @@
 				AEF7E2F0216ED31800671A14 /* QuestionnaireListView.swift */,
 				AEF7E2F2216ED69100671A14 /* CreateQuestionView.swift */,
 				AEBABD1221758E9B0060B4DE /* QuestionCell.swift */,
+				AE51E46C21A9F92800195AB9 /* ListOfQuestionnairesController.swift */,
+				AE51E46E21A9FAF000195AB9 /* QuestionnaireCell.swift */,
 			);
 			path = QuestionnaireManagement;
 			sourceTree = "<group>";
@@ -149,17 +242,46 @@
 				C9C1227A21740135004D502E /* User.swift */,
 				AEF7E2F7217039F900671A14 /* Answer.swift */,
 				AEA88C39217D163600D32E67 /* Evalution.swift */,
+				AEABE2F121951964005D6BFB /* Branch.swift */,
+				AEABE2F321951992005D6BFB /* Step.swift */,
+				C99C6FC321A77AA600504980 /* MockGraphData.swift */,
+				AE51E47021A9FF3800195AB9 /* Questionnaire.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C9124E18219A95C3006B4AA2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C99C6FCE21AA611E00504980 /* BarChartCell.xib */,
+				C99C6FD021AA61DB00504980 /* PieChartCell.xib */,
+				C99C6FD421AA66F300504980 /* BarChartCell.swift */,
+				C99C6FD621AA6A7700504980 /* PieChartCell.swift */,
+				C99C6FDF21AA7B6700504980 /* QuestionNameCell.swift */,
+				C99C6FE121AA7C4800504980 /* QuestionNameCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C9124E1921A20E96006B4AA2 /* PatientManagement */ = {
+			isa = PBXGroup;
+			children = (
+				C9124E1A21A20FC6006B4AA2 /* PatientsViewCell.swift */,
+				C9C6CA5421A228E100273028 /* PatientsListViewController.swift */,
+			);
+			path = PatientManagement;
 			sourceTree = "<group>";
 		};
 		C91ACBE9208D69FD001C4516 = {
 			isa = PBXGroup;
 			children = (
+				C99C6FC121A7791800504980 /* GraphMockData.json */,
 				C91ACBF4208D69FD001C4516 /* MedOpsTrialManagement */,
 				C91ACC09208D69FE001C4516 /* MedOpsTrialManagementTests */,
 				C91ACC14208D69FE001C4516 /* MedOpsTrialManagementUITests */,
 				C91ACBF3208D69FD001C4516 /* Products */,
+				9F89345FC9EBFB1B9FD51271 /* Pods */,
+				8E064F4C4C8F63FCF73742F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,6 +298,7 @@
 		C91ACBF4208D69FD001C4516 /* MedOpsTrialManagement */ = {
 			isa = PBXGroup;
 			children = (
+				C9124E18219A95C3006B4AA2 /* Views */,
 				AEF7E2F42170259600671A14 /* Models */,
 				C99F9A06208F95A3003991A1 /* Controllers */,
 				C91ACBF5208D69FD001C4516 /* AppDelegate.swift */,
@@ -205,9 +328,20 @@
 			path = MedOpsTrialManagementUITests;
 			sourceTree = "<group>";
 		};
+		C99C6FC521AA46F600504980 /* TrialDetails */ = {
+			isa = PBXGroup;
+			children = (
+				C99C6FCA21AA48FB00504980 /* TrialDetailViewModelItemType.swift */,
+			);
+			path = TrialDetails;
+			sourceTree = "<group>";
+		};
 		C99F9A06208F95A3003991A1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C99C6FC521AA46F600504980 /* TrialDetails */,
+				C9124E1921A20E96006B4AA2 /* PatientManagement */,
+				AEABE2EE2194FC13005D6BFB /* BranchManagement */,
 				AEA88C3B217D178600D32E67 /* EvaluationManagement */,
 				AEF7E2EF216ED2F800671A14 /* QuestionnaireManagement */,
 				C91ACBF7208D69FD001C4516 /* ViewController.swift */,
@@ -216,12 +350,13 @@
 				C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */,
 				C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */,
 				C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */,
-				AED78E7C2165A125002104FF /* TrialListTableViewTableViewController.swift */,
+				AED78E7C2165A125002104FF /* TrialListController.swift */,
 				AED78E822165B35B002104FF /* TrialViewCell.swift */,
 				AED78E842165B640002104FF /* APIManager.swift */,
 				AE56D788216A74F900FD576A /* TrialDetailsController.swift */,
 				C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */,
-				C92D60672166F67000A6F985 /* API.swift */,
+				C99C6FBF21A26A0800504980 /* TrialTabController.swift */,
+				AE10458C21A5CED900CB88AE /* NavController.swift */,
 			);
 			name = Controllers;
 			path = "New Group";
@@ -234,9 +369,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C91ACC1A208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagement" */;
 			buildPhases = (
+				BDD6850D71F4229FCAE42B25 /* [CP] Check Pods Manifest.lock */,
 				C91ACBEE208D69FD001C4516 /* Sources */,
 				C91ACBEF208D69FD001C4516 /* Frameworks */,
 				C91ACBF0208D69FD001C4516 /* Resources */,
+				7A26D398100FA29113286F8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,6 +388,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C91ACC1D208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagementTests" */;
 			buildPhases = (
+				D2105914C8C7B35530C29D72 /* [CP] Check Pods Manifest.lock */,
 				C91ACC02208D69FE001C4516 /* Sources */,
 				C91ACC03208D69FE001C4516 /* Frameworks */,
 				C91ACC04208D69FE001C4516 /* Resources */,
@@ -269,6 +407,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C91ACC20208D69FE001C4516 /* Build configuration list for PBXNativeTarget "MedOpsTrialManagementUITests" */;
 			buildPhases = (
+				85A350806A6489DA7A591957 /* [CP] Check Pods Manifest.lock */,
 				C91ACC0D208D69FE001C4516 /* Sources */,
 				C91ACC0E208D69FE001C4516 /* Frameworks */,
 				C91ACC0F208D69FE001C4516 /* Resources */,
@@ -331,9 +470,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C99C6FCF21AA611F00504980 /* BarChartCell.xib in Resources */,
+				C99C6FD121AA61DB00504980 /* PieChartCell.xib in Resources */,
+				C99C6FC221A7791900504980 /* GraphMockData.json in Resources */,
 				C91ACC00208D69FE001C4516 /* LaunchScreen.storyboard in Resources */,
 				C91ACBFD208D69FE001C4516 /* Assets.xcassets in Resources */,
 				C91ACBFB208D69FD001C4516 /* Main.storyboard in Resources */,
+				C99C6FE221AA7C4800504980 /* QuestionNameCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +496,89 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7A26D398100FA29113286F8D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MedOpsTrialManagement/Pods-MedOpsTrialManagement-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/IBMWatsonRestKit/RestKit.framework",
+				"${BUILT_PRODUCTS_DIR}/IBMWatsonSpeechToTextV1/SpeechToText.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftRangeSlider/SwiftRangeSlider.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RestKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpeechToText.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRangeSlider.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MedOpsTrialManagement/Pods-MedOpsTrialManagement-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85A350806A6489DA7A591957 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MedOpsTrialManagementUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDD6850D71F4229FCAE42B25 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MedOpsTrialManagement-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2105914C8C7B35530C29D72 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MedOpsTrialManagementTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C91ACBEE208D69FD001C4516 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -360,10 +586,15 @@
 			files = (
 				AEF7E2F6217025B100671A14 /* Question.swift in Sources */,
 				AED78E812165AB2E002104FF /* Trial.swift in Sources */,
+				AE51E46F21A9FAF000195AB9 /* QuestionnaireCell.swift in Sources */,
 				AEA88C3A217D163600D32E67 /* Evalution.swift in Sources */,
-				AED78E7D2165A125002104FF /* TrialListTableViewTableViewController.swift in Sources */,
+				AED78E7D2165A125002104FF /* TrialListController.swift in Sources */,
+				AE51E47121A9FF3800195AB9 /* Questionnaire.swift in Sources */,
+				C9C6CA5521A228E100273028 /* PatientsListViewController.swift in Sources */,
+				AED78E7D2165A125002104FF /* TrialListController.swift in Sources */,
 				AEA88C3F217D1BE800D32E67 /* RecentEvalTableViewCell.swift in Sources */,
 				C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */,
+				C99C6FE021AA7B6700504980 /* QuestionNameCell.swift in Sources */,
 				C9C1227B21740135004D502E /* User.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
 				AED78E852165B640002104FF /* APIManager.swift in Sources */,
@@ -371,20 +602,33 @@
 				C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */,
 				C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
-				C92D60682166F67000A6F985 /* API.swift in Sources */,
+				AE31E0FE2196681F004F8FEA /* BranchCell.swift in Sources */,
+				C99C6FC421A77AA600504980 /* MockGraphData.swift in Sources */,
+				AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */,
+				AEABE2F221951964005D6BFB /* Branch.swift in Sources */,
 				C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
 				AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */,
 				AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */,
+				AE51E46D21A9F92800195AB9 /* ListOfQuestionnairesController.swift in Sources */,
+				AEABE2F421951992005D6BFB /* Step.swift in Sources */,
 				AEF7E2F8217039F900671A14 /* Answer.swift in Sources */,
+				C99C6FC021A26A0800504980 /* TrialTabController.swift in Sources */,
 				AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */,
+				AE10458D21A5CED900CB88AE /* NavController.swift in Sources */,
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
 				AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */,
 				C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */,
+				AE31E1002198B1FB004F8FEA /* EvaluationDetailsController.swift in Sources */,
 				AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */,
 				C91ACBF6208D69FD001C4516 /* AppDelegate.swift in Sources */,
+				C9124E1B21A20FC6006B4AA2 /* PatientsViewCell.swift in Sources */,
+				AEABE2F02194FC35005D6BFB /* CreateBranchController.swift in Sources */,
 				C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */,
+				C99C6FD721AA6A7700504980 /* PieChartCell.swift in Sources */,
 				AEF7E2F1216ED31800671A14 /* QuestionnaireListView.swift in Sources */,
+				C99C6FD521AA66F300504980 /* BarChartCell.swift in Sources */,
+				C99C6FCB21AA48FB00504980 /* TrialDetailViewModelItemType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,17 +799,18 @@
 		};
 		C91ACC1B208D69FE001C4516 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6B0FD84582CCCA760EDE705 /* Pods-MedOpsTrialManagement.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9WS25SL9BP;
+				DEVELOPMENT_TEAM = R7SMR7CHT9;
 				INFOPLIST_FILE = MedOpsTrialManagement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.medops.trialmanagement;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sheridancollege.medops.trialmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -574,17 +819,18 @@
 		};
 		C91ACC1C208D69FE001C4516 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 956AC6EE104472D0CF92E102 /* Pods-MedOpsTrialManagement.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9WS25SL9BP;
+				DEVELOPMENT_TEAM = R7SMR7CHT9;
 				INFOPLIST_FILE = MedOpsTrialManagement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.medops.trialmanagement;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sheridancollege.medops.trialmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -593,6 +839,7 @@
 		};
 		C91ACC1E208D69FE001C4516 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F2E65F8EAAB0D4CB0B9E7C2 /* Pods-MedOpsTrialManagementTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -614,6 +861,7 @@
 		};
 		C91ACC1F208D69FE001C4516 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DAF88FD12563F6558AAFE2A /* Pods-MedOpsTrialManagementTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -635,6 +883,7 @@
 		};
 		C91ACC21208D69FE001C4516 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7E0C1E21CCE7EBF9B3A202E /* Pods-MedOpsTrialManagementUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -655,6 +904,7 @@
 		};
 		C91ACC22208D69FE001C4516 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3568FD1F72CC08904A91BB1 /* Pods-MedOpsTrialManagementUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

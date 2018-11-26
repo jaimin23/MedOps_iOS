@@ -12,43 +12,52 @@ class QuestionnaireListView: UIViewController {
     
     var trial : Trial?
     
-    var _trialId : Int = 0;
+    @IBAction func createQuestionBtn(_ sender: Any) {
+        performSegue(withIdentifier: "createQuestion", sender: self)
+    }
+    
+    var _questionnaireId: Int = 0
     
     var _questions : [Question] = []
+    let api = APIManager()
 
     @IBOutlet weak var questionnaireList: UITableView!
     @IBOutlet weak var headerLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let trialId = trial?.id {
-            headerLbl.text = "Questions for Trial #\(trialId)"
-            _trialId = trialId
-        } else {
-            print("BIG ERROR")
-        }
-        
-        // Load trials
-        var question = Question(text: "What is the severity of your cough?", questionType: 3, trialId:  self._trialId)
-        question.answers = []
-        var questionTwo = Question(text: "What is the temperature of the patient?", questionType: 3, trialId:  self._trialId)
-        questionTwo.answers = []
-        
+        let tbvc = self.tabBarController as! TrialTabController
+        trial = tbvc._trial
+//        if let trialId = trial?.id {
+//            headerLbl.text = "Questions for Trial #\(trialId)"
+//            _trialId = trialId
+//        } else {
+//            print("BIG ERROR")
+//        }
+    
         questionnaireList.delegate = self
         questionnaireList.dataSource = self
-        
-        _questions.append(question)
-        _questions.append(questionTwo)
 
-        // Do any additional setup after loading the view.
+        // Load trials
+        load()
+    }
+    
+    func load(){
+        api.getQuestions(questionnaireId: _questionnaireId, onComplete: { (questions) in
+            self._questions = questions;
+            
+            DispatchQueue.main.async {
+                self.questionnaireList.reloadData()
+            }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let createQuestionView = segue.destination as? CreateQuestionView
-        createQuestionView?.trialId = _trialId
+        if segue.identifier == "createQuestion"{
+            let createQuestionView = segue.destination as? CreateQuestionView
+            createQuestionView?.questionniareId = self._questionnaireId
+        }
     }
-    
-
 }
 
 extension QuestionnaireListView: UITableViewDelegate, UITableViewDataSource {
