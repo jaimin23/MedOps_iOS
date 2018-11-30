@@ -16,6 +16,10 @@
 		AE51E46F21A9FAF000195AB9 /* QuestionnaireCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE51E46E21A9FAF000195AB9 /* QuestionnaireCell.swift */; };
 		AE51E47121A9FF3800195AB9 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE51E47021A9FF3800195AB9 /* Questionnaire.swift */; };
 		AE56D789216A74F900FD576A /* TrialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56D788216A74F900FD576A /* TrialDetailsController.swift */; };
+		AE85982621AE190100E11D2F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85982521AE190100E11D2F /* LoginViewController.swift */; };
+		AE85982821AE1E0500E11D2F /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85982721AE1E0500E11D2F /* LoginUser.swift */; };
+		AE85982A21AF67D300E11D2F /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85982921AF67D300E11D2F /* RegistrationController.swift */; };
+		AE85982D21AF6B5A00E11D2F /* PIRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85982C21AF6B5A00E11D2F /* PIRegistration.swift */; };
 		AEA88C3A217D163600D32E67 /* Evalution.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C39217D163600D32E67 /* Evalution.swift */; };
 		AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */; };
 		AEA88C3F217D1BE800D32E67 /* RecentEvalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */; };
@@ -94,6 +98,10 @@
 		AE51E46E21A9FAF000195AB9 /* QuestionnaireCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireCell.swift; sourceTree = "<group>"; };
 		AE51E47021A9FF3800195AB9 /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		AE56D788216A74F900FD576A /* TrialDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailsController.swift; sourceTree = "<group>"; };
+		AE85982521AE190100E11D2F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AE85982721AE1E0500E11D2F /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
+		AE85982921AF67D300E11D2F /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		AE85982C21AF6B5A00E11D2F /* PIRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIRegistration.swift; sourceTree = "<group>"; };
 		AEA88C39217D163600D32E67 /* Evalution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evalution.swift; sourceTree = "<group>"; };
 		AEA88C3C217D17A500D32E67 /* RecentEvaluationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEvaluationsView.swift; sourceTree = "<group>"; };
 		AEA88C3E217D1BE800D32E67 /* RecentEvalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEvalTableViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +208,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AE85982B21AF6B4400E11D2F /* API-DTO */ = {
+			isa = PBXGroup;
+			children = (
+				AE85982C21AF6B5A00E11D2F /* PIRegistration.swift */,
+			);
+			path = "API-DTO";
+			sourceTree = "<group>";
+		};
 		AEA88C3B217D178600D32E67 /* EvaluationManagement */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +251,7 @@
 		AEF7E2F42170259600671A14 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AE85982B21AF6B4400E11D2F /* API-DTO */,
 				C92D6069216708FE00A6F985 /* TrialModel.swift */,
 				C92D60652166F2DE00A6F985 /* Diseases.swift */,
 				AED78E802165AB2E002104FF /* Trial.swift */,
@@ -246,6 +263,7 @@
 				AEABE2F321951992005D6BFB /* Step.swift */,
 				C99C6FC321A77AA600504980 /* MockGraphData.swift */,
 				AE51E47021A9FF3800195AB9 /* Questionnaire.swift */,
+				AE85982721AE1E0500E11D2F /* LoginUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -357,6 +375,8 @@
 				C92D8A902165C3D30040C97B /* CreateTrialViewController.swift */,
 				C99C6FBF21A26A0800504980 /* TrialTabController.swift */,
 				AE10458C21A5CED900CB88AE /* NavController.swift */,
+				AE85982521AE190100E11D2F /* LoginViewController.swift */,
+				AE85982921AF67D300E11D2F /* RegistrationController.swift */,
 			);
 			name = Controllers;
 			path = "New Group";
@@ -602,14 +622,17 @@
 				C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */,
 				C92D8A912165C3D30040C97B /* CreateTrialViewController.swift in Sources */,
 				C99F9A08208F9676003991A1 /* TriallMainController.swift in Sources */,
+				AE85982821AE1E0500E11D2F /* LoginUser.swift in Sources */,
 				AE31E0FE2196681F004F8FEA /* BranchCell.swift in Sources */,
 				C99C6FC421A77AA600504980 /* MockGraphData.swift in Sources */,
 				AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */,
+				AE85982A21AF67D300E11D2F /* RegistrationController.swift in Sources */,
 				AEABE2F221951964005D6BFB /* Branch.swift in Sources */,
 				C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
 				AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */,
 				AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */,
+				AE85982621AE190100E11D2F /* LoginViewController.swift in Sources */,
 				AE51E46D21A9F92800195AB9 /* ListOfQuestionnairesController.swift in Sources */,
 				AEABE2F421951992005D6BFB /* Step.swift in Sources */,
 				AEF7E2F8217039F900671A14 /* Answer.swift in Sources */,
@@ -627,6 +650,7 @@
 				C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */,
 				C99C6FD721AA6A7700504980 /* PieChartCell.swift in Sources */,
 				AEF7E2F1216ED31800671A14 /* QuestionnaireListView.swift in Sources */,
+				AE85982D21AF6B5A00E11D2F /* PIRegistration.swift in Sources */,
 				C99C6FD521AA66F300504980 /* BarChartCell.swift in Sources */,
 				C99C6FCB21AA48FB00504980 /* TrialDetailViewModelItemType.swift in Sources */,
 			);

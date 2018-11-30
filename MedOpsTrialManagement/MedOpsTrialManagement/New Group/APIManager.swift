@@ -21,19 +21,31 @@ class APIManager {
     }
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
-        let urlString : String = "\(scheme)://\(domain)/api/trial/"
+        let urlString : String = "\(scheme)://\(domain)/api/trial/pitrials"
         //let urlString: String = "{}/api/trial/"
         var parsedTrialData : [Trial] = []
         
         
         let requestString = URL(string: urlString)
         
-        let request = URLRequest(url: requestString!)
+        var request = URLRequest(url: requestString!)
+        
+        if let token = UserDefaults.standard.value(forKey: "JWT") as? String {
+            print("Key was successfully saved")
+            let tokenString = "Bearer \(token)"
+            request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        } else {
+            completion([])
+        }
         
         let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
             guard let dataRes = data, error == nil else {
                 // handle error
                 return
+            }
+            if let httpResponse = res as? HTTPURLResponse {
+                print("Code \(httpResponse.statusCode)")
             }
             
             do {
@@ -704,6 +716,12 @@ class APIManager {
         request.httpMethod = "POST"
         var headers = request.allHTTPHeaderFields ?? [:]
         headers["Content-Type"] = "application/json"
+        
+        if let token = UserDefaults.standard.value(forKey: "JWT") as? String {
+            headers["Authorization"] = "Bearer \(token)"
+        } else {
+            // todo handle
+        }
         request.allHTTPHeaderFields = headers
         
         let encoder = JSONEncoder()
@@ -720,6 +738,10 @@ class APIManager {
             guard responseError == nil else{
                 completion?(responseError!)
                 return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Code \(httpResponse.statusCode)")
             }
             
             if let data = responseData, let utf8Representation = String(data: data, encoding: .utf8){
