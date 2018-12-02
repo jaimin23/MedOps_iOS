@@ -77,6 +77,9 @@ class PatientsListViewController: UIViewController {
                 guard let patientId = selectedPatient?.id else {return}
                 evalView?._patientId = patientId
             }
+        } else if segue.identifier == "nurseCreate" {
+            let createView = segue.destination as? NurseCreationViewController
+            createView?.trialId = (self._trial?.id)!
         }
     }
     
@@ -106,6 +109,28 @@ class PatientsListViewController: UIViewController {
             }
         })
     }
+    
+    @IBAction func onAssignNurse(_ sender: Any) {
+        let alert = UIAlertController(title: "Nurse Assignment", message: "Would you like to assign an existing or new nurse?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "New", style: .default, handler: {handler in
+                self.newNurse()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Existing", style: .default, handler: {handler in
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        
+        self.present(alert, animated: true)
+    }
+    
+    func newNurse(){
+        performSegue(withIdentifier: "nurseCreate", sender: self)
+    }
+    
 
 }
 extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate{
@@ -115,9 +140,8 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "patientsCell") as! PatientsViewCell
-        cell.uniqueIdLbl.text = (_trial?.users[indexPath.row].firstName)! + " " + (_trial?.users[indexPath.row].lastName)!
-        cell.applicationStatusLbl.text = getApplicationStatusValue(status: _trial?.users[indexPath.row].status ?? 2)
-        cell.userType.text = getUserTypeValue(userType: _trial?.users[indexPath.row].userType ?? 4)
+
+        cell.setPatient(patient: (_trial?.users[indexPath.row])!)
         return cell
     }
     
@@ -125,17 +149,20 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
         print(_trial?.users[indexPath.row])
         guard let user = _trial?.users[indexPath.row] else {return}
         
-        if (user.status == 0){
-            let alert = UIAlertController(title: "Approve Patient", message: "This patient is currently pending approval. Would you like to approve them?", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { action in
-                self.displayBranchSelection(patient: user)
-            }))
+        // Only add the onclick for now if the user is a patient
+        if (user.userType == 0) {
+            if (user.status == 0){
+                let alert = UIAlertController(title: "Approve Patient", message: "This patient is currently pending approval. Would you like to approve them?", preferredStyle: .alert)
                 
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
-        } else {
-            performSegue(withIdentifier: "showPatientEval", sender: self)
+                alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { action in
+                    self.displayBranchSelection(patient: user)
+                }))
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            } else {
+                performSegue(withIdentifier: "showPatientEval", sender: self)
+            }
         }
     }
     

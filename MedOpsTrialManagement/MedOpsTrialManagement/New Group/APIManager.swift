@@ -68,7 +68,7 @@ class APIManager {
                         let lastName = uData?["lastName"] as? String
                         let userType = uData?["userType"] as? Int
                         let uniqueId = uData?["userUniqueId"] as? String
-                        let applicationStatus = uData?["status"] as? Int
+                        let applicationStatus = uData?["applicationStatus"] as? Int
                         let address = uData?["address"] as? String
                         let ethnicity = uData?["ethnicity"] as? String
                         let age = uData?["age"] as? Int
@@ -587,9 +587,25 @@ class APIManager {
                     guard let id = eval["id"] as? Int else {return}
                     guard let date = eval["date"] as? String else {return}
                     guard let encodedData = eval["encodedImage"] as? String else {return}
+                    
+                    guard let pResponses = eval["patientResponses"] as? [[String: Any]] else {return}
+                    
+                    var responseList : [PatientResponse] = []
+                    
+                    for res in pResponses{
+                        guard let question = res["question"] as? [String:Any] else {return}
+                        guard let questionText = question["text"] as? String else {return}
+                        guard let answerText = res["response"] as? String else {return}
+                        
+                        responseList.append(PatientResponse(q: questionText, a: answerText))
+                        
+                        
+                    }
+                        
+                        
             
                     if let decodedData = Data(base64Encoded: encodedData, options: .ignoreUnknownCharacters) {
-                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData)
+                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData, res: responseList)
                         parsedEvalData.append(evaluation)
                     }
                     
@@ -682,8 +698,22 @@ class APIManager {
                     guard let date = eval["date"] as? String else {return}
                     guard let encodedData = eval["encodedImage"] as? String else {return}
                     
+                    guard let pResponses = eval["patientResponses"] as? [[String: Any]] else {return}
+                    
+                    var responseList : [PatientResponse] = []
+                    
+                    for res in pResponses{
+                        guard let question = res["question"] as? [String:Any] else {return}
+                        guard let questionText = question["text"] as? String else {return}
+                        guard let answerText = res["response"] as? String else {return}
+                        
+                        responseList.append(PatientResponse(q: questionText, a: answerText))
+                        
+                        
+                    }
+                    
                     if let decodedData = Data(base64Encoded: encodedData, options: .ignoreUnknownCharacters) {
-                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData)
+                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData, res: responseList)
                         parsedEvalData.append(evaluation)
                     }
                     
@@ -751,6 +781,47 @@ class APIManager {
             }
         }
         task.resume()
+    }
+    
+    func registerNurse(user: PIRegistration, trialId: Int, handler: @escaping (Bool) -> Void) {
+        let apiUrl = "\(cloudDomain)/auth/registernurse"
+        
+        let urlComp = URLComponents(string: apiUrl)
+        var request = URLRequest(url: (urlComp?.url)!)
+        
+        let body = [
+            "email": user.email,
+            "password": user.password,
+            "firstName": user.firstName,
+            "lastName": user.lastName,
+            "trialId": trialId
+            ] as [String : Any]
+        request.httpMethod = "POST"
+        
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let task = URLSession.shared.dataTask(with: request) {
+            (data, response, error) in
+            if(error != nil || data == nil) {
+                handler(false)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if (httpResponse.statusCode != 200){
+                    handler(false)
+                    print(response)
+                    print(data)
+                    return
+                }
+            }
+
+            
+
+        }
+        
+        task.resume()
+        
     }
     
 }
