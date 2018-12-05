@@ -32,7 +32,10 @@ class CreateBranchController: UIViewController {
         let alert = UIAlertController(title: "Assign Questionnaire", message: "Would you like to add a new questionnaire or an existing one?", preferredStyle: .alert)
         
         
-        alert.addAction(UIAlertAction(title: "New Questionnaire", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "New Questionnaire", style: .default, handler:
+            { handler in
+                self.onCreateNewQuestionnaire()
+        }))
         alert.addAction(UIAlertAction(title: "Existing Questionnaire", style: .default, handler: { handler in
             self.onAssignQuestionnaire()
         }))
@@ -52,7 +55,21 @@ class CreateBranchController: UIViewController {
     }
     
     func onCreateNewQuestionnaire(){
-        // TODO implement
+        let alert = UIAlertController(title: "Create new Questionnaire", message: "Please provide the name of the questionnaire", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {(textField) in
+            
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert!.textFields![0]
+            let newQuestionnaire = Questionnaire(id: 0, title: textField.text!, questions: [], trialId: self.trialId)
+            self.availableQuestionnaires.append(newQuestionnaire)
+            self.createField(questionnaire: newQuestionnaire)
+        }))
+        
+        self.present(alert, animated: true)
+        
+
     }
     
     func onAssignQuestionnaire(){
