@@ -23,6 +23,14 @@ class CreateBranchController: UIViewController {
     
     var promptedQuestionnaireId = 0
     
+    func loadQuestionnaires(){
+        // Load the available questionnaires from the list
+        self.api.getQuestionnaires(trialId: trialId, onComplete: {questionnaire in
+            self.availableQuestionnaires = questionnaire
+            print("questionnaire loading successful")
+        })
+    }
+    
 
     @IBOutlet weak var hypoTextField: UITextField!
     @IBOutlet weak var noBranchLbl: UILabel!
@@ -62,9 +70,26 @@ class CreateBranchController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert!.textFields![0]
-            let newQuestionnaire = Questionnaire(id: 0, title: textField.text!, questions: [], trialId: self.trialId)
-            self.availableQuestionnaires.append(newQuestionnaire)
-            self.createField(questionnaire: newQuestionnaire)
+            var newQuestionnaire = Questionnaire(id: 0, title: textField.text!, questions: [], trialId: self.trialId)
+
+            self.api.postQuestionnaire(questionnaire: newQuestionnaire, onComplete: {result in
+                
+                if (result){
+                    self.loadQuestionnaires()
+                    let resultAlert = UIAlertController(title: "Success", message: "Successfully created the new questionnaire", preferredStyle: .alert)
+                    
+                    resultAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { handler in
+                        newQuestionnaire = self.getQuestionnaire(title: newQuestionnaire.title)!
+                        self.createField(questionnaire: newQuestionnaire)
+                    }))
+                    self.present(resultAlert, animated: true)
+                } else {
+                    let resultAlert = UIAlertController(title: "Error", message: "An error occured while attempting to create the new questionnaire", preferredStyle: .alert)
+                    
+                    resultAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(resultAlert, animated: true)
+                }
+            })
         }))
         
         self.present(alert, animated: true)
@@ -215,11 +240,9 @@ class CreateBranchController: UIViewController {
         screenWidth = self.view.frame.size.width
         // Do any additional setup after loading the view.
         
-        // Load the available questionnaires from the list
-        self.api.getQuestionnaires(trialId: trialId, onComplete: {questionnaire in
-            self.availableQuestionnaires = questionnaire
-            print("questionnaire loading successful")
-        })
+        self.loadQuestionnaires()
+        
+    
     }
     
 
