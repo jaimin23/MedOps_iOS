@@ -22,13 +22,22 @@ class PatientsListViewController: UIViewController {
         patientTableView.dataSource = self
         // TODO switch to api call
         
-        guard let trialId = _trial?.id else {return}
         
-        api.getBranches(trialId: trialId, onComplete: {result in
-            self._branches = result
-        })
+        
+        loadData()
         
         // Do any additional setup after loading the view.
+    }
+    
+    func loadData(){
+        guard let trialId = _trial?.id else {return}
+        api.getBranches(trialId: trialId, onComplete: {result in
+        self._branches = result
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
     }
     
 
