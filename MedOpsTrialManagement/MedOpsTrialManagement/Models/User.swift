@@ -33,4 +33,8 @@ class User: Codable {
         self.age = age
         self.password = password
     }
+    
+    func getName() -> String {
+        return self.firstName! + " " + self.lastName!
+    }
 }

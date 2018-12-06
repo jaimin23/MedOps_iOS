@@ -93,6 +93,7 @@ class PatientsListViewController: UIViewController {
                 
                 let patientId = selectedPatient.id
                 evalView?._patientId = patientId!
+                evalView?._trialId = (_trial?.id)!
             }
         } else if segue.identifier == "nurseCreate" {
             let createView = segue.destination as? NurseCreationViewController
@@ -152,7 +153,7 @@ class PatientsListViewController: UIViewController {
 }
 extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (_userTrials.count) ?? 0
+        return (_userTrials.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

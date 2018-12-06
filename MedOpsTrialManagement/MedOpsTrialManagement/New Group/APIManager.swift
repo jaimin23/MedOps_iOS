@@ -744,8 +744,8 @@ class APIManager {
         task.resume()
     }
     
-    func getPatientEvaluations(patientId: Int, onComplete evalData: @escaping (_ evalData: [Evaluation]) -> Void){
-        let urlString = cloudDomain + "/api/data/patientEvaluations?patientId=\(patientId)"
+    func getPatientEvaluations(patientId: Int, trialId: Int, onComplete evalData: @escaping (_ evalData: EvaluationProfile) -> Void){
+        let urlString = cloudDomain + "/api/data/patientEvaluations?patientId=\(patientId)&trialId=\(trialId)"
         
         
         var parsedEvalData : [Evaluation] = []
@@ -763,11 +763,52 @@ class APIManager {
             do {
                 let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
                 
-                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                guard let profileJsonData = jsonRes as? [String: Any] else {
                     return
                 }
                 
-                for eval in jsonArray {
+                guard let eProfile = profileJsonData["evaluations"] as? [[String: Any]] else {
+                    return
+                }
+                
+                guard let active = profileJsonData["active"] as? Bool else {return}
+                
+                guard let uData = profileJsonData["user"] as? [String: Any] else {return}
+                
+                guard let branch = profileJsonData["branch"] as? [String: Any] else {return}
+                
+                guard let stepNumber = profileJsonData["currentStepNumber"] as? Int else {return}
+                
+                
+                // Load user data
+                
+                let userId = uData["userId"] as? Int
+                let firstName = uData["firstName"] as? String
+                let lastName = uData["lastName"] as? String
+                let userType = uData["userType"] as? Int
+                let uniqueId = uData["userUniqueId"] as? String
+                let applicationStatus = uData["applicationStatus"] as? Int
+                let address = uData["address"] as? String
+                let ethnicity = uData["ethnicity"] as? String
+                let age = uData["age"] as? Int
+                let email = uData["email"] as? String
+                let password = uData["password"] as? String
+                let newUser = User(id: userId ?? 0,
+                                   firstName: firstName ?? "",
+                                   lastName: lastName ?? "",
+                                   userType: userType ?? 0,
+                                   userUniqueId: uniqueId ?? "",
+                                   status: applicationStatus ?? 0,
+                                   email: email ?? "",
+                                   address: address ?? "",
+                                   ethnicity: ethnicity ?? "",
+                                   age: age ?? 0,
+                                   password: password ?? "")
+                
+                
+                // load eval data
+                
+                for eval in eProfile{
                     guard let id = eval["id"] as? Int else {return}
                     guard let date = eval["date"] as? String else {return}
                     guard let encodedData = eval["encodedImage"] as? String else {return}
@@ -791,16 +832,32 @@ class APIManager {
                         parsedEvalData.append(evaluation)
                     }
                     
+                
+                    
                     
                     
                 }
+                
+                // Load branch data
+                
+                guard let text = branch["hypothesis"] as? String else {return}
+                guard let steps = branch["steps"] as? [[String: Any]] else {return}
+                guard let id = branch["id"] as? Int else {return}
+                
+                
+                let branchObject = Branch(id: id, hyp: text, steps: [], trialId: id)
+                
+                let evaluationProfile = EvaluationProfile(p: newUser, e: parsedEvalData, b: branchObject, a: active, st: stepNumber)
+                
+                evalData(evaluationProfile)
+                
+                
                 
                 
             } catch let parsingError {
                 print("Error", parsingError)
             }
             
-            evalData(parsedEvalData)
             
         }
         

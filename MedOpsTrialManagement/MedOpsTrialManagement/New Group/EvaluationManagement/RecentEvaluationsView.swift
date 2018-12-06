@@ -16,8 +16,16 @@ class RecentEvaluationsView: UIViewController {
     
     var _evaluations: [Evaluation] = []
     
+    var _evaluationProfile: EvaluationProfile?
+    
     var activityIndi: UIActivityIndicatorView = UIActivityIndicatorView()
 
+    @IBOutlet weak var patientNameLbl: UILabel!
+    @IBOutlet weak var branchNameLbl: UILabel!
+    @IBOutlet weak var stepNumberLbl: UILabel!
+    @IBOutlet weak var statusLbl: UILabel!
+    
+    
     @IBOutlet weak var evaluationList: UITableView!
     
     override func viewDidLoad() {
@@ -35,10 +43,25 @@ class RecentEvaluationsView: UIViewController {
         
 
         
-        api.getPatientEvaluations(patientId: _patientId, onComplete: { (evals) in
-            self._evaluations = evals
+        api.getPatientEvaluations(patientId: _patientId, trialId: _trialId, onComplete: { (evals) in
+            self._evaluationProfile = evals
+            self._evaluations = (self._evaluationProfile?.evaluations)!
             DispatchQueue.main.async {
                 self.evaluationList.reloadData()
+                self.patientNameLbl.text = self._evaluationProfile?.patient.getName()
+                self.branchNameLbl.text = self._evaluationProfile?.branch.hypothesis
+                self.stepNumberLbl.text = "\(self._evaluationProfile?.currentStepNumber ?? 0)"
+                self.statusLbl.layer.masksToBounds = true
+                self.statusLbl.layer.cornerRadius = 10
+                if ((self._evaluationProfile?.active)!){
+                    self.statusLbl.text = "Awaiting next evaluation"
+                    self.statusLbl.backgroundColor = UIColor.orange
+                } else {
+                    self.statusLbl.text = "Completed all evaluations"
+                    self.statusLbl.backgroundColor = UIColor.green
+                }
+                
+                
             }
         })
 
