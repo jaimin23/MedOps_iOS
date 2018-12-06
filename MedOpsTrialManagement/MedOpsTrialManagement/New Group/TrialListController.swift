@@ -24,9 +24,10 @@ class TrialListController: UIViewController {
         pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.trialList.addSubview(pullToRefresh)
         
-        
+        let spinner = TrialListController.displaySpinner(onView: self.view)
         api.getTrials { trialData in
             self._trials = trialData
+            TrialListController.removeSpinner(spinner: spinner)
             DispatchQueue.main.async {
                 self.trialList.reloadData()
             }
@@ -38,6 +39,7 @@ class TrialListController: UIViewController {
         
         
     }
+
     @objc func refresh(_ sender: Any){
         api.getTrials { trialData in
             self._trials = trialData
@@ -77,5 +79,28 @@ extension TrialListController: UITableViewDataSource, UITableViewDelegate {
         cell.setTrial(trial: trial)
         
         return cell
+    }
+}
+
+extension TrialListController {
+    //This class will show spinner view and it will run on the main thread of the application
+    class func displaySpinner(onView: UIView) -> UIView{
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        return spinnerView
+    }
+    
+    class func removeSpinner(spinner: UIView){
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
     }
 }

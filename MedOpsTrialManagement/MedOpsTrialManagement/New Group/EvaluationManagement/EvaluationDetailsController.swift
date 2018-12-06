@@ -7,26 +7,44 @@
 //
 
 import UIKit
+import AVFoundation
+import Swime
 
 class EvaluationDetailsController: UIViewController {
-
+    
     @IBOutlet weak var evalDataImage: UIImageView!
+    @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var audioPlayerView: UIView!
     
     var evaluation: Evaluation?
-    
+    var audioPlayer = AVAudioPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //set the image being displayed
         if let eval = evaluation {
-            let image = UIImage(data: eval.imageData)
-            evalDataImage.image = image
-
+            let mimeType = Swime.mimeType(data: eval.imageData)
+            if(mimeType?.type == .jpg){
+                audioPlayerView.isHidden = true
+                let image = UIImage(data: eval.imageData)
+                evalDataImage.image = image
+            }
+            else{
+                evalDataImage.isHidden = true
+                do{
+                    audioPlayer = try AVAudioPlayer(data: eval.imageData)
+                }catch{
+                    print("Error \(error)")
+                }
+            }
         }
         
     }
     
-
+    @IBAction func playBtnPressed(_ sender: Any) {
+        audioPlayer.play()
+    }
+    
     /*
     // MARK: - Navigation
 

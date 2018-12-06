@@ -20,13 +20,16 @@ class Trial {
     var completed: Bool
     var users: [User]
     var status: Status
+    var branches: [Branch]?
+    var startDate: String
+    var targetEndDate: String
     
-    init(name: String, completed: Bool, id: Int, users:[User], status: Int){
+    init(name: String, completed: Bool, id: Int, users:[User], status: Int,
+         branches: [Branch], startDate: String, targetEndDate: String){
         self.name = name
         self.completed = completed
         self.id = id
         self.users = users
-        
         if (status == 0){
             self.status = Status.Todo
         } else if (status == 1){
@@ -34,6 +37,9 @@ class Trial {
         } else {
             self.status = Status.Completed
         }
+        self.branches = branches
+        self.startDate = startDate
+        self.targetEndDate = targetEndDate
     }
     
 }

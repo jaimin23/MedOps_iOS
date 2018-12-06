@@ -18,8 +18,6 @@ class TrialDetailsController: UIViewController{
     @IBOutlet weak var trialNameLbl: UILabel!
     @IBOutlet weak var trialStatusBtn: UIBarButtonItem!
     @IBOutlet weak var trialDetailViewTable: UITableView!
-//    @IBOutlet weak var rangeSlider: RangeSlider!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tbvc = self.tabBarController as? TrialTabController
@@ -33,14 +31,6 @@ class TrialDetailsController: UIViewController{
         trialDetailViewTable.register(PieChartCell.nib, forCellReuseIdentifier: PieChartCell.identifier)
         //changeStatusButton()
         // Do any additional setup after loading the view.
-//        self.userView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        userView.delegate = self
-//        userView.dataSource = self
-//        self.userView.isHidden = true
-////        self.userView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        userView.delegate = self as! UITableViewDelegate
-//        userView.dataSource = self as! UITableViewDataSource
-        //changeStatusButton()
     }
     
     @IBAction func onChangeTrialStatus(_ sender: Any) {
@@ -103,29 +93,4 @@ class TrialDetailsController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func onManageQuestionaire(_ sender: Any) {
-//        performSegue(withIdentifier: "showQuestions", sender: self)
-    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "showEvals"{
-//            let evalList = segue.destination as? RecentEvaluationsView
-//            if let id = _trial?.id{
-//                evalList?._trialId = id
-//            }
-//
-//        }
-//        else if segue.identifier == "branch"{
-//            let branchList = segue.destination as? BranchListController
-//            if let id = _trial?.id {
-//                branchList?.trialId = id
-//            }
-//        }
-//        else {
-//            let questionaireList = segue.destination as? QuestionnaireListView
-//            questionaireList?.trial = _trial
-//        }
-//    }
 }

@@ -8,11 +8,13 @@ PODS:
     - Starscream (= 3.0.5)
   - Starscream (3.0.5)
   - SwiftRangeSlider (2.0.0)
+  - Swime (3.0.1)
 
 DEPENDENCIES:
   - Charts (~> 3.2.1)
   - IBMWatsonSpeechToTextV1 (~> 0.38.1)
   - SwiftRangeSlider (~> 2.0.0)
+  - Swime (~> 3.0.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -21,6 +23,7 @@ SPEC REPOS:
     - IBMWatsonSpeechToTextV1
     - Starscream
     - SwiftRangeSlider
+    - Swime
 
 SPEC CHECKSUMS:
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
@@ -28,7 +31,8 @@ SPEC CHECKSUMS:
   IBMWatsonSpeechToTextV1: 437177d1dcb82037951f7a6e606235d1c8bc2438
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftRangeSlider: f86e3b637c961120158fa1a89277c8343845cbe4
+  Swime: da7f606c7a059f8744bc723aec243af1fb914476
 
-PODFILE CHECKSUM: ebe0a14b4e1238cc299ac1983ac9a1de4d5efd93
+PODFILE CHECKSUM: d21e58c903d9b9a628c60d35dab289bacea052c0
 
 COCOAPODS: 1.5.2

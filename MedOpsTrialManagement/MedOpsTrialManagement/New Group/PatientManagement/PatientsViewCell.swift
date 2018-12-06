@@ -21,6 +21,8 @@ class PatientsViewCell: UITableViewCell{
         userType.text = getUserTypeValue(userType: patient.userType!)
     }
     
+    @IBAction func didPressApprove(_ sender: Any) {
+    }
     func getUserTypeValue(userType: Int) -> String{
         switch userType {
         case 0:

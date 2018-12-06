@@ -11,6 +11,7 @@ target 'MedOpsTrialManagement' do
   pod 'Charts', '~> 3.2.1'
   pod 'IBMWatsonSpeechToTextV1', '~> 0.38.1'
   pod 'SwiftRangeSlider', '~> 2.0.0'
+  pod 'Swime', '~> 3.0.1'
 
   target 'MedOpsTrialManagementTests' do
     inherit! :search_paths

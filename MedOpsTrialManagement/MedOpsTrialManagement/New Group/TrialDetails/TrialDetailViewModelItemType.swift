@@ -176,3 +176,4 @@ func getGraphData() -> [QuestionData]?{
     }
     return nil
 }
+

@@ -12,7 +12,7 @@ class PatientsListViewController: UIViewController {
     var _trial : Trial?
     var _branches: [Branch] = []
     var api = APIManager()
-    
+    var pullToRefresh = UIRefreshControl()
     @IBOutlet weak var patientTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,8 @@ class PatientsListViewController: UIViewController {
         patientTableView.delegate = self
         patientTableView.dataSource = self
         // TODO switch to api call
-        
+        pullToRefresh.attributedTitle = NSAttributedString(string: "Fetching Data")
+        pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
         guard let trialId = _trial?.id else {return}
         
         api.getBranches(trialId: trialId, onComplete: {result in
@@ -29,6 +30,21 @@ class PatientsListViewController: UIViewController {
         })
         
         // Do any additional setup after loading the view.
+    }
+    @objc func refresh(_ sender: Any){
+//        api.getTrials { trialData in
+//            self._trials = trialData
+//            DispatchQueue.main.async {
+//                self.trialList.reloadData()
+//                self.pullToRefresh.endRefreshing()
+//            }
+//        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
     }
     
 
@@ -122,16 +138,19 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
         print(_trial?.users[indexPath.row])
         guard let user = _trial?.users[indexPath.row] else {return}
         
-        if (user.status == 0){
-            let alert = UIAlertController(title: "Approve Patient", message: "This patient is currently pending approval. Would you like to approve them?", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { action in
-                self.displayBranchSelection(patient: user)
-            }))
-                
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
-        } else {
+//        if (user.status == 0){
+//            let alert = UIAlertController(title: "Approve Patient", message: "This patient is currently pending approval. Would you like to approve them?", preferredStyle: .alert)
+//
+//            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { action in
+//                self.displayBranchSelection(patient: user)
+//            }))
+//
+//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//            self.present(alert, animated: true)
+//        } else {
+//            performSegue(withIdentifier: "showPatientEval", sender: self)
+//        }
+        if(user.status != 0){
             performSegue(withIdentifier: "showPatientEval", sender: self)
         }
     }
