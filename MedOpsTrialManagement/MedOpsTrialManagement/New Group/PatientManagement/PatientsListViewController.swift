@@ -157,6 +157,13 @@ class PatientsListViewController: UIViewController {
     
 
 }
+extension PatientsListViewController: PatientCellDelegate{
+    func didTapApprovePatient(patient: User) {
+        self.displayBranchSelection(patient: patient)
+        
+    }
+}
+
 extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (_trial?.users.count) ?? 0
@@ -166,6 +173,10 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "patientsCell") as! PatientsViewCell
 
         cell.setPatient(patient: (_trial?.users[indexPath.row])!)
+        if(_trial?.users[indexPath.row].userType == 3){
+            cell.ApproveBtn.isHidden = true
+        }
+        cell.delegate = self
         return cell
     }
     
@@ -185,7 +196,7 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
 //        } else {
 //            performSegue(withIdentifier: "showPatientEval", sender: self)
 //        }
-        if(user.status != 0){
+        if(user.status != 0 || user.userType != 3){
             performSegue(withIdentifier: "showPatientEval", sender: self)
         }
     }

@@ -13,15 +13,20 @@ class APIManager {
     let scheme : String
     let domain : String
     let cloudDomain: String
+//    let port: String
     
     init(){
         scheme = "http"
-        domain = "192.168.0.104:5000"
+        domain = "167.99.231.175"
+        //port = "3000"
+//        cloudDomain = self.scheme + "://" + self.domain + ":" + self.port
         cloudDomain = self.scheme + "://" + self.domain
     }
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
+//        let urlString : String = "\(scheme)://\(domain):\(port)/api/trial/pitrials"
         let urlString : String = "\(scheme)://\(domain)/api/trial/pitrials"
+
         //let urlString: String = "{}/api/trial/"
         var parsedTrialData : [Trial] = []
         let steps: [Step] = []
@@ -750,6 +755,7 @@ class APIManager {
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
         urlComponent.host = self.domain
+//        urlComponent.port = Int(self.port)
         urlComponent.path = "/api/trial"
         guard let url = urlComponent.url else{
             fatalError("Could not create url")

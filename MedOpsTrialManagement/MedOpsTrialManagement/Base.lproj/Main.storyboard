@@ -250,8 +250,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Luz-Qa-QP3">
-                                                    <rect key="frame" x="618" y="34" width="135" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Luz-Qa-QP3">
+                                                    <rect key="frame" x="661" y="34" width="91" height="31.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -259,10 +259,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="xk7-0E-4Cv" firstAttribute="top" secondItem="OnT-L7-OfL" secondAttribute="top" constant="34" id="4cS-Qj-v62"/>
-                                                <constraint firstItem="Luz-Qa-QP3" firstAttribute="top" secondItem="OnT-L7-OfL" secondAttribute="top" constant="40" id="J0F-Jh-dyX"/>
                                                 <constraint firstItem="xk7-0E-4Cv" firstAttribute="leading" secondItem="OnT-L7-OfL" secondAttribute="leading" constant="27" id="MgG-Bo-tYX"/>
-                                                <constraint firstAttribute="trailing" secondItem="Luz-Qa-QP3" secondAttribute="trailing" constant="15" id="VPL-p0-nXp"/>
-                                                <constraint firstAttribute="bottom" secondItem="Luz-Qa-QP3" secondAttribute="bottom" constant="38.5" id="quD-n4-pRp"/>
+                                                <constraint firstAttribute="bottom" secondItem="Luz-Qa-QP3" secondAttribute="bottom" constant="34" id="XTf-35-d62"/>
+                                                <constraint firstItem="Luz-Qa-QP3" firstAttribute="top" secondItem="OnT-L7-OfL" secondAttribute="top" constant="34" id="bOE-ZH-RgN"/>
+                                                <constraint firstAttribute="trailing" secondItem="Luz-Qa-QP3" secondAttribute="trailing" constant="16" id="pzb-py-tQg"/>
                                                 <constraint firstAttribute="bottom" secondItem="xk7-0E-4Cv" secondAttribute="bottom" constant="34" id="yUw-tG-KVj"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -405,6 +405,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trial Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bN-SA-Ben">
+                                <rect key="frame" x="318" y="61" width="133" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -440,8 +446,10 @@
                             <constraint firstItem="ISZ-BL-e7S" firstAttribute="top" secondItem="m9W-si-kTi" secondAttribute="bottom" constant="8" id="kyA-2j-m5j"/>
                             <constraint firstItem="hBE-ni-3BZ" firstAttribute="top" secondItem="jci-xI-1xk" secondAttribute="bottom" constant="28" id="mx2-3X-fH0"/>
                             <constraint firstItem="Tcg-cF-UMP" firstAttribute="top" secondItem="2NS-Nb-feR" secondAttribute="top" constant="76" id="oyu-kG-2LQ"/>
+                            <constraint firstItem="8bN-SA-Ben" firstAttribute="top" secondItem="2NS-Nb-feR" secondAttribute="top" constant="41" id="tBH-iZ-MSV"/>
                             <constraint firstItem="nsg-vJ-iKg" firstAttribute="leading" secondItem="Tcg-cF-UMP" secondAttribute="trailing" constant="12" id="xzD-cU-Dar"/>
                             <constraint firstItem="2NS-Nb-feR" firstAttribute="trailing" secondItem="nsg-vJ-iKg" secondAttribute="trailing" constant="24" id="yz7-py-MB1"/>
+                            <constraint firstItem="8bN-SA-Ben" firstAttribute="leading" secondItem="2NS-Nb-feR" secondAttribute="leading" constant="318" id="zUo-tk-wYp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2NS-Nb-feR"/>
                     </view>
@@ -891,7 +899,7 @@
             </objects>
             <point key="canvasLocation" x="167.96875" y="1668.75"/>
         </scene>
-        <!--Patients List View Controller-->
+        <!--Patients-->
         <scene sceneID="uQ5-VK-OP7">
             <objects>
                 <viewController id="Jm7-ND-NoD" customClass="PatientsListViewController" customModule="MedOpsTrialManagement" customModuleProvider="target" sceneMemberID="viewController">
@@ -949,7 +957,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Approve"/>
                                                     <connections>
-                                                        <action selector="didPressApprove:" destination="c0v-le-9FQ" eventType="touchUpInside" id="30G-NH-Dn6"/>
+                                                        <action selector="didTapApprove:" destination="c0v-le-9FQ" eventType="touchUpInside" id="ATW-iz-6xr"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -964,6 +972,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="ApproveBtn" destination="94e-3B-ccD" id="c2H-C3-6ZO"/>
                                             <outlet property="applicationStatusLbl" destination="aym-Em-mzH" id="kqN-kE-FlN"/>
                                             <outlet property="uniqueIdLbl" destination="Sp4-sX-e3F" id="aEy-c0-xHH"/>
                                             <outlet property="userType" destination="sp1-MC-V0u" id="fSH-2e-JT1"/>
@@ -981,6 +990,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Drv-5G-XiM"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Patients" image="icons8-user-account-50" id="HPq-qw-5dm"/>
                     <navigationItem key="navigationItem" id="KSU-p8-Oeb">
                         <barButtonItem key="rightBarButtonItem" title="Assign Nurse" id="pOU-bA-niD">
                             <connections>
@@ -1485,21 +1495,44 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-nq-K31">
+                                <rect key="frame" x="196" y="298" width="377" height="155"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Go9-dI-OhU">
+                                        <rect key="frame" x="165.5" y="56.5" width="46" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Play">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Go9-dI-OhU" firstAttribute="centerX" secondItem="hRA-nq-K31" secondAttribute="centerX" id="inb-le-5Le"/>
+                                    <constraint firstItem="Go9-dI-OhU" firstAttribute="centerY" secondItem="hRA-nq-K31" secondAttribute="centerY" id="krr-PD-blw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Yrt-bl-HEd" firstAttribute="top" secondItem="Gbu-3W-NMU" secondAttribute="bottom" constant="8" symbolic="YES" id="1Pr-ov-0Tp"/>
+                            <constraint firstItem="hRA-nq-K31" firstAttribute="top" secondItem="tR7-h7-38D" secondAttribute="top" constant="298" id="4Jc-9e-mYA"/>
+                            <constraint firstItem="Yrt-bl-HEd" firstAttribute="top" secondItem="hRA-nq-K31" secondAttribute="bottom" constant="236" id="7lW-H1-UtW"/>
                             <constraint firstItem="Gbu-3W-NMU" firstAttribute="leading" secondItem="tR7-h7-38D" secondAttribute="leadingMargin" id="AZq-nk-9CL"/>
+                            <constraint firstAttribute="trailing" secondItem="hRA-nq-K31" secondAttribute="trailing" constant="195" id="HID-Cu-tOc"/>
                             <constraint firstItem="Gbu-3W-NMU" firstAttribute="trailing" secondItem="tR7-h7-38D" secondAttribute="trailingMargin" id="L6P-6x-KOP"/>
                             <constraint firstItem="0x3-Mb-biJ" firstAttribute="bottom" secondItem="Yrt-bl-HEd" secondAttribute="bottom" constant="23" id="aiN-0a-b06"/>
                             <constraint firstItem="0x3-Mb-biJ" firstAttribute="trailing" secondItem="Yrt-bl-HEd" secondAttribute="trailing" constant="29" id="p5a-X8-tgs"/>
+                            <constraint firstItem="hRA-nq-K31" firstAttribute="leading" secondItem="tR7-h7-38D" secondAttribute="leading" constant="196" id="pF6-Fr-V1b"/>
                             <constraint firstItem="Gbu-3W-NMU" firstAttribute="leading" secondItem="Yrt-bl-HEd" secondAttribute="leading" id="sUM-7z-76C"/>
                             <constraint firstItem="Gbu-3W-NMU" firstAttribute="top" secondItem="0x3-Mb-biJ" secondAttribute="top" id="ukZ-bC-hI0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0x3-Mb-biJ"/>
                     </view>
                     <connections>
+                        <outlet property="audioPlayerView" destination="hRA-nq-K31" id="2un-dN-8qE"/>
                         <outlet property="evalDataImage" destination="Gbu-3W-NMU" id="wOx-a1-AaM"/>
+                        <outlet property="playBtn" destination="Go9-dI-OhU" id="5el-40-wiE"/>
                         <outlet property="questionScroller" destination="Yrt-bl-HEd" id="6yW-Oy-BrZ"/>
                     </connections>
                 </viewController>
@@ -1662,8 +1695,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="GLq-n9-pDU" kind="relationship" relationship="viewControllers" id="Vc7-x7-Ncv"/>
-                        <segue destination="Jm7-ND-NoD" kind="relationship" relationship="viewControllers" id="1tf-kZ-mQl"/>
                         <segue destination="1Ro-ZJ-sbB" kind="relationship" relationship="viewControllers" id="Q5e-MT-hBz"/>
+                        <segue destination="Jm7-ND-NoD" kind="relationship" relationship="viewControllers" id="DMJ-Lp-laV"/>
                         <segue destination="fYZ-PK-nIa" kind="relationship" relationship="viewControllers" id="m4o-zM-LVM"/>
                     </connections>
                 </tabBarController>
@@ -1843,6 +1876,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Cr1-h1-IDI"/>
         <segue reference="nff-SR-1JZ"/>
-        <segue reference="1tf-kZ-mQl"/>
+        <segue reference="DMJ-Lp-laV"/>
     </inferredMetricsTieBreakers>
 </document>
