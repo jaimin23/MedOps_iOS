@@ -89,10 +89,10 @@ class PatientsListViewController: UIViewController {
         if segue.identifier == "showPatientEval"{
             let evalView = segue.destination as? RecentEvaluationsView
             if let indexPath = self.patientTableView.indexPathForSelectedRow {
-                let selectedPatient = _trial?.users[indexPath.row]
+                let selectedPatient = _userTrials[indexPath.row].patient
                 
-                guard let patientId = selectedPatient?.id else {return}
-                evalView?._patientId = patientId
+                let patientId = selectedPatient.id
+                evalView?._patientId = patientId!
             }
         } else if segue.identifier == "nurseCreate" {
             let createView = segue.destination as? NurseCreationViewController
