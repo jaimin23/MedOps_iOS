@@ -16,9 +16,14 @@ class PatientsViewCell: UITableViewCell{
     @IBOutlet weak var userType: UILabel!
     
     func setPatient(patient: User){
-        uniqueIdLbl.text = patient.userUniqueId
-        applicationStatusLbl.text = getApplicationStatusValue(status: patient.status!)
+        uniqueIdLbl.text = "\(patient.firstName!) \(patient.lastName!)"
         userType.text = getUserTypeValue(userType: patient.userType!)
+
+        if patient.userType != 0{
+            applicationStatusLbl.text = "Evaluating Patients"
+        } else {
+            applicationStatusLbl.text = getApplicationStatusValue(status: patient.status!)
+        }
     }
     
     @IBAction func didPressApprove(_ sender: Any) {

@@ -9,12 +9,14 @@ PODS:
   - Starscream (3.0.5)
   - SwiftRangeSlider (2.0.0)
   - Swime (3.0.1)
+  - UPCarouselFlowLayout (1.1.2)
 
 DEPENDENCIES:
   - Charts (~> 3.2.1)
   - IBMWatsonSpeechToTextV1 (~> 0.38.1)
   - SwiftRangeSlider (~> 2.0.0)
   - Swime (~> 3.0.1)
+  - UPCarouselFlowLayout
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -24,6 +26,7 @@ SPEC REPOS:
     - Starscream
     - SwiftRangeSlider
     - Swime
+    - UPCarouselFlowLayout
 
 SPEC CHECKSUMS:
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
@@ -32,7 +35,8 @@ SPEC CHECKSUMS:
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftRangeSlider: f86e3b637c961120158fa1a89277c8343845cbe4
   Swime: da7f606c7a059f8744bc723aec243af1fb914476
+  UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: d21e58c903d9b9a628c60d35dab289bacea052c0
+PODFILE CHECKSUM: 8c527df37f39106786b2d5c86b50249f1b284ce2
 
 COCOAPODS: 1.5.2

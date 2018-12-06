@@ -45,13 +45,20 @@ class BranchListController: UIViewController {
     }
     
     @objc func refresh(_ sender: Any){
+        loadData()
+    }
+    
+    func loadData(){
         api.getBranches(trialId: trialId, onComplete: {(branches) in
             self.branches = branches
             DispatchQueue.main.async {
                 self.branchTable.reloadData()
             }
         })
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

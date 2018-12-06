@@ -50,6 +50,16 @@ class TrialListController: UIViewController {
         }
 
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        api.getTrials { trialData in
+            self._trials = trialData
+            DispatchQueue.main.async {
+                self.trialList.reloadData()
+                self.pullToRefresh.endRefreshing()
+            }
+        }
+    }
 
 }
 

@@ -52,6 +52,10 @@ class QuestionnaireListView: UIViewController {
         })
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        load()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createQuestion"{
             let createQuestionView = segue.destination as? CreateQuestionView

@@ -21,10 +21,27 @@ class CreateBranchController: UIViewController {
     var trialId : Int = 0
     let api = APIManager()
     
+    var promptedQuestionnaireId = 0
+    
 
     @IBOutlet weak var hypoTextField: UITextField!
     @IBOutlet weak var noBranchLbl: UILabel!
     @IBAction func addStep(_ sender: Any) {
+        
+        
+        let alert = UIAlertController(title: "Assign Questionnaire", message: "Would you like to add a new questionnaire or an existing one?", preferredStyle: .alert)
+        
+        
+        alert.addAction(UIAlertAction(title: "New Questionnaire", style: .default, handler:
+            { handler in
+                self.onCreateNewQuestionnaire()
+        }))
+        alert.addAction(UIAlertAction(title: "Existing Questionnaire", style: .default, handler: { handler in
+            self.onAssignQuestionnaire()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        
         
         if (availableQuestionnaires.count == 0){
             let alert = UIAlertController(title: "No Available Questionnaires", message: "There are no available questionnaires. Please create one from the Questionnaire Management Panel", preferredStyle: UIAlertControllerStyle.alert)
@@ -33,6 +50,29 @@ class CreateBranchController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
         
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func onCreateNewQuestionnaire(){
+        let alert = UIAlertController(title: "Create new Questionnaire", message: "Please provide the name of the questionnaire", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {(textField) in
+            
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert!.textFields![0]
+            let newQuestionnaire = Questionnaire(id: 0, title: textField.text!, questions: [], trialId: self.trialId)
+            self.availableQuestionnaires.append(newQuestionnaire)
+            self.createField(questionnaire: newQuestionnaire)
+        }))
+        
+        self.present(alert, animated: true)
+        
+
+    }
+    
+    func onAssignQuestionnaire(){
         let alert = UIAlertController(title: "Questionnaire Selection", message: "Please select which questionnaire is to be associated to this step of the branch", preferredStyle: UIAlertControllerStyle.alert)
         
         for q in availableQuestionnaires{
@@ -55,16 +95,53 @@ class CreateBranchController: UIViewController {
         
         // Depending on where the latest text field was placed, place the next one
         // so that it is below it
-        let newStepField = UITextField(frame: CGRect(x: 40, y: pivot, width: screenWidth - 80, height: 40))
+        let newStepField = UITextField(frame: CGRect(x: 40, y: pivot, width: screenWidth - 400, height: 40))
+        let button = UIButton(frame: CGRect(x: screenWidth - 400 + 60, y:pivot, width: 300, height: 40))
+        button.backgroundColor = .blue
+        button.setTitle(questionnaire.title, for: .normal)
+        button.addTarget(self, action: #selector(questionnaireClicked), for: .touchUpInside)
+        
         newStepField.font = UIFont.systemFont(ofSize: 17)
         newStepField.keyboardType = UIKeyboardType.default
         newStepField.returnKeyType = UIReturnKeyType.done
         newStepField.borderStyle = UITextBorderStyle.roundedRect
         newStepField.placeholder = "Step Name"
         self.view.addSubview(newStepField)
+        self.view.addSubview(button)
         pivot += 50
         stepTexts.append(newStepField)
         selectedQuestionnaires.append(questionnaire)
+    }
+    
+    func getQuestionnaire(title: String) -> Questionnaire? {
+        for q in availableQuestionnaires{
+            if q.title == title {
+                return q
+            }
+        }
+        
+        return nil
+    }
+    
+    @objc func questionnaireClicked(sender: UIButton!){
+        let questionnaireName = sender.title(for: .normal)!
+        print(questionnaireName)
+        let selectedQuestionnaire = getQuestionnaire(title: questionnaireName)
+        
+        promptedQuestionnaireId = (selectedQuestionnaire?.id)!
+        performSegue(withIdentifier: "onModifyQuestionnaire", sender: self)
+        
+        
+        
+        print("To implement")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "onModifyQuestionnaire"{
+            let questionList = segue.destination as? QuestionnaireListView
+            questionList?._questionnaireId = promptedQuestionnaireId
+
+        }
     }
     
     @IBAction func saveBranch(_ sender: Any) {
@@ -91,7 +168,7 @@ class CreateBranchController: UIViewController {
             // Build the branch
             guard let hypoText = hypoTextField.text else {return}
             
-            var branch = Branch(id: 0, hyp: hypoText, steps: steps, trialId: self.trialId)
+            let branch = Branch(id: 0, hyp: hypoText, steps: steps, trialId: self.trialId)
             
         
             // send a POST request with the new data created

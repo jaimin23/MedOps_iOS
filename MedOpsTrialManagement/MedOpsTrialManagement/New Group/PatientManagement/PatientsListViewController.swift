@@ -24,10 +24,7 @@ class PatientsListViewController: UIViewController {
         pullToRefresh.attributedTitle = NSAttributedString(string: "Fetching Data")
         pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
         guard let trialId = _trial?.id else {return}
-        
-        api.getBranches(trialId: trialId, onComplete: {result in
-            self._branches = result
-        })
+        loadData()
         
         // Do any additional setup after loading the view.
     }
@@ -45,6 +42,17 @@ class PatientsListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
+    }
+    
+    func loadData(){
+        guard let trialId = _trial?.id else {return}
+        api.getBranches(trialId: trialId, onComplete: {result in
+        self._branches = result
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
     }
     
 
@@ -93,6 +101,9 @@ class PatientsListViewController: UIViewController {
                 guard let patientId = selectedPatient?.id else {return}
                 evalView?._patientId = patientId
             }
+        } else if segue.identifier == "nurseCreate" {
+            let createView = segue.destination as? NurseCreationViewController
+            createView?.trialId = (self._trial?.id)!
         }
     }
     
@@ -114,11 +125,36 @@ class PatientsListViewController: UIViewController {
         api.approvePatient(patientId: id, branchId: branch.id, onComplete: { isSuccess in
             if (isSuccess){
                 patient.status = 1
+                DispatchQueue.main.async {
+                    self.patientTableView.reloadData()
+                }
             } else {
                 // handle
             }
         })
     }
+    
+    @IBAction func onAssignNurse(_ sender: Any) {
+        let alert = UIAlertController(title: "Nurse Assignment", message: "Would you like to assign an existing or new nurse?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "New", style: .default, handler: {handler in
+                self.newNurse()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Existing", style: .default, handler: {handler in
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        
+        self.present(alert, animated: true)
+    }
+    
+    func newNurse(){
+        performSegue(withIdentifier: "nurseCreate", sender: self)
+    }
+    
 
 }
 extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate{
@@ -128,9 +164,8 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "patientsCell") as! PatientsViewCell
-        cell.uniqueIdLbl.text = _trial?.users[indexPath.row].userUniqueId
-        cell.applicationStatusLbl.text = getApplicationStatusValue(status: _trial?.users[indexPath.row].status ?? 2)
-        cell.userType.text = getUserTypeValue(userType: _trial?.users[indexPath.row].userType ?? 4)
+
+        cell.setPatient(patient: (_trial?.users[indexPath.row])!)
         return cell
     }
     

@@ -8,18 +8,30 @@
 
 import UIKit
 import AVFoundation
-import Swime
+import Swime    
+import UPCarouselFlowLayout
 
 class EvaluationDetailsController: UIViewController {
     
+
     @IBOutlet weak var evalDataImage: UIImageView!
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var audioPlayerView: UIView!
     
+    @IBOutlet weak var questionScroller: UICollectionView!
     var evaluation: Evaluation?
     var audioPlayer = AVAudioPlayer()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        questionScroller.delegate = self
+        questionScroller.dataSource = self
+        
+        let layout = UPCarouselFlowLayout()
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 60, height: 200)
+        layout.scrollDirection = .horizontal
+        questionScroller.collectionViewLayout = layout
 
         //set the image being displayed
         if let eval = evaluation {
@@ -55,4 +67,21 @@ class EvaluationDetailsController: UIViewController {
     }
     */
 
+}
+
+extension EvaluationDetailsController : UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (evaluation?.responses.count)!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = questionScroller.dequeueReusableCell(withReuseIdentifier: "questionScroller", for: indexPath) as! QuestionCollectionCell
+        
+        cell.questionTitleText.text = evaluation?.responses[indexPath.row].questionText
+        cell.answerLabelText.text = evaluation?.responses[indexPath.row].answerText
+        
+        return cell
+    }
+    
+    
 }

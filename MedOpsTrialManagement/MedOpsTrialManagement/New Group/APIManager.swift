@@ -21,19 +21,31 @@ class APIManager {
     }
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
-        let urlString : String = "\(scheme)://\(domain)/api/trial/"
+        let urlString : String = "\(scheme)://\(domain)/api/trial/pitrials"
         //let urlString: String = "{}/api/trial/"
         var parsedTrialData : [Trial] = []
         let steps: [Step] = []
         
         let requestString = URL(string: urlString)
         
-        let request = URLRequest(url: requestString!)
+        var request = URLRequest(url: requestString!)
+        
+        if let token = UserDefaults.standard.value(forKey: "JWT") as? String {
+            print("Key was successfully saved")
+            let tokenString = "Bearer \(token)"
+            request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        } else {
+            completion([])
+        }
         
         let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
             guard let dataRes = data, error == nil else {
                 // handle error
                 return
+            }
+            if let httpResponse = res as? HTTPURLResponse {
+                print("Code \(httpResponse.statusCode)")
             }
             
             do {
@@ -589,9 +601,25 @@ class APIManager {
                     guard let id = eval["id"] as? Int else {return}
                     guard let date = eval["date"] as? String else {return}
                     guard let encodedData = eval["encodedImage"] as? String else {return}
+                    
+                    guard let pResponses = eval["patientResponses"] as? [[String: Any]] else {return}
+                    
+                    var responseList : [PatientResponse] = []
+                    
+                    for res in pResponses{
+                        guard let question = res["question"] as? [String:Any] else {return}
+                        guard let questionText = question["text"] as? String else {return}
+                        guard let answerText = res["response"] as? String else {return}
+                        
+                        responseList.append(PatientResponse(q: questionText, a: answerText))
+                        
+                        
+                    }
+                        
+                        
             
                     if let decodedData = Data(base64Encoded: encodedData, options: .ignoreUnknownCharacters) {
-                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData)
+                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData, res: responseList)
                         parsedEvalData.append(evaluation)
                     }
                     
@@ -683,8 +711,22 @@ class APIManager {
                     guard let date = eval["date"] as? String else {return}
                     guard let encodedData = eval["encodedImage"] as? String else {return}
                     
+                    guard let pResponses = eval["patientResponses"] as? [[String: Any]] else {return}
+                    
+                    var responseList : [PatientResponse] = []
+                    
+                    for res in pResponses{
+                        guard let question = res["question"] as? [String:Any] else {return}
+                        guard let questionText = question["text"] as? String else {return}
+                        guard let answerText = res["response"] as? String else {return}
+                        
+                        responseList.append(PatientResponse(q: questionText, a: answerText))
+                        
+                        
+                    }
+                    
                     if let decodedData = Data(base64Encoded: encodedData, options: .ignoreUnknownCharacters) {
-                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData)
+                        let evaluation : Evaluation = Evaluation(id: id, date: date, name: "user", image: decodedData, res: responseList)
                         parsedEvalData.append(evaluation)
                     }
                     
@@ -717,6 +759,12 @@ class APIManager {
         request.httpMethod = "POST"
         var headers = request.allHTTPHeaderFields ?? [:]
         headers["Content-Type"] = "application/json"
+        
+        if let token = UserDefaults.standard.value(forKey: "JWT") as? String {
+            headers["Authorization"] = "Bearer \(token)"
+        } else {
+            // todo handle
+        }
         request.allHTTPHeaderFields = headers
         
         let encoder = JSONEncoder()
@@ -737,6 +785,10 @@ class APIManager {
                 return
             }
             
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Code \(httpResponse.statusCode)")
+            }
+            
             if let data = responseData, let utf8Representation = String(data: data, encoding: .utf8){
                 print("Response", utf8Representation)
                 saved(true)
@@ -745,6 +797,47 @@ class APIManager {
             }
         }
         task.resume()
+    }
+    
+    func registerNurse(user: PIRegistration, trialId: Int, handler: @escaping (Bool) -> Void) {
+        let apiUrl = "\(cloudDomain)/auth/registernurse"
+        
+        let urlComp = URLComponents(string: apiUrl)
+        var request = URLRequest(url: (urlComp?.url)!)
+        
+        let body = [
+            "email": user.email,
+            "password": user.password,
+            "firstName": user.firstName,
+            "lastName": user.lastName,
+            "trialId": trialId
+            ] as [String : Any]
+        request.httpMethod = "POST"
+        
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let task = URLSession.shared.dataTask(with: request) {
+            (data, response, error) in
+            if(error != nil || data == nil) {
+                handler(false)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if (httpResponse.statusCode != 200){
+                    handler(false)
+                    print(response)
+                    print(data)
+                    return
+                }
+            }
+
+            
+
+        }
+        
+        task.resume()
+        
     }
     
 }
