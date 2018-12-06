@@ -59,34 +59,34 @@ class APIManager {
                     guard let title = trial["name"] as? String else {return}
                     guard let completed = trial["completed"] as? Bool else {return}
                     guard let id = trial["trialId"] as? Int else {return}
-                    guard let users = trial["userTrials"] as? [[String: Any]] else {return}
+                    
                     guard let status = trial["status"] as? Int else {return}
-                    for user in users{
-                        let uData = user["user"] as? [String: Any]
-                        let id = uData?["userId"] as? Int
-                        let firstName = uData?["firstName"] as? String
-                        let lastName = uData?["lastName"] as? String
-                        let userType = uData?["userType"] as? Int
-                        let uniqueId = uData?["userUniqueId"] as? String
-                        let applicationStatus = uData?["applicationStatus"] as? Int
-                        let address = uData?["address"] as? String
-                        let ethnicity = uData?["ethnicity"] as? String
-                        let age = uData?["age"] as? Int
-                        let email = uData?["email"] as? String
-                        let password = uData?["password"] as? String
-                        let newUser = User(id: id ?? 0,
-                                            firstName: firstName ?? "",
-                                           lastName: lastName ?? "",
-                                           userType: userType ?? 0,
-                                           userUniqueId: uniqueId ?? "",
-                                           status: applicationStatus ?? 0,
-                                           email: email ?? "",
-                                           address: address ?? "",
-                                           ethnicity: ethnicity ?? "",
-                                           age: age ?? 0,
-                                           password: password ?? "")
-                        usersList.append(newUser)
-                    }
+//                    for user in users{
+//                        let uData = user["user"] as? [String: Any]
+//                        let id = uData?["userId"] as? Int
+//                        let firstName = uData?["firstName"] as? String
+//                        let lastName = uData?["lastName"] as? String
+//                        let userType = uData?["userType"] as? Int
+//                        let uniqueId = uData?["userUniqueId"] as? String
+//                        let applicationStatus = uData?["applicationStatus"] as? Int
+//                        let address = uData?["address"] as? String
+//                        let ethnicity = uData?["ethnicity"] as? String
+//                        let age = uData?["age"] as? Int
+//                        let email = uData?["email"] as? String
+//                        let password = uData?["password"] as? String
+//                        let newUser = User(id: id ?? 0,
+//                                            firstName: firstName ?? "",
+//                                           lastName: lastName ?? "",
+//                                           userType: userType ?? 0,
+//                                           userUniqueId: uniqueId ?? "",
+//                                           status: applicationStatus ?? 0,
+//                                           email: email ?? "",
+//                                           address: address ?? "",
+//                                           ethnicity: ethnicity ?? "",
+//                                           age: age ?? 0,
+//                                           password: password ?? "")
+//                        usersList.append(newUser)
+//                    }
                     let newTrial = Trial(name: title, completed: completed, id: id, users:usersList, status: status)
                     parsedTrialData.append(newTrial)
                     
@@ -232,6 +232,80 @@ class APIManager {
 //        task.resume()
 //
 //    }
+    
+    func getTrialPatients(trialId: Int, onComplete patients: @escaping (_ patients: [UserTrials]) -> Void){
+        
+        let urlString : String = "\(scheme)://\(domain)/api/user/trialUsers?trialId=\(trialId)"
+        //let urlString: String = "{}/api/trial/"
+        var parsedTrialData : [UserTrials] = []
+        
+        
+        let requestString = URL(string: urlString)
+        
+        var request = URLRequest(url: requestString!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+            guard let dataRes = data, error == nil else {
+                // handle error
+                return
+            }
+            if let httpResponse = res as? HTTPURLResponse {
+                print("Code \(httpResponse.statusCode)")
+            }
+            
+            do {
+                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+                
+                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                    return
+                }
+                for uts in jsonArray {
+                    guard let approved = uts["isApproved"] as? Bool else {return}
+
+                    
+                    guard let uData = uts["user"] as? [String: Any] else {return}
+
+                    let id = uData["userId"] as? Int
+                    let firstName = uData["firstName"] as? String
+                    let lastName = uData["lastName"] as? String
+                    let userType = uData["userType"] as? Int
+                    let uniqueId = uData["userUniqueId"] as? String
+                    let applicationStatus = uData["applicationStatus"] as? Int
+                    let address = uData["address"] as? String
+                    let ethnicity = uData["ethnicity"] as? String
+                    let age = uData["age"] as? Int
+                    let email = uData["email"] as? String
+                    let password = uData["password"] as? String
+                                            let newUser = User(id: id ?? 0,
+                                                                firstName: firstName ?? "",
+                                                               lastName: lastName ?? "",
+                                                               userType: userType ?? 0,
+                                                               userUniqueId: uniqueId ?? "",
+                                                               status: applicationStatus ?? 0,
+                                                               email: email ?? "",
+                                                               address: address ?? "",
+                                                               ethnicity: ethnicity ?? "",
+                                                               age: age ?? 0,
+                                                               password: password ?? "")
+                    let ut = UserTrials(p: newUser, approved:  approved)
+                    parsedTrialData.append(ut)
+                    
+                }
+                
+                
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+            patients(parsedTrialData)
+            
+        }
+        
+        task.resume()
+        
+
+        
+    }
     
     func getQuestions(questionnaireId: Int, onComplete questions: @escaping (_ questions: [Question]) -> Void){
         let urlString: String = cloudDomain + "/api/trial/question?trialId=" + String(questionnaireId)

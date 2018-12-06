@@ -11,6 +11,7 @@ import UIKit
 class PatientsListViewController: UIViewController {
     var _trial : Trial?
     var _branches: [Branch] = []
+    var _userTrials : [UserTrials] = []
     var api = APIManager()
     
     @IBOutlet weak var patientTableView: UITableView!
@@ -33,6 +34,13 @@ class PatientsListViewController: UIViewController {
         guard let trialId = _trial?.id else {return}
         api.getBranches(trialId: trialId, onComplete: {result in
         self._branches = result
+        })
+        
+        api.getTrialPatients(trialId: trialId, onComplete: {result in
+            self._userTrials = result
+            DispatchQueue.main.async {
+                self.patientTableView.reloadData()
+            }
         })
     }
     
@@ -144,19 +152,18 @@ class PatientsListViewController: UIViewController {
 }
 extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (_trial?.users.count) ?? 0
+        return (_userTrials.count) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "patientsCell") as! PatientsViewCell
 
-        cell.setPatient(patient: (_trial?.users[indexPath.row])!)
+        cell.setPatient(patient: (_userTrials[indexPath.row].patient))
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(_trial?.users[indexPath.row])
-        guard let user = _trial?.users[indexPath.row] else {return}
+        let user = _userTrials[indexPath.row].patient
         
         // Only add the onclick for now if the user is a patient
         if (user.userType == 0) {

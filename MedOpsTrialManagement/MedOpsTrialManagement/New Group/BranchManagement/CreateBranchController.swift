@@ -18,6 +18,13 @@ class CreateBranchController: UIViewController {
     var availableQuestionnaires : [Questionnaire] = []
     // Tracks the questionnaires selected by the researcher
     var selectedQuestionnaires : [Questionnaire] = []
+    
+    // Determines whether or not to create the view as read only
+    var readOnly = false
+    
+    // For read only field
+    var branch : Branch?
+    
     var trialId : Int = 0
     let api = APIManager()
     
@@ -28,6 +35,12 @@ class CreateBranchController: UIViewController {
         self.api.getQuestionnaires(trialId: trialId, onComplete: {questionnaire in
             self.availableQuestionnaires = questionnaire
             print("questionnaire loading successful")
+            
+            if (self.readOnly){
+                DispatchQueue.main.async {
+                    self.initReadOnly()
+                }
+            }
         })
     }
     
@@ -48,16 +61,7 @@ class CreateBranchController: UIViewController {
             self.onAssignQuestionnaire()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        
-        
-        if (availableQuestionnaires.count == 0){
-            let alert = UIAlertController(title: "No Available Questionnaires", message: "There are no available questionnaires. Please create one from the Questionnaire Management Panel", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
-        }
-        
+    
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -131,6 +135,12 @@ class CreateBranchController: UIViewController {
         newStepField.returnKeyType = UIReturnKeyType.done
         newStepField.borderStyle = UITextBorderStyle.roundedRect
         newStepField.placeholder = "Step Name"
+        
+        // If the view is in read only mode, disable the field
+        if (readOnly){
+            newStepField.isUserInteractionEnabled = false
+            newStepField.text = questionnaire.title
+        }
         self.view.addSubview(newStepField)
         self.view.addSubview(button)
         pivot += 50
@@ -141,6 +151,16 @@ class CreateBranchController: UIViewController {
     func getQuestionnaire(title: String) -> Questionnaire? {
         for q in availableQuestionnaires{
             if q.title == title {
+                return q
+            }
+        }
+        
+        return nil
+    }
+    
+    func getQuestionnaire(id: Int) -> Questionnaire? {
+        for q in availableQuestionnaires{
+            if q.id == id {
                 return q
             }
         }
@@ -241,8 +261,21 @@ class CreateBranchController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.loadQuestionnaires()
-        
+    }
     
+    func initReadOnly(){
+        // Set the text and make it read only
+        hypoTextField.text = branch?.hypothesis
+        hypoTextField.isUserInteractionEnabled = false
+        
+        for step in (branch?.steps)! {
+            let stepQuestionnaire = getQuestionnaire(id: step.questionnaireId)
+            if (stepQuestionnaire == nil){
+                // TODO exception handling
+                return
+            }
+            createField(questionnaire: stepQuestionnaire!)
+        }
     }
     
 

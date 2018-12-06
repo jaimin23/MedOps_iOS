@@ -65,7 +65,18 @@ class BranchListController: UIViewController {
         if segue.identifier == "createBranch"{
             let destination = segue.destination as? CreateBranchController
             destination?.trialId = trialId
-        } 
+        } else if segue.identifier == "showBranch" {
+            let destination = segue.destination as? CreateBranchController
+            // Since the view is being loaded as read only, the branch details
+            // need to be retrieved
+            
+            if let indexPath = self.branchTable.indexPathForSelectedRow {
+                let branch = branches[indexPath.row]
+                destination?.trialId = trialId
+                destination?.branch = branch
+                destination?.readOnly = true
+            }
+        }
     }
     
 
@@ -88,7 +99,7 @@ extension BranchListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO
-        print(indexPath.row)
+        performSegue(withIdentifier: "showBranch", sender: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
