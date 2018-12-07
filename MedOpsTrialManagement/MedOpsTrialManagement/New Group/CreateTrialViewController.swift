@@ -49,7 +49,8 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         self.trialDiseasePicker.delegate = self
         self.trialDiseasePicker.dataSource = self
-        
+        self.trialDescription.layer.borderColor = UIColor.black.cgColor
+        self.trialDescription.layer.borderWidth = 1.0
         api.getDiseases{
             diseaseData in
             self.trialDiseasesData = diseaseData
@@ -73,28 +74,30 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
             Procedure: trialProcedureType.selectedRow(inComponent: 0),
             AvailableResults: trialPrivacyType.selectedRow(inComponent: 0),
             UserUniqueId: "Random123")
-        
-        api.createTrial(trial: trialData){ (error) in
-            if let error = error{
-                fatalError(error.localizedDescription)
+        api.createTrial(trial: trialData, onComplete: {(success) in
+            let alert: UIAlertController
+            if(!success) {
+                alert = UIAlertController(title: "Result", message: "Bad response \(trialData.Name)", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                    // TODO
+                }))
+            } else {
+                alert = UIAlertController(title: "Save Complete", message: "Trial Successfully Created!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
             }
-        }
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
-    @IBAction func cancel(_ sender: Any){
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func didPressMicButton(_ sender: UIButton){
+    @IBAction func didPressDecriptionMic(_ sender: Any) {
         speechToTextService = SpeechToText(apiKey: "6SR8RaGBRjXnAOKKimj09gbtJfIuQ9SQyjpM6ITDNP9T")
         if !isStreaming{
             isStreaming = true
-            if(title == "NameMicBtn"){
-                micButtonTitle.setImage(UIImage(named: "icons8-mute-30"), for: .normal)
-            }
-            else{
-                micButtonDescription.setImage(UIImage(named: "icons8-mute-30"), for: .normal)
-            }
+            micButtonDescription.setImage(UIImage(named: "icons8-mute-30"), for: .normal)
             let failure = {
                 (error: Error) in print(error)
             }
@@ -105,24 +108,42 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 results in
                 self.accumulator.add(results: results)
                 print(self.accumulator.bestTranscript)
-                let title = sender.title(for: .normal)!
-                if(title == "NameMicBtn"){
-                    self.trialNameField.text = self.accumulator.bestTranscript
-                }
-                else{
-                    self.trialDescription.text = self.accumulator.bestTranscript
-                }
+                self.trialDescription.text = self.accumulator.bestTranscript
+            }
+        }
+        else{
+            isStreaming = false
+            micButtonDescription.setImage(UIImage(named: "icons8-microphone-30"), for: .normal)
+            speechToTextService.stopRecognizeMicrophone()
+        }
+        
+    }
+    @IBAction func cancel(_ sender: Any){
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didPressMicButton(_ sender: UIButton){
+        speechToTextService = SpeechToText(apiKey: "6SR8RaGBRjXnAOKKimj09gbtJfIuQ9SQyjpM6ITDNP9T")
+        if !isStreaming{
+            isStreaming = true
+            micButtonTitle.setImage(UIImage(named: "icons8-mute-30"), for: .normal)
+            let failure = {
+                (error: Error) in print(error)
+            }
+            var settings = RecognitionSettings(contentType: "audio/ogg;codecs=opus")
+            settings.interimResults = true
+            speechToTextService.recognizeMicrophone(settings: settings, failure: failure) {
+                
+                results in
+                self.accumulator.add(results: results)
+                print(self.accumulator.bestTranscript)
+                self.trialNameField.text = self.accumulator.bestTranscript
                 
             }
         }
         else{
             isStreaming = false
-            if(title == "NameMicBtn"){
-                micButtonTitle.setImage(UIImage(named: "icons8-microphone-30"), for: .normal)
-            }
-            else{
-                micButtonDescription.setImage(UIImage(named: "icons8-microphone-30"), for: .normal)
-            }
+            micButtonTitle.setImage(UIImage(named: "icons8-microphone-30"), for: .normal)
             speechToTextService.stopRecognizeMicrophone()
         }
     }
@@ -155,7 +176,7 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if(self.trialDescription.text.isEmpty){
+        if(self.trialDescription.text.contains("Enter Description")){
             self.trialDescription.text = nil
         }
     }

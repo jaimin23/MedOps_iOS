@@ -13,7 +13,7 @@ class PatientsListViewController: UIViewController {
     var _branches: [Branch] = []
     var _userTrials : [UserTrials] = []
     var api = APIManager()
-    
+    var pullToRefresh = UIRefreshControl()
     @IBOutlet weak var patientTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +22,27 @@ class PatientsListViewController: UIViewController {
         patientTableView.delegate = self
         patientTableView.dataSource = self
         // TODO switch to api call
-        
-        
-        
+        pullToRefresh.attributedTitle = NSAttributedString(string: "Fetching Data")
+        pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        guard let trialId = _trial?.id else {return}
         loadData()
         
         // Do any additional setup after loading the view.
+    }
+    @objc func refresh(_ sender: Any){
+//        api.getTrials { trialData in
+//            self._trials = trialData
+//            DispatchQueue.main.async {
+//                self.trialList.reloadData()
+//                self.pullToRefresh.endRefreshing()
+//            }
+//        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
     }
     
     func loadData(){
@@ -151,6 +166,13 @@ class PatientsListViewController: UIViewController {
     
 
 }
+extension PatientsListViewController: PatientCellDelegate{
+    func didTapApprovePatient(patient: User) {
+        self.displayBranchSelection(patient: patient)
+        
+    }
+}
+
 extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (_userTrials.count)
@@ -159,27 +181,32 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "patientsCell") as! PatientsViewCell
 
+
         cell.setPatient(patient: (_userTrials[indexPath.row].patient))
+        if(_userTrials[indexPath.row].patient.userType == 3){
+            cell.ApproveBtn.isHidden = true
+        }
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = _userTrials[indexPath.row].patient
         
-        // Only add the onclick for now if the user is a patient
-        if (user.userType == 0) {
-            if (user.status == 0){
-                let alert = UIAlertController(title: "Approve Patient", message: "This patient is currently pending approval. Would you like to approve them?", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { action in
-                    self.displayBranchSelection(patient: user)
-                }))
-                
-                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                self.present(alert, animated: true)
-            } else {
-                performSegue(withIdentifier: "showPatientEval", sender: self)
-            }
+//        if (user.status == 0){
+//            let alert = UIAlertController(title: "Approve Patient", message: "This patient is currently pending approval. Would you like to approve them?", preferredStyle: .alert)
+//
+//            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { action in
+//                self.displayBranchSelection(patient: user)
+//            }))
+//
+//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//            self.present(alert, animated: true)
+//        } else {
+//            performSegue(withIdentifier: "showPatientEval", sender: self)
+//        }
+        if(user.status != 0 && user.userType != 3){
+            performSegue(withIdentifier: "showPatientEval", sender: self)
         }
     }
     

@@ -13,18 +13,23 @@ class APIManager {
     let scheme : String
     let domain : String
     let cloudDomain: String
+//    let port: String
     
     init(){
         scheme = "http"
         domain = "167.99.231.175"
+        //port = "3000"
+//        cloudDomain = self.scheme + "://" + self.domain + ":" + self.port
         cloudDomain = self.scheme + "://" + self.domain
     }
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
+//        let urlString : String = "\(scheme)://\(domain):\(port)/api/trial/pitrials"
         let urlString : String = "\(scheme)://\(domain)/api/trial/pitrials"
+
         //let urlString: String = "{}/api/trial/"
         var parsedTrialData : [Trial] = []
-        
+        let steps: [Step] = []
         
         let requestString = URL(string: urlString)
         
@@ -56,11 +61,15 @@ class APIManager {
                 }
                 for trial in jsonArray {
                     var usersList : [User] = []
+                    var branchList: [Branch] = []
                     guard let title = trial["name"] as? String else {return}
                     guard let completed = trial["completed"] as? Bool else {return}
                     guard let id = trial["trialId"] as? Int else {return}
                     
                     guard let status = trial["status"] as? Int else {return}
+                    guard let startDate = trial["startDate"] as? String else{return}
+                    guard let targetEndDate = trial["targetEndDate"] as? String else{return}
+                    let branches = trial["branches"] as? [[String: Any]]
 //                    for user in users{
 //                        let uData = user["user"] as? [String: Any]
 //                        let id = uData?["userId"] as? Int
@@ -70,7 +79,8 @@ class APIManager {
 //                        let uniqueId = uData?["userUniqueId"] as? String
 //                        let applicationStatus = uData?["applicationStatus"] as? Int
 //                        let address = uData?["address"] as? String
-//                        let ethnicity = uData?["ethnicity"] as? String
+//                        let ethnicity = uData?["ethnicity"] as? Int
+//                        let gender = uData?["gender"] as? Int
 //                        let age = uData?["age"] as? Int
 //                        let email = uData?["email"] as? String
 //                        let password = uData?["password"] as? String
@@ -82,12 +92,21 @@ class APIManager {
 //                                           status: applicationStatus ?? 0,
 //                                           email: email ?? "",
 //                                           address: address ?? "",
-//                                           ethnicity: ethnicity ?? "",
+//                                           ethnicity: ethnicity ?? 0,
 //                                           age: age ?? 0,
-//                                           password: password ?? "")
+//                                           password: password ?? "",
+//                                           gender: gender ?? 0)
 //                        usersList.append(newUser)
 //                    }
-                    let newTrial = Trial(name: title, completed: completed, id: id, users:usersList, status: status)
+                    for branch in branches ?? []{
+                        guard let id = branch["id"] as? Int else{return}
+                        guard let hypothesis = branch["hypothesis"] as? String else{return}
+                        guard let trialId = branch["trialId"] as? Int else{return}
+                        let newBranch = Branch(id: id, hyp: hypothesis, steps: steps, trialId: trialId)
+                        branchList.append(newBranch)
+                    }
+                    let newTrial = Trial(name: title, completed: completed, id: id, users:usersList, status: status,
+                                         branches: branchList, startDate: startDate, targetEndDate: targetEndDate)
                     parsedTrialData.append(newTrial)
                     
                 }
@@ -269,24 +288,26 @@ class APIManager {
                     let firstName = uData["firstName"] as? String
                     let lastName = uData["lastName"] as? String
                     let userType = uData["userType"] as? Int
-                    let uniqueId = uData["userUniqueId"] as? String
+                    let uniqueId = ""
                     let applicationStatus = uData["applicationStatus"] as? Int
-                    let address = uData["address"] as? String
-                    let ethnicity = uData["ethnicity"] as? String
+                    let address = uData["address"] as? String ?? ""
+                    let ethnicity = uData["ethnicity"] as? Int
+                    let gender = uData["gender"] as? Int
                     let age = uData["age"] as? Int
                     let email = uData["email"] as? String
-                    let password = uData["password"] as? String
-                                            let newUser = User(id: id ?? 0,
-                                                                firstName: firstName ?? "",
-                                                               lastName: lastName ?? "",
-                                                               userType: userType ?? 0,
-                                                               userUniqueId: uniqueId ?? "",
-                                                               status: applicationStatus ?? 0,
-                                                               email: email ?? "",
-                                                               address: address ?? "",
-                                                               ethnicity: ethnicity ?? "",
-                                                               age: age ?? 0,
-                                                               password: password ?? "")
+                    let password = ""
+                    let newUser = User(id: id!, firstName: firstName!, lastName: lastName!, userType: userType!, userUniqueId: uniqueId, status: applicationStatus!, email: email!, address: address, ethnicity: ethnicity!, age: age!, password: password, gender: gender!)
+//                                            let newUser = User(id: id ?? 0,
+//                                                                firstName: firstName ?? "",
+//                                                               lastName: lastName ?? "",
+//                                                               userType: userType ?? 0,
+//                                                               userUniqueId: uniqueId ?? "",
+//                                                               status: applicationStatus ?? 0,
+//                                                               email: email ?? "",
+//                                                               address: address ?? "",
+//                                                               ethnicity: ethnicity ?? "",
+//                                                               age: age ?? 0,
+//                                                               password: password ?? "")
                     let ut = UserTrials(p: newUser, approved:  approved)
                     parsedTrialData.append(ut)
                     
@@ -747,7 +768,6 @@ class APIManager {
     func getPatientEvaluations(patientId: Int, trialId: Int, onComplete evalData: @escaping (_ evalData: EvaluationProfile) -> Void){
         let urlString = cloudDomain + "/api/data/patientEvaluations?patientId=\(patientId)&trialId=\(trialId)"
         
-        
         var parsedEvalData : [Evaluation] = []
         
         let requestString = URL(string: urlString)
@@ -782,28 +802,19 @@ class APIManager {
                 
                 // Load user data
                 
-                let userId = uData["userId"] as? Int
+                let id = uData["userId"] as? Int
                 let firstName = uData["firstName"] as? String
                 let lastName = uData["lastName"] as? String
                 let userType = uData["userType"] as? Int
-                let uniqueId = uData["userUniqueId"] as? String
+                let uniqueId = ""
                 let applicationStatus = uData["applicationStatus"] as? Int
                 let address = uData["address"] as? String
-                let ethnicity = uData["ethnicity"] as? String
+                let ethnicity = uData["ethnicity"] as? Int
+                let gender = uData["gender"] as? Int
                 let age = uData["age"] as? Int
                 let email = uData["email"] as? String
-                let password = uData["password"] as? String
-                let newUser = User(id: userId ?? 0,
-                                   firstName: firstName ?? "",
-                                   lastName: lastName ?? "",
-                                   userType: userType ?? 0,
-                                   userUniqueId: uniqueId ?? "",
-                                   status: applicationStatus ?? 0,
-                                   email: email ?? "",
-                                   address: address ?? "",
-                                   ethnicity: ethnicity ?? "",
-                                   age: age ?? 0,
-                                   password: password ?? "")
+                let password = ""
+                let newUser = User(id: id!, firstName: firstName!, lastName: lastName!, userType: userType!, userUniqueId: uniqueId, status: applicationStatus!, email: email!, address: address!, ethnicity: ethnicity!, age: age!, password: password, gender: gender!)
                 
                 
                 // load eval data
@@ -842,10 +853,10 @@ class APIManager {
                 
                 guard let text = branch["hypothesis"] as? String else {return}
                 guard let steps = branch["steps"] as? [[String: Any]] else {return}
-                guard let id = branch["id"] as? Int else {return}
+                guard let branchId = branch["id"] as? Int else {return}
                 
                 
-                let branchObject = Branch(id: id, hyp: text, steps: [], trialId: id)
+                let branchObject = Branch(id: branchId, hyp: text, steps: [], trialId: id!)
                 
                 let evaluationProfile = EvaluationProfile(p: newUser, e: parsedEvalData, b: branchObject, a: active, st: stepNumber)
                 
@@ -864,10 +875,11 @@ class APIManager {
         task.resume()
     }
     
-    func createTrial(trial: TrialModel, completion:((Error?) -> Void)?){
+    func createTrial(trial: TrialModel, onComplete saved: @escaping (_ saved: Bool) -> Void){
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
         urlComponent.host = self.domain
+//        urlComponent.port = Int(self.port)
         urlComponent.path = "/api/trial"
         guard let url = urlComponent.url else{
             fatalError("Could not create url")
@@ -890,14 +902,16 @@ class APIManager {
             let jsonData = try encoder.encode(trial)
             request.httpBody = jsonData
         } catch{
-            completion?(error)
+            print(error)
+            saved(false)
         }
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: request){(responseData, response, responseError) in
             guard responseError == nil else{
-                completion?(responseError!)
+                print(responseError!)
+                saved(false)
                 return
             }
             
@@ -907,6 +921,7 @@ class APIManager {
             
             if let data = responseData, let utf8Representation = String(data: data, encoding: .utf8){
                 print("Response", utf8Representation)
+                saved(true)
             }else{
                 print("no data recieved")
             }

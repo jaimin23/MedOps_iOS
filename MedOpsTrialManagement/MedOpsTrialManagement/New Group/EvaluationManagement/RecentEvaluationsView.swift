@@ -58,7 +58,6 @@ class RecentEvaluationsView: UIViewController {
                     self.statusLbl.backgroundColor = UIColor.orange
                 } else {
                     self.statusLbl.text = "Completed all evaluations"
-                    self.statusLbl.backgroundColor = UIColor.green
                 }
                 
                 

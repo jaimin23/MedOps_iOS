@@ -18,9 +18,10 @@ class User: Codable {
     var address: String?
     var ethnicity: String?
     var age: Int?
+    var gender: String?
     var password: String?
     
-    init(id: Int, firstName: String, lastName: String, userType: Int, userUniqueId: String, status: Int, email: String, address: String, ethnicity: String, age: Int, password: String) {
+    init(id: Int, firstName: String, lastName: String, userType: Int, userUniqueId: String, status: Int, email: String, address: String, ethnicity: Int, age: Int, password: String, gender: Int) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
@@ -29,9 +30,32 @@ class User: Codable {
         self.status = status
         self.email = email
         self.address = address
-        self.ethnicity = ethnicity
+        self.ethnicity = getEtnicity(ethnicity: ethnicity)
         self.age = age
         self.password = password
+        self.gender = getGernder(gender: gender)
+    }
+    
+    func getEtnicity(ethnicity: Int) -> String{
+        switch ethnicity {
+        case 0: return "Caucasian"
+        case 1: return "Hispanic or Latino"
+        case 2: return "Native American"
+        case 3: return "African American"
+        case 4: return "Asain"
+        case 5: return "Other"
+        default:
+            return ""
+        }
+    }
+    func getGernder(gender: Int) -> String{
+        switch gender {
+        case 0: return "Male"
+        case 1: return "Female"
+        case 2: return "Other"
+        default:
+            return ""
+        }
     }
     
     func getName() -> String {

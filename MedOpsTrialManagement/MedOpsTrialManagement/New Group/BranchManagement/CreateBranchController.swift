@@ -33,14 +33,15 @@ class CreateBranchController: UIViewController {
     func loadQuestionnaires(){
         // Load the available questionnaires from the list
         self.api.getQuestionnaires(trialId: trialId, onComplete: {questionnaire in
-            self.availableQuestionnaires = questionnaire
-            print("questionnaire loading successful")
             
-            if (self.readOnly){
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                self.availableQuestionnaires = questionnaire
+                print("questionnaire loading successful")
+                if (self.readOnly){
                     self.initReadOnly()
                 }
             }
+
         })
     }
     
