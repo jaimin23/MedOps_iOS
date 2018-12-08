@@ -7,10 +7,16 @@
 //
 import Foundation
 
-struct QuestionData{
+class QuestionData{
     var question:String
     var options:[String]
     var answers:[MockPerson]
+    
+    init(question: String, options: [String], answers: [MockPerson]) {
+        self.question = question
+        self.options = options
+        self.answers = answers
+    }
 }
 
 struct MockPerson{
@@ -19,3 +25,9 @@ struct MockPerson{
     var age:Int
 }
 
+struct EvalData{
+    var quetion:String
+    var answer:String
+    var age: Int
+    var gender: Int
+}

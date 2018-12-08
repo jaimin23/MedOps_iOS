@@ -32,7 +32,7 @@ class Trial {
         self.users = users
         if (status == 0){
             self.status = Status.Todo
-        } else if (status == 1){
+        } else if (status == 2){
             self.status = Status.InProgress
         } else {
             self.status = Status.Completed

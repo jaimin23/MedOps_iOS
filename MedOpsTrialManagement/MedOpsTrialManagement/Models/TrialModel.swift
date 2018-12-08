@@ -10,8 +10,9 @@ import Foundation
 struct TrialModel: Codable{
     let Name: String
     let Description: String
-    let DiseaseId: Int
+    let TrialObjective: String
     let Procedure: Int
     let AvailableResults: Int
-    let UserUniqueId: String
+    let StartDate: String
+    let TargetEndDate: String
 }

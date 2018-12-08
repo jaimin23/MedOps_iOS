@@ -14,11 +14,11 @@ class TrialDetailsInitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let splitVC = storyboard?.instantiateViewController(withIdentifier: "splitVC") as! UISplitViewController
-        self.addChildViewController(splitVC)
-        splitVC.view.frame = CGRect(x: 0, y: 0, width: self.container.frame.size.width, height: self.container.frame.size.height)
-        self.container.addSubview(splitVC.view)
-        splitVC.didMove(toParentViewController: self)
+//        let splitVC = storyboard?.instantiateViewController(withIdentifier: "splitVC") as! UISplitViewController
+//        self.addChildViewController(splitVC)
+//        splitVC.view.frame = CGRect(x: 0, y: 0, width: self.container.frame.size.width, height: self.container.frame.size.height)
+//        self.container.addSubview(splitVC.view)
+//        splitVC.didMove(toParentViewController: self)
         // Do any additional setup after loading the view.
     }
     

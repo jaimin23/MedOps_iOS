@@ -13,13 +13,12 @@ class NurseCreationViewController: UIViewController {
     let defaultPassword = "Passw0rd@"
     
     var trialId = 0
-
+    var _trial: Trial?
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
