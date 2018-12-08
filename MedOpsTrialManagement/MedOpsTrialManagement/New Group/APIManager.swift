@@ -65,10 +65,16 @@ class APIManager {
                     guard let title = trial["name"] as? String else {return}
                     guard let completed = trial["completed"] as? Bool else {return}
                     guard let id = trial["trialId"] as? Int else {return}
-//                    guard let users = trial["userTrials"] as? [[String: Any]] else {return}
                     guard let status = trial["status"] as? Int else {return}
                     guard let startDate = trial["startDate"] as? String else{return}
                     guard let targetEndDate = trial["targetEndDate"] as? String else{return}
+                    guard let stats = trial["stats"] as? [String: Any] else {return}
+                    
+                    
+                    guard let branchCount = stats["branchCount"] as? Int else {return}
+                    guard let completedCount = stats["completedEvaluationCount"] as? Int else {return}
+                    guard let expectedCount = stats["expectedEvaluationCount"] as? Int else {return}
+                    // build trial stats
                     let branches = trial["branches"] as? [[String: Any]]
 //                    for user in users{
 //                        let uData = user["user"] as? [String: Any]
@@ -107,6 +113,7 @@ class APIManager {
                     }
                     let newTrial = Trial(name: title, completed: completed, id: id, users:usersList, status: status,
                                          branches: branchList, startDate: startDate, targetEndDate: targetEndDate)
+                    newTrial.stats = TrialStats(branch: branchCount, evals: completedCount, totalEvals: expectedCount)
                     parsedTrialData.append(newTrial)
                     
                 }
@@ -252,6 +259,82 @@ class APIManager {
 //        task.resume()
 //
 //    }
+    
+    func getTrialPatients(trialId: Int, onComplete patients: @escaping (_ patients: [UserTrials]) -> Void){
+        
+        let urlString : String = "\(scheme)://\(domain)/api/user/trialUsers?trialId=\(trialId)"
+        //let urlString: String = "{}/api/trial/"
+        var parsedTrialData : [UserTrials] = []
+        
+        
+        let requestString = URL(string: urlString)
+        
+        var request = URLRequest(url: requestString!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+            guard let dataRes = data, error == nil else {
+                // handle error
+                return
+            }
+            if let httpResponse = res as? HTTPURLResponse {
+                print("Code \(httpResponse.statusCode)")
+            }
+            
+            do {
+                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+                
+                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                    return
+                }
+                for uts in jsonArray {
+                    guard let approved = uts["isApproved"] as? Bool else {return}
+
+                    
+                    guard let uData = uts["user"] as? [String: Any] else {return}
+
+                    let id = uData["userId"] as? Int
+                    let firstName = uData["firstName"] as? String
+                    let lastName = uData["lastName"] as? String
+                    let userType = uData["userType"] as? Int
+                    let uniqueId = ""
+                    let applicationStatus = uData["applicationStatus"] as? Int
+                    let address = uData["address"] as? String ?? ""
+                    let ethnicity = uData["ethnicity"] as? Int
+                    let gender = uData["gender"] as? Int
+                    let age = uData["age"] as? Int
+                    let email = uData["email"] as? String
+                    let password = ""
+                    let newUser = User(id: id!, firstName: firstName!, lastName: lastName!, userType: userType!, userUniqueId: uniqueId, status: applicationStatus!, email: email!, address: address, ethnicity: ethnicity!, age: age!, password: password, gender: gender!)
+//                                            let newUser = User(id: id ?? 0,
+//                                                                firstName: firstName ?? "",
+//                                                               lastName: lastName ?? "",
+//                                                               userType: userType ?? 0,
+//                                                               userUniqueId: uniqueId ?? "",
+//                                                               status: applicationStatus ?? 0,
+//                                                               email: email ?? "",
+//                                                               address: address ?? "",
+//                                                               ethnicity: ethnicity ?? "",
+//                                                               age: age ?? 0,
+//                                                               password: password ?? "")
+                    let ut = UserTrials(p: newUser, approved:  approved)
+                    parsedTrialData.append(ut)
+                    
+                }
+                
+                
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+            patients(parsedTrialData)
+            
+        }
+        
+        task.resume()
+        
+
+        
+    }
     
     func getQuestions(questionnaireId: Int, onComplete questions: @escaping (_ questions: [Question]) -> Void){
         let urlString: String = cloudDomain + "/api/trial/question?trialId=" + String(questionnaireId)
@@ -735,8 +818,8 @@ class APIManager {
         task.resume()
     }
     
-    func getPatientEvaluations(patientId: Int, onComplete evalData: @escaping (_ evalData: [Evaluation]) -> Void){
-        let urlString = cloudDomain + "/api/data/patientEvaluations?patientId=\(patientId)"
+    func getPatientEvaluations(patientId: Int, trialId: Int, onComplete evalData: @escaping (_ evalData: EvaluationProfile) -> Void){
+        let urlString = cloudDomain + "/api/data/patientEvaluations?patientId=\(patientId)&trialId=\(trialId)"
         
         var parsedEvalData : [Evaluation] = []
         
@@ -753,11 +836,47 @@ class APIManager {
             do {
                 let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
                 
-                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                guard let profileJsonData = jsonRes as? [String: Any] else {
                     return
                 }
                 
-                for eval in jsonArray {
+                guard let eProfile = profileJsonData["evaluations"] as? [[String: Any]] else {
+                    return
+                }
+                
+                guard let active = profileJsonData["active"] as? Bool else {return}
+                
+                guard let uData = profileJsonData["user"] as? [String: Any] else {return}
+                
+                guard let branch = profileJsonData["branch"] as? [String: Any] else {return}
+                
+                guard let stepNumber = profileJsonData["currentStepNumber"] as? Int else {return}
+                
+                guard let steps = branch["steps"] as? [[String: Any]] else {return}
+
+            
+                
+                
+                // Load user data
+                
+                let id = uData["userId"] as? Int
+                let firstName = uData["firstName"] as? String
+                let lastName = uData["lastName"] as? String
+                let userType = uData["userType"] as? Int
+                let uniqueId = ""
+                let applicationStatus = uData["applicationStatus"] as? Int
+                let address = uData["address"] as? String
+                let ethnicity = uData["ethnicity"] as? Int
+                let gender = uData["gender"] as? Int
+                let age = uData["age"] as? Int
+                let email = uData["email"] as? String
+                let password = ""
+                let newUser = User(id: id!, firstName: firstName!, lastName: lastName!, userType: userType!, userUniqueId: uniqueId, status: applicationStatus!, email: email!, address: address!, ethnicity: ethnicity!, age: age!, password: password, gender: gender!)
+                
+                
+                // load eval data
+                
+                for eval in eProfile{
                     guard let id = eval["id"] as? Int else {return}
                     guard let date = eval["date"] as? String else {return}
                     guard let encodedData = eval["encodedImage"] as? String else {return}
@@ -767,6 +886,7 @@ class APIManager {
                     var responseList : [PatientResponse] = []
                     
                     for res in pResponses{
+                        print(res)
                         guard let question = res["question"] as? [String:Any] else {return}
                         guard let questionText = question["text"] as? String else {return}
                         guard let answerText = res["response"] as? String else {return}
@@ -781,16 +901,45 @@ class APIManager {
                         parsedEvalData.append(evaluation)
                     }
                     
+                
+                    
                     
                     
                 }
+                
+                // Load branch data
+                
+                guard let text = branch["hypothesis"] as? String else {return}
+        
+                guard let branchId = branch["id"] as? Int else {return}
+                
+                // Cycle and parse the steps in the branch
+                var branchSteps : [Step] = []
+                
+                for step in steps{
+                    guard let summary = step["summary"] as? String else {return}
+                    guard let stepNumber = step["stepNumber"] as? Int else {return}
+                    guard let stepId = step["stepID"] as? Int else {return}
+                    guard let questionnaireId = step["questionnaireId"] as? Int else {return}
+                    
+                    let newStep = Step(id: stepId, summary: summary, stepNumber: stepNumber, questionnaireId: questionnaireId)
+                    branchSteps.append(newStep)
+                }
+                
+                
+                let branchObject = Branch(id: branchId, hyp: text, steps: branchSteps, trialId: id!)
+                
+                let evaluationProfile = EvaluationProfile(p: newUser, e: parsedEvalData, b: branchObject, a: active, st: stepNumber)
+                
+                evalData(evaluationProfile)
+                
+                
                 
                 
             } catch let parsingError {
                 print("Error", parsingError)
             }
             
-            evalData(parsedEvalData)
             
         }
         

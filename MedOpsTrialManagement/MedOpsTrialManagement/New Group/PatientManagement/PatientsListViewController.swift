@@ -11,6 +11,7 @@ import UIKit
 class PatientsListViewController: UIViewController {
     var _trial : Trial?
     var _branches: [Branch] = []
+    var _userTrials : [UserTrials] = []
     var api = APIManager()
     var patients: [User] = []
     var users: [User] = []
@@ -59,6 +60,13 @@ class PatientsListViewController: UIViewController {
                 self._branches = result
             }
         })
+        
+        api.getTrialPatients(trialId: trialId, onComplete: {result in
+            self._userTrials = result
+            DispatchQueue.main.async {
+                self.patientTableView.reloadData()
+            }
+        })
     }
     func updatePatientList(users: [User]){
         for user in users{
@@ -80,10 +88,11 @@ class PatientsListViewController: UIViewController {
         if segue.identifier == "showPatientEval"{
             let evalView = segue.destination as? RecentEvaluationsView
             if let indexPath = self.patientTableView.indexPathForSelectedRow {
-                let selectedPatient = patients[indexPath.row]
+                let selectedPatient = _userTrials[indexPath.row].patient
                 
-                guard let patientId = selectedPatient.id else {return}
-                evalView?._patientId = patientId
+                let patientId = selectedPatient.id
+                evalView?._patientId = patientId!
+                evalView?._trialId = (_trial?.id)!
             }
         } else if segue.identifier == "nurseCreate" {
             let createView = segue.destination as? NurseCreationViewController
@@ -108,10 +117,7 @@ class PatientsListViewController: UIViewController {
         guard let id = patient.id else {return}
         api.approvePatient(patientId: id, branchId: branch.id, onComplete: { isSuccess in
             if (isSuccess){
-                patient.status = 1
-                DispatchQueue.main.async {
-                    self.patientTableView.reloadData()
-                }
+                self.loadData()
             } else {
                 // handle
             }
@@ -150,20 +156,24 @@ extension PatientsListViewController: PatientCellDelegate{
 
 extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patients.count
+        return (_userTrials.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "patientsCell") as! PatientsViewCell
-        cell.setPatient(patient: patients[indexPath.row])
+
+
+        cell.setPatient(patient: (_userTrials[indexPath.row].patient), approved: _userTrials[indexPath.row].isApproved)
+        if(_userTrials[indexPath.row].patient.userType == 3){
+            cell.ApproveBtn.isHidden = true
+        }
         cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(patients[indexPath.row])
-        //guard let user = _trial?.users[indexPath.row] else {return}
-        let patient = patients[indexPath.row]
+        let user = _userTrials[indexPath.row].patient
+        
 //        if (user.status == 0){
 //            let alert = UIAlertController(title: "Approve Patient", message: "This patient is currently pending approval. Would you like to approve them?", preferredStyle: .alert)
 //
@@ -176,7 +186,7 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
 //        } else {
 //            performSegue(withIdentifier: "showPatientEval", sender: self)
 //        }
-        if(patient.status != 0){
+        if(_userTrials[indexPath.row].isApproved != false && user.userType != 3){
             performSegue(withIdentifier: "showPatientEval", sender: self)
         }
     }

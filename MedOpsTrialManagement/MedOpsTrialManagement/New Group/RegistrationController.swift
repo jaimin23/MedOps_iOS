@@ -20,13 +20,15 @@ class RegistrationController: UIViewController {
     
     @IBOutlet weak var confirmPasswordField: UITextField!
     
-    let registrationAPI = "http://192.168.0.108:3000/auth/register"
+    @IBOutlet weak var registerBtn: UIButton!
+    
+    let registrationAPI = "http://167.99.231.175/auth/register"
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     

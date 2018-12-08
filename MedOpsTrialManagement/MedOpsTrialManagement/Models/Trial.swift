@@ -14,6 +14,18 @@ enum Status {
     case Completed
 }
 
+struct TrialStats {
+    var branchCount: Int
+    var evaluationCount: Int
+    var totalNumberOfEvaluations: Int
+    
+    init(branch: Int, evals: Int, totalEvals: Int) {
+        branchCount = branch
+        evaluationCount = evals
+        totalNumberOfEvaluations = totalEvals
+    }
+}
+
 class Trial {
     var id: Int
     var name : String
@@ -23,6 +35,7 @@ class Trial {
     var branches: [Branch]?
     var startDate: String
     var targetEndDate: String
+    var stats: TrialStats?
     
     init(name: String, completed: Bool, id: Int, users:[User], status: Int,
          branches: [Branch], startDate: String, targetEndDate: String){

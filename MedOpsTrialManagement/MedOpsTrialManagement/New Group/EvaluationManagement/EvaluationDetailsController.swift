@@ -36,7 +36,7 @@ class EvaluationDetailsController: UIViewController {
         //set the image being displayed
         if let eval = evaluation {
             let mimeType = Swime.mimeType(data: eval.imageData)
-            if(mimeType?.type == .jpg){
+            if(mimeType?.type == .jpg || mimeType?.type == .png){
                 audioPlayerView.isHidden = true
                 let image = UIImage(data: eval.imageData)
                 evalDataImage.image = image

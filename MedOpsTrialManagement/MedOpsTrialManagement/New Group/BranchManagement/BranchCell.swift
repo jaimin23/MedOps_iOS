@@ -25,7 +25,6 @@ class BranchCell: UITableViewCell {
     
     func setCell(branch: Branch){
         branchNameLabel.text = branch.hypothesis
-        stepCountLabel.text = "\(branch.steps.count) steps"
     }
 
 }

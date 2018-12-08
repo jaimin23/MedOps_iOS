@@ -24,16 +24,14 @@ class TrialListController: UIViewController {
         pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.trialList.addSubview(pullToRefresh)
         
-        let spinner = TrialListController.displaySpinner(onView: self.view)
-        api.getTrials { trialData in
-            self._trials = trialData
-            TrialListController.removeSpinner(spinner: spinner)
-            DispatchQueue.main.async {
-                self.trialList.reloadData()
-            }
-        }
-        print("Printing trials now")
-        print(_trials)
+//        let spinner = TrialListController.displaySpinner(onView: self.view)
+//        api.getTrials { trialData in
+//            self._trials = trialData
+//            TrialListController.removeSpinner(spinner: spinner)
+//            DispatchQueue.main.async {
+//                self.trialList.reloadData()
+//            }
+//        }
         trialList.delegate = self
         trialList.dataSource = self
         
@@ -52,8 +50,10 @@ class TrialListController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        let spinner = TrialListController.displaySpinner(onView: self.view)
         api.getTrials { trialData in
             self._trials = trialData
+            TrialListController.removeSpinner(spinner: spinner)
             DispatchQueue.main.async {
                 self.trialList.reloadData()
                 self.pullToRefresh.endRefreshing()
