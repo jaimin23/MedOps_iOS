@@ -21,7 +21,7 @@ class CreateQuestionView: UIViewController {
     
 
     @IBOutlet weak var _questionTypeSelector: UIPickerView!
-    @IBOutlet weak var _questionPhaseSelector: UIPickerView!
+
     
     @IBOutlet weak var _questionText: UITextField!
     
@@ -39,8 +39,8 @@ class CreateQuestionView: UIViewController {
         
         _questionTypeSelector.dataSource = self
         _questionTypeSelector.delegate = self
-        _questionPhaseSelector.delegate = self
-        _questionPhaseSelector.dataSource = self
+//        _questionPhaseSelector.delegate = self
+//        _questionPhaseSelector.dataSource = self
         super.viewDidLoad()
         
         _questionText.delegate = self
@@ -66,9 +66,15 @@ class CreateQuestionView: UIViewController {
     
     @IBAction func onAddQuestion(_ sender: Any) {
         
+        
         let questionId = _questionTypeSelector.selectedRow(inComponent: 0)
         let questionPhaseId = 1
         let questionString = _questionText.text!
+        
+        if (questionString == ""){
+            displayGenericAlert(title: "Blank Question", body: "No question text was provided")
+            return
+        }
         var question = Question(text: questionString, questionType: questionId+1, questionnaireId: self.questionniareId, questionPhase: questionPhaseId)
         
         let apiCaller = APIManager()
@@ -171,9 +177,9 @@ extension CreateQuestionView: UIPickerViewDelegate, UIPickerViewDataSource, UITe
         if pickerView == _questionTypeSelector{
             return _pickerItems.count
         }
-        else if pickerView == _questionPhaseSelector{
-            return _pickerQuestionnairePhase.count
-        }
+//        else if pickerView == _questionPhaseSelector{
+//            return _pickerQuestionnairePhase.count
+//        }
         else{
             return 0
         }
@@ -188,9 +194,9 @@ extension CreateQuestionView: UIPickerViewDelegate, UIPickerViewDataSource, UITe
         if pickerView == _questionTypeSelector{
             return _pickerItems[row]
         }
-        else if pickerView == _questionPhaseSelector{
-            return _pickerQuestionnairePhase[row]
-        }
+//        else if pickerView == _questionPhaseSelector{
+//            return _pickerQuestionnairePhase[row]
+//        }
         else{
             return ""
         }

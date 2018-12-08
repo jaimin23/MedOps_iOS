@@ -69,6 +69,13 @@ class APIManager {
                     guard let status = trial["status"] as? Int else {return}
                     guard let startDate = trial["startDate"] as? String else{return}
                     guard let targetEndDate = trial["targetEndDate"] as? String else{return}
+                    guard let stats = trial["stats"] as? [String: Any] else {return}
+                    
+                    
+                    guard let branchCount = stats["branchCount"] as? Int else {return}
+                    guard let completedCount = stats["completedEvaluationCount"] as? Int else {return}
+                    guard let expectedCount = stats["expectedEvaluationCount"] as? Int else {return}
+                    // build trial stats
                     let branches = trial["branches"] as? [[String: Any]]
 //                    for user in users{
 //                        let uData = user["user"] as? [String: Any]
@@ -107,6 +114,7 @@ class APIManager {
                     }
                     let newTrial = Trial(name: title, completed: completed, id: id, users:usersList, status: status,
                                          branches: branchList, startDate: startDate, targetEndDate: targetEndDate)
+                    newTrial.stats = TrialStats(branch: branchCount, evals: completedCount, totalEvals: expectedCount)
                     parsedTrialData.append(newTrial)
                     
                 }
@@ -829,6 +837,7 @@ class APIManager {
                     var responseList : [PatientResponse] = []
                     
                     for res in pResponses{
+                        print(res)
                         guard let question = res["question"] as? [String:Any] else {return}
                         guard let questionText = question["text"] as? String else {return}
                         guard let answerText = res["response"] as? String else {return}

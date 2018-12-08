@@ -85,7 +85,7 @@ class CreateBranchController: UIViewController {
                     
                     resultAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { handler in
                         newQuestionnaire = self.getQuestionnaire(title: newQuestionnaire.title)!
-                        self.createField(questionnaire: newQuestionnaire)
+                        self.createField(questionnaire: newQuestionnaire, step: nil)
                     }))
                     self.present(resultAlert, animated: true)
                 } else {
@@ -107,7 +107,7 @@ class CreateBranchController: UIViewController {
         
         for q in availableQuestionnaires{
             alert.addAction(UIAlertAction(title: q.title, style: .default, handler: {action in
-                self.createField(questionnaire: q)
+                self.createField(questionnaire: q, step: nil)
             }))
         }
         
@@ -116,7 +116,7 @@ class CreateBranchController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func createField(questionnaire: Questionnaire){
+    func createField(questionnaire: Questionnaire, step: Step?){
         if (noBranchLbl != nil){
             // If it appears, remove it from the view
             noBranchLbl.removeFromSuperview()
@@ -140,7 +140,7 @@ class CreateBranchController: UIViewController {
         // If the view is in read only mode, disable the field
         if (readOnly){
             newStepField.isUserInteractionEnabled = false
-            newStepField.text = questionnaire.title
+            newStepField.text = step?.summary
         }
         self.view.addSubview(newStepField)
         self.view.addSubview(button)
@@ -275,7 +275,7 @@ class CreateBranchController: UIViewController {
                 // TODO exception handling
                 return
             }
-            createField(questionnaire: stepQuestionnaire!)
+            createField(questionnaire: stepQuestionnaire!, step: step)
         }
     }
     

@@ -16,11 +16,38 @@ class TrialViewCell : UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var branchCount: UILabel!
+    @IBOutlet weak var totalProgressLabel: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var percentageLbl: UILabel!
     
     
     func setTrial(trial : Trial){
         _trialId = trial.id
         nameLabel.text = trial.name
+        branchCount.text = "\(String(trial.stats?.branchCount ?? 0)) branches"
+        
+        let completedCount = Float((trial.stats?.evaluationCount)!)
+        let totalCount = Float((trial.stats?.totalNumberOfEvaluations)!)
+        
+        let progress = (completedCount/totalCount)
+        
+        progressBar.setProgress(progress, animated: false)
+        
+        percentageLbl.text = "\(Int(progress * 100))%"
+        
+        
+        if (progress == 1){
+            progressBar.progressTintColor = UIColor.green
+        } else if (progress >= 0.3333){
+            progressBar.progressTintColor = UIColor.orange
+        } else {
+            progressBar.progressTintColor = UIColor.red
+        }
+        
+        
+        totalProgressLabel.text = "\(String(trial.stats?.evaluationCount ?? 0)) of \(String(trial.stats?.totalNumberOfEvaluations ?? 0)) evaluations completed"
+        
         if (trial.status == Status.Todo){
             statusLabel.text = "Setup"
             statusLabel.textColor = UIColor.red
@@ -28,7 +55,7 @@ class TrialViewCell : UITableViewCell {
             statusLabel.text = "In Progress"
             statusLabel.textColor = UIColor.green
         } else if (trial.status ==  Status.Completed){
-            statusLabel.text = "Completed"
+            statusLabel.text = "Trial Completed"
             statusLabel.textColor = UIColor.black
         }
     }
