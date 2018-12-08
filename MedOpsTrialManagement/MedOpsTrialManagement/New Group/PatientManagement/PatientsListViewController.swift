@@ -133,10 +133,7 @@ class PatientsListViewController: UIViewController {
         guard let id = patient.id else {return}
         api.approvePatient(patientId: id, branchId: branch.id, onComplete: { isSuccess in
             if (isSuccess){
-                patient.status = 1
-                DispatchQueue.main.async {
-                    self.patientTableView.reloadData()
-                }
+                self.loadData()
             } else {
                 // handle
             }
@@ -182,7 +179,7 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "patientsCell") as! PatientsViewCell
 
 
-        cell.setPatient(patient: (_userTrials[indexPath.row].patient))
+        cell.setPatient(patient: (_userTrials[indexPath.row].patient), approved: _userTrials[indexPath.row].isApproved)
         if(_userTrials[indexPath.row].patient.userType == 3){
             cell.ApproveBtn.isHidden = true
         }
@@ -205,7 +202,7 @@ extension PatientsListViewController: UITableViewDataSource, UITableViewDelegate
 //        } else {
 //            performSegue(withIdentifier: "showPatientEval", sender: self)
 //        }
-        if(user.status != 0 && user.userType != 3){
+        if(_userTrials[indexPath.row].isApproved != false && user.userType != 3){
             performSegue(withIdentifier: "showPatientEval", sender: self)
         }
     }

@@ -24,6 +24,8 @@ class RecentEvaluationsView: UIViewController {
     @IBOutlet weak var branchNameLbl: UILabel!
     @IBOutlet weak var stepNumberLbl: UILabel!
     @IBOutlet weak var statusLbl: UILabel!
+    @IBOutlet weak var patientEmailLbl: UILabel!
+    @IBOutlet weak var patientAgeLbl: UILabel!
     
     
     @IBOutlet weak var evaluationList: UITableView!
@@ -53,6 +55,8 @@ class RecentEvaluationsView: UIViewController {
                 self.stepNumberLbl.text = "\(self._evaluationProfile?.currentStepNumber ?? 0)"
                 self.statusLbl.layer.masksToBounds = true
                 self.statusLbl.layer.cornerRadius = 10
+                self.patientEmailLbl.text = self._evaluationProfile?.patient.email
+                self.patientAgeLbl.text = String(self._evaluationProfile?.patient.age ?? 0)
                 if ((self._evaluationProfile?.active)!){
                     self.statusLbl.text = "Awaiting next evaluation"
                     self.statusLbl.backgroundColor = UIColor.orange
@@ -65,6 +69,16 @@ class RecentEvaluationsView: UIViewController {
         })
 
         // Do any additional setup after loading the view.
+    }
+    
+    func getStep(stepNum: Int) -> Step? {
+        for s in (_evaluationProfile?.branch.steps)!{
+            if (s.stepNumber == stepNum){
+                return s
+            }
+        }
+        
+        return nil
     }
 
 }
@@ -83,7 +97,7 @@ extension RecentEvaluationsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let eval = _evaluations[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecentEvalCell") as! RecentEvalTableViewCell
-        cell.setCell(eval: eval)
+        cell.setCell(eval: eval, step: getStep(stepNum: indexPath.row+1)!)
         return cell
     }
     

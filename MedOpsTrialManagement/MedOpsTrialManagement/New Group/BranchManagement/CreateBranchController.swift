@@ -47,8 +47,15 @@ class CreateBranchController: UIViewController {
     
 
     @IBOutlet weak var hypoTextField: UITextField!
+    
+    @IBOutlet weak var saveBranchBtn: UIButton!
+    
     @IBOutlet weak var noBranchLbl: UILabel!
     @IBAction func addStep(_ sender: Any) {
+        
+        if(readOnly){
+            return
+        }
         
         
         let alert = UIAlertController(title: "Assign Questionnaire", message: "Would you like to add a new questionnaire or an existing one?", preferredStyle: .alert)
@@ -76,6 +83,13 @@ class CreateBranchController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert!.textFields![0]
             var newQuestionnaire = Questionnaire(id: 0, title: textField.text!, questions: [], trialId: self.trialId)
+            
+            if (textField.text == ""){
+        let errorAlert = UIAlertController(title: "Blank Title", message: "No questionnaire title was provided!", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(errorAlert, animated: true)
+                return
+            }
 
             self.api.postQuestionnaire(questionnaire: newQuestionnaire, onComplete: {result in
                 
@@ -87,12 +101,17 @@ class CreateBranchController: UIViewController {
                         newQuestionnaire = self.getQuestionnaire(title: newQuestionnaire.title)!
                         self.createField(questionnaire: newQuestionnaire, step: nil)
                     }))
-                    self.present(resultAlert, animated: true)
+                    
+                    DispatchQueue.main.async {
+                         self.present(resultAlert, animated: true)
+                    }
                 } else {
                     let resultAlert = UIAlertController(title: "Error", message: "An error occured while attempting to create the new questionnaire", preferredStyle: .alert)
                     
                     resultAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    self.present(resultAlert, animated: true)
+                    DispatchQueue.main.async {
+                        self.present(resultAlert, animated: true)
+                    }
                 }
             })
         }))
@@ -250,6 +269,11 @@ class CreateBranchController: UIViewController {
                 return false
             }
         }
+        // Check the branch name
+        if (hypoTextField.text == ""){
+            return false
+        }
+        
         // All fields are filled in
         return true
     }
@@ -265,9 +289,12 @@ class CreateBranchController: UIViewController {
     }
     
     func initReadOnly(){
+        saveBranchBtn.isHidden = true
         // Set the text and make it read only
         hypoTextField.text = branch?.hypothesis
         hypoTextField.isUserInteractionEnabled = false
+        
+        
         
         for step in (branch?.steps)! {
             let stepQuestionnaire = getQuestionnaire(id: step.questionnaireId)

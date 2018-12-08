@@ -807,6 +807,10 @@ class APIManager {
                 
                 guard let stepNumber = profileJsonData["currentStepNumber"] as? Int else {return}
                 
+                guard let steps = branch["steps"] as? [[String: Any]] else {return}
+
+            
+                
                 
                 // Load user data
                 
@@ -861,11 +865,24 @@ class APIManager {
                 // Load branch data
                 
                 guard let text = branch["hypothesis"] as? String else {return}
-                guard let steps = branch["steps"] as? [[String: Any]] else {return}
+        
                 guard let branchId = branch["id"] as? Int else {return}
                 
+                // Cycle and parse the steps in the branch
+                var branchSteps : [Step] = []
                 
-                let branchObject = Branch(id: branchId, hyp: text, steps: [], trialId: id!)
+                for step in steps{
+                    guard let summary = step["summary"] as? String else {return}
+                    guard let stepNumber = step["stepNumber"] as? Int else {return}
+                    guard let stepId = step["stepID"] as? Int else {return}
+                    guard let questionnaireId = step["questionnaireId"] as? Int else {return}
+                    
+                    let newStep = Step(id: stepId, summary: summary, stepNumber: stepNumber, questionnaireId: questionnaireId)
+                    branchSteps.append(newStep)
+                }
+                
+                
+                let branchObject = Branch(id: branchId, hyp: text, steps: branchSteps, trialId: id!)
                 
                 let evaluationProfile = EvaluationProfile(p: newUser, e: parsedEvalData, b: branchObject, a: active, st: stepNumber)
                 
