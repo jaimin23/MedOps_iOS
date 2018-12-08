@@ -17,8 +17,8 @@ class APIManager {
     
     init(){
         scheme = "http"
-        domain = "192.168.0.108"
-        port = "3000"
+        domain = "167.99.231.175"
+        port = "5000"
         cloudDomain = self.scheme + "://" + self.domain + ":" + self.port
         //cloudDomain = self.scheme + "://" + self.domain
     }
@@ -294,7 +294,7 @@ class APIManager {
 
                     let id = uData["userId"] as? Int
                     let firstName = uData["firstName"] as? String
-                    let lastName = uData["lastName"] as? String
+                    let lastName = ""
                     let userType = uData["userType"] as? Int
                     let uniqueId = ""
                     let applicationStatus = uData["applicationStatus"] as? Int
@@ -304,7 +304,7 @@ class APIManager {
                     let age = uData["age"] as? Int
                     let email = uData["email"] as? String
                     let password = ""
-                    let newUser = User(id: id!, firstName: firstName!, lastName: lastName!, userType: userType!, userUniqueId: uniqueId, status: applicationStatus!, email: email!, address: address, ethnicity: ethnicity!, age: age!, password: password, gender: gender!)
+                    let newUser = User(id: id!, firstName: firstName!, lastName: lastName, userType: userType!, userUniqueId: uniqueId, status: applicationStatus!, email: email!, address: address, ethnicity: ethnicity!, age: age!, password: password, gender: gender!)
 //                                            let newUser = User(id: id ?? 0,
 //                                                                firstName: firstName ?? "",
 //                                                               lastName: lastName ?? "",
