@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    let backend = "http://167.99.231.175/auth/login"
+    let backend = "http://192.168.0.108:3000/auth/login"
     let FAILED_LOGIN = "FAILED_LOGIN"
     
     @IBOutlet weak var messageLbl: UILabel!

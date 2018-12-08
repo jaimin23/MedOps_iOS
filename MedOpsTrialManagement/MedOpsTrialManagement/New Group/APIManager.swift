@@ -13,19 +13,19 @@ class APIManager {
     let scheme : String
     let domain : String
     let cloudDomain: String
-//    let port: String
+    let port: String
     
     init(){
         scheme = "http"
-        domain = "167.99.231.175"
-        //port = "3000"
-//        cloudDomain = self.scheme + "://" + self.domain + ":" + self.port
-        cloudDomain = self.scheme + "://" + self.domain
+        domain = "192.168.0.108"
+        port = "3000"
+        cloudDomain = self.scheme + "://" + self.domain + ":" + self.port
+        //cloudDomain = self.scheme + "://" + self.domain
     }
     
     func getTrials(completion: @escaping (_ trialData: [Trial]) -> ()){
 //        let urlString : String = "\(scheme)://\(domain):\(port)/api/trial/pitrials"
-        let urlString : String = "\(scheme)://\(domain)/api/trial/pitrials"
+        let urlString : String = "\(scheme)://\(domain):\(port)/api/trial/pitrials"
 
         //let urlString: String = "{}/api/trial/"
         var parsedTrialData : [Trial] = []
@@ -65,7 +65,6 @@ class APIManager {
                     guard let title = trial["name"] as? String else {return}
                     guard let completed = trial["completed"] as? Bool else {return}
                     guard let id = trial["trialId"] as? Int else {return}
-                    
                     guard let status = trial["status"] as? Int else {return}
                     guard let startDate = trial["startDate"] as? String else{return}
                     guard let targetEndDate = trial["targetEndDate"] as? String else{return}
@@ -174,6 +173,7 @@ class APIManager {
         var url = URLComponents()
         url.scheme = scheme
         url.host = domain
+        url.port = Int(port)
         url.path = "/api/questionnaire/add/"
         
         guard let urlString = url.url else {fatalError("Unable to create url from string")}
@@ -437,6 +437,7 @@ class APIManager {
         var url = URLComponents()
         url.scheme = scheme
         url.host = domain
+        url.port = Int(port)
         url.path = "/api/trial/question/"
         
         guard let urlString = url.url else {fatalError("Unable to make url from string")}
@@ -483,6 +484,7 @@ class APIManager {
         var url = URLComponents()
         url.scheme = scheme
         url.host = domain
+        url.port = Int(port)
         url.path = "/api/trial/branch/"
         
         guard let urlString = url.url else {fatalError("Unable to create url from string")}
@@ -528,6 +530,7 @@ class APIManager {
         var url = URLComponents()
         url.scheme = scheme
         url.host = domain
+        url.port = Int(port)
         url.path = "/api/user/approve"
         
         guard let urlString = url.url else {fatalError("Unable to create url from string")}
@@ -574,7 +577,7 @@ class APIManager {
     }
     
     func selectPatients(patients: [User], completion:((Error?) -> Void)?){
-        let urlString: String = "\(scheme)://\(domain)/api/user/patients/"
+        let urlString: String = "\(scheme)://\(domain):\(port)/api/user/patients/"
         let requestString = URL(string: urlString)
         // Create Request
         var postRequest = URLRequest(url: requestString!)
@@ -626,7 +629,7 @@ class APIManager {
 //        url.host = self.domain
 //        url.path = "c
         
-        let urlString: String = "\(scheme)://\(domain)/api/trial/begin?trialId="+String(trialId)
+        let urlString: String = cloudDomain+"/api/trial/begin?trialId=\(trialId)"
         let requestString = URL(string: urlString)
         
 //        guard let urlString = url.url else {fatalError("Unable to make url from string")}
@@ -638,6 +641,48 @@ class APIManager {
         
         // TODO delete debug statement
 //        print(urlString.absoluteString)
+        
+        var headers = postRequest.allHTTPHeaderFields ?? [:]
+        headers["Content-Type"] = "application/json"
+        postRequest.allHTTPHeaderFields = headers
+        
+        // Serialize question to JSON
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        let task = session.dataTask(with: postRequest) { (responseData, response, responseError) in
+            guard responseError == nil else {
+                // TODO error handle
+                return
+            }
+            print("printing response")
+            print(responseData!)
+            print(response!)
+            saved(true)
+            
+        }
+        task.resume()
+    }
+    func completeTrial(trialId: Int, onComplete saved: @escaping (_ saved: Bool) -> Void){
+        // Create URL
+        //        var url = URLComponents()
+        //        url.scheme = self.scheme
+        //        url.host = self.domain
+        //        url.path = "c
+        
+        let urlString: String = cloudDomain+"/api/trial/complete?trialId=\(trialId)"
+        let requestString = URL(string: urlString)
+        
+        //        guard let urlString = url.url else {fatalError("Unable to make url from string")}
+        
+        // Create Request
+        var postRequest = URLRequest(url: requestString!)
+        
+        postRequest.httpMethod = "POST"
+        
+        // TODO delete debug statement
+        //        print(urlString.absoluteString)
         
         var headers = postRequest.allHTTPHeaderFields ?? [:]
         headers["Content-Type"] = "application/json"
@@ -905,7 +950,7 @@ class APIManager {
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
         urlComponent.host = self.domain
-//        urlComponent.port = Int(self.port)
+        urlComponent.port = Int(self.port)
         urlComponent.path = "/api/trial"
         guard let url = urlComponent.url else{
             fatalError("Could not create url")
@@ -926,6 +971,7 @@ class APIManager {
         let encoder = JSONEncoder()
         do{
             let jsonData = try encoder.encode(trial)
+            print(jsonData)
             request.httpBody = jsonData
         } catch{
             print(error)
@@ -996,5 +1042,150 @@ class APIManager {
         
     }
     
+    func getBranchesWithQuestionnaire(trialId: Int, onComplete questions: @escaping (_ questions: [Question]) -> Void){
+        let urlString : String = cloudDomain + "/api/trial/branch?trialId=\(trialId)"
+        let requestString = URL(string: urlString)
+        var questionList: [Question] = []
+        let request = URLRequest(url: requestString!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+            guard let dataRes = data, error == nil else {
+                // handle error
+                return
+            }
+            do {
+                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                    return
+                }
+                for branches in jsonArray {
+                    // Cycle and parse the branch
+                    guard let steps = branches["steps"] as? [[String: Any]] else {return}
+                    for step in steps{
+                        guard let questionnaire = step["questionnaire"] as? [String:Any] else {return}
+                        guard let questions = questionnaire["questions"] as? [[String:Any]] else {return}
+                        for question in questions{
+                            guard let text = question["text"] as? String else {return}
+                            guard let answers = question["answers"] as? [[String: Any]] else {return}
+                            var answersList: [Answer] = []
+                            for answer in answers{
+                                guard let value = answer["value"] as? String else{return}
+                                let newAnswer = Answer(value: value)
+                                answersList.append(newAnswer)
+                            }
+                            var newQuestion = Question(text: text, questionType: 0, questionnaireId: 0, questionPhase: 0)
+                            newQuestion.answers = answersList
+                            questionList.append(newQuestion)
+                        }
+                    }
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+            questions(questionList)
+        }
+        
+        task.resume()
+    }
+    
+    //This API call only extracts some information for evaluation
+    func getPatientEvaluationsForGraph(trialId: Int, onComplete evalData: @escaping (_ evalData: [EvalData]) -> Void){
+        let urlString = cloudDomain + "/api/data/completed?trialId=\(trialId)"
+        var parsedEvalData : [EvalData] = []
+        let requestString = URL(string: urlString)
+        let request = URLRequest(url: requestString!)
+        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+            guard let dataRes = data, error == nil else {
+                // handle error
+                return
+            }
+            do {
+                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+                guard let jsonArray = jsonRes as? [[String: Any]] else {
+                    return
+                }
+                for eval in jsonArray {
+                    guard let patientInfo = eval["patient"] as? [String: Any] else{return}
+                    guard let age = patientInfo["age"] as? Int else{return}
+                    guard let gender = patientInfo["gender"] as? Int else{return}
+                    guard let pResponses = eval["patientResponses"] as? [[String: Any]] else {return}
+                    for res in pResponses{
+                        var questionText = ""
+                        var response = ""
+                        guard let question = res["question"] as? [String:Any] else {return}
+                        questionText = question["text"] as? String ?? ""
+                        response = res["response"] as? String ?? ""
+                        let newEvals = EvalData(quetion: questionText, answer: response, age: age, gender: gender)
+                        parsedEvalData.append(newEvals)
+                    }
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+            evalData(parsedEvalData)
+            
+        }
+        
+        task.resume()
+    }
+    
+    func getAllUsersByTrial(trialId: Int, onComplete users: @escaping (_ users: [User]) -> Void){
+        let urlString: String = cloudDomain + "/api/user/usersByTrial?trialId=\(trialId)"
+        var userList : [User] = []
+        
+        let requestString = URL(string: urlString)
+        
+        let request = URLRequest(url: requestString!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+            guard let dataRes = data, error == nil else {
+                // handle error
+                return
+            }
+            do {
+                let jsonRes = try JSONSerialization.jsonObject(with: dataRes, options: [])
+                guard let jsonObj = jsonRes as? [[String: Any]] else {
+                    return
+                }
+                for users in jsonObj{
+                    let uData = users["user"] as? [String: Any]
+                    let id = uData?["userId"] as? Int
+                    let firstName = uData?["firstName"] as? String
+                    let lastName = uData?["lastName"] as? String
+                    let userType = uData?["userType"] as? Int
+                    let uniqueId = uData?["userUniqueId"] as? String
+                    let applicationStatus = uData?["applicationStatus"] as? Int
+                    let address = uData?["address"] as? String
+                    let ethnicity = uData?["ethnicity"] as? Int
+                    let gender = uData?["gender"] as? Int
+                    let age = uData?["age"] as? Int
+                    let email = uData?["email"] as? String
+                    let password = ""
+                    let newUser = User(id: id ?? 0,
+                                       firstName: firstName ?? "",
+                                       lastName: lastName ?? "",
+                                       userType: userType ?? 0,
+                                       userUniqueId: uniqueId ?? "",
+                                       status: applicationStatus ?? 0,
+                                       email: email ?? "",
+                                       address: address ?? "",
+                                       ethnicity: ethnicity ?? 0,
+                                       age: age ?? 0,
+                                       password: password,
+                                       gender: gender ?? 0)
+                    userList.append(newUser)
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+            users(userList)
+        }
+        
+        task.resume()
+        
+    }
 }
 

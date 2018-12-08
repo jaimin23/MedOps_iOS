@@ -13,6 +13,9 @@ class PatientsListViewController: UIViewController {
     var _branches: [Branch] = []
     var _userTrials : [UserTrials] = []
     var api = APIManager()
+    var patients: [User] = []
+    var users: [User] = []
+    var trialId = 0
     var pullToRefresh = UIRefreshControl()
     @IBOutlet weak var patientTableView: UITableView!
     override func viewDidLoad() {
@@ -24,31 +27,38 @@ class PatientsListViewController: UIViewController {
         // TODO switch to api call
         pullToRefresh.attributedTitle = NSAttributedString(string: "Fetching Data")
         pullToRefresh.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        guard let trialId = _trial?.id else {return}
+        self.patientTableView.addSubview(pullToRefresh)
+        guard let id = _trial?.id else {return}
+        self.trialId = id
         loadData()
-        
+        loadPatients()
         // Do any additional setup after loading the view.
     }
     @objc func refresh(_ sender: Any){
-//        api.getTrials { trialData in
-//            self._trials = trialData
-//            DispatchQueue.main.async {
-//                self.trialList.reloadData()
-//                self.pullToRefresh.endRefreshing()
-//            }
-//        }
-        
+        loadData()
+        loadPatients()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
     }
-    
+    func loadPatients(){
+         self.api.getAllUsersByTrial(trialId: trialId, onComplete: { (users) in
+            DispatchQueue.main.async {
+                self.users = users
+                self.updatePatientList(users: self.users)
+                self.patientTableView.reloadData()
+                self.pullToRefresh.endRefreshing()
+            }
+        })
+    }
     func loadData(){
         guard let trialId = _trial?.id else {return}
         api.getBranches(trialId: trialId, onComplete: {result in
-        self._branches = result
+            DispatchQueue.main.async {
+                self._branches = result
+            }
         })
         
         api.getTrialPatients(trialId: trialId, onComplete: {result in
@@ -58,12 +68,13 @@ class PatientsListViewController: UIViewController {
             }
         })
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        loadData()
+    func updatePatientList(users: [User]){
+        for user in users{
+            if user.userType == 0{
+                patients.append(user)
+            }
+        }
     }
-    
-
     /*
     // MARK: - Navigation
 
@@ -73,33 +84,6 @@ class PatientsListViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    func getUserTypeValue(userType: Int) -> String{
-        switch userType {
-        case 0:
-            return "Patient"
-        case 1:
-            return "Doctor"
-        case 2:
-            return "Nurse"
-        case 3:
-            return "PI"
-        default:
-            return "No value founc"
-        }
-    }
-    
-    
-    func getApplicationStatusValue(status: Int) -> String{
-        switch status {
-        case 0:
-            return "Pending"
-        case 1:
-            return "Approved"
-        default:
-            return "No value founc"
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPatientEval"{
             let evalView = segue.destination as? RecentEvaluationsView

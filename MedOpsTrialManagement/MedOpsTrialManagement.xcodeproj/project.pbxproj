@@ -75,6 +75,12 @@
 		C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */; };
 		C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */; };
 		C99F9A102091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */; };
+		C9A66B7521B9746400FC706E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A66B7421B9746400FC706E /* Charts.framework */; };
+		C9A66B7821BA1E4200FC706E /* AdminPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A66B7721BA1E4200FC706E /* AdminPageViewController.swift */; };
+		C9A66B7A21BA2F3500FC706E /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A66B7921BA2F3500FC706E /* AdminViewController.swift */; };
+		C9A66B7C21BA304900FC706E /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A66B7B21BA304900FC706E /* UserListViewController.swift */; };
+		C9A66B7E21BA9DFF00FC706E /* AdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A66B7D21BA9DFF00FC706E /* AdminTableViewCell.swift */; };
+		C9A66B8021BAB63800FC706E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A66B7F21BAB63800FC706E /* Utils.swift */; };
 		C9C1227B21740135004D502E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C1227A21740135004D502E /* User.swift */; };
 		C9C6CA5521A228E100273028 /* PatientsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C6CA5421A228E100273028 /* PatientsListViewController.swift */; };
 		DCD52E8E8590E5F22041DC4C /* Pods_MedOpsTrialManagementTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB8FF813501BBAFBD0F03A8 /* Pods_MedOpsTrialManagementTests.framework */; };
@@ -178,6 +184,12 @@
 		C99F9A0B2090B059003991A1 /* TrialDataCollectionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDataCollectionFormViewController.swift; sourceTree = "<group>"; };
 		C99F9A0D2091E117003991A1 /* PatientSignatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientSignatureViewController.swift; sourceTree = "<group>"; };
 		C99F9A0F2091E4AF003991A1 /* TrialPatientSampleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialPatientSampleCollectionViewController.swift; sourceTree = "<group>"; };
+		C9A66B7421B9746400FC706E /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A66B7721BA1E4200FC706E /* AdminPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPageViewController.swift; sourceTree = "<group>"; };
+		C9A66B7921BA2F3500FC706E /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
+		C9A66B7B21BA304900FC706E /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		C9A66B7D21BA9DFF00FC706E /* AdminTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewCell.swift; sourceTree = "<group>"; };
+		C9A66B7F21BAB63800FC706E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C9C1227A21740135004D502E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C9C6CA5421A228E100273028 /* PatientsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListViewController.swift; sourceTree = "<group>"; };
 		D3F4DF12E1BA249CA21F1FA9 /* Pods_MedOpsTrialManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedOpsTrialManagement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9A66B7521B9746400FC706E /* Charts.framework in Frameworks */,
 				C992C98821AEB3C30061209B /* AVFoundation.framework in Frameworks */,
 				F744DAEFFEA60001F8F7EBEC /* Pods_MedOpsTrialManagement.framework in Frameworks */,
 			);
@@ -217,6 +230,7 @@
 		8E064F4C4C8F63FCF73742F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9A66B7421B9746400FC706E /* Charts.framework */,
 				C992C98721AEB3C30061209B /* AVFoundation.framework */,
 				D3F4DF12E1BA249CA21F1FA9 /* Pods_MedOpsTrialManagement.framework */,
 				2BB8FF813501BBAFBD0F03A8 /* Pods_MedOpsTrialManagementTests.framework */,
@@ -296,6 +310,7 @@
 				C99C6FC321A77AA600504980 /* MockGraphData.swift */,
 				AE51E47021A9FF3800195AB9 /* Questionnaire.swift */,
 				AE85982721AE1E0500E11D2F /* LoginUser.swift */,
+				C9A66B7F21BAB63800FC706E /* Utils.swift */,
 				AE0C022221B8C4D700EFDD9E /* UserTrials.swift */,
 				AE0C022421B8DB6E00EFDD9E /* EvaluationProfile.swift */,
 			);
@@ -398,6 +413,7 @@
 		C99F9A06208F95A3003991A1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C9A66B7621BA1BA300FC706E /* AdministrationManagement */,
 				C99C6FC521AA46F600504980 /* TrialDetails */,
 				C9124E1921A20E96006B4AA2 /* PatientManagement */,
 				AEABE2EE2194FC13005D6BFB /* BranchManagement */,
@@ -423,6 +439,17 @@
 			);
 			name = Controllers;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		C9A66B7621BA1BA300FC706E /* AdministrationManagement */ = {
+			isa = PBXGroup;
+			children = (
+				C9A66B7721BA1E4200FC706E /* AdminPageViewController.swift */,
+				C9A66B7921BA2F3500FC706E /* AdminViewController.swift */,
+				C9A66B7B21BA304900FC706E /* UserListViewController.swift */,
+				C9A66B7D21BA9DFF00FC706E /* AdminTableViewCell.swift */,
+			);
+			path = AdministrationManagement;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -677,15 +704,18 @@
 				AE85983321B469CF00E11D2F /* QuestionCollectionCell.swift in Sources */,
 				C99C6FC421A77AA600504980 /* MockGraphData.swift in Sources */,
 				AE31E0F921966599004F8FEA /* BranchListController.swift in Sources */,
+				C9A66B7E21BA9DFF00FC706E /* AdminTableViewCell.swift in Sources */,
 				AE85982A21AF67D300E11D2F /* RegistrationController.swift in Sources */,
 				AEABE2F221951964005D6BFB /* Branch.swift in Sources */,
 				C92D606A216708FE00A6F985 /* TrialModel.swift in Sources */,
+				C9A66B7A21BA2F3500FC706E /* AdminViewController.swift in Sources */,
 				C91ACBF8208D69FD001C4516 /* ViewController.swift in Sources */,
 				AEA88C3D217D17A500D32E67 /* RecentEvaluationsView.swift in Sources */,
 				AEBABD1321758E9B0060B4DE /* QuestionCell.swift in Sources */,
 				AE85982621AE190100E11D2F /* LoginViewController.swift in Sources */,
 				AE51E46D21A9F92800195AB9 /* ListOfQuestionnairesController.swift in Sources */,
 				C992C99021B23CAA0061209B /* TrialGraphDetailMasterViewController.swift in Sources */,
+				C9A66B7C21BA304900FC706E /* UserListViewController.swift in Sources */,
 				C992C99421B30CE80061209B /* TrialDetailsInitialViewController.swift in Sources */,
 				AEABE2F421951992005D6BFB /* Step.swift in Sources */,
 				C992C98E21B0F9BC0061209B /* TrialDetailsOverViewController.swift in Sources */,
@@ -693,6 +723,7 @@
 				C99C6FC021A26A0800504980 /* TrialTabController.swift in Sources */,
 				AEF7E2F3216ED69100671A14 /* CreateQuestionView.swift in Sources */,
 				AE10458D21A5CED900CB88AE /* NavController.swift in Sources */,
+				C9A66B7821BA1E4200FC706E /* AdminPageViewController.swift in Sources */,
 				C99F9A0C2090B059003991A1 /* TrialDataCollectionFormViewController.swift in Sources */,
 				AED78E832165B35B002104FF /* TrialViewCell.swift in Sources */,
 				C99F9A0A208FA8B1003991A1 /* TrialDataMainPageController.swift in Sources */,
@@ -704,6 +735,7 @@
 				C9124E1B21A20FC6006B4AA2 /* PatientsViewCell.swift in Sources */,
 				C992C99221B23DA90061209B /* GraphDetailViewController.swift in Sources */,
 				C992C98C21B0F2ED0061209B /* TrialDetailPageViewController.swift in Sources */,
+				C9A66B8021BAB63800FC706E /* Utils.swift in Sources */,
 				AEABE2F02194FC35005D6BFB /* CreateBranchController.swift in Sources */,
 				C99F9A0E2091E117003991A1 /* PatientSignatureViewController.swift in Sources */,
 				C99C6FD721AA6A7700504980 /* PieChartCell.swift in Sources */,
@@ -886,8 +918,9 @@
 			baseConfigurationReference = E6B0FD84582CCCA760EDE705 /* Pods-MedOpsTrialManagement.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7SMR7CHT9;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
 				INFOPLIST_FILE = MedOpsTrialManagement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -896,6 +929,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sheridancollege.medops.trialmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -906,8 +940,9 @@
 			baseConfigurationReference = 956AC6EE104472D0CF92E102 /* Pods-MedOpsTrialManagement.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7SMR7CHT9;
+				DEVELOPMENT_TEAM = 9WS25SL9BP;
 				INFOPLIST_FILE = MedOpsTrialManagement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -916,6 +951,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sheridancollege.medops.trialmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

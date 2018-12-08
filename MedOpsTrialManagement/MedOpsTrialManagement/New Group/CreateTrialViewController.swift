@@ -14,12 +14,14 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBOutlet weak var trialNameField : UITextField!
     @IBOutlet weak var trialDescription: UITextView!
-    @IBOutlet weak var trialDiseasePicker: UIPickerView!
     @IBOutlet weak var trialProcedureType: UIPickerView!
     @IBOutlet weak var trialPrivacyType: UIPickerView!
     @IBOutlet weak var trialDate: UIDatePicker!
     @IBOutlet weak var micButtonTitle: UIButton!
     @IBOutlet weak var micButtonDescription: UIButton!
+    @IBOutlet weak var trialEndData: UIDatePicker!
+    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var trialOjbectField: UITextField!
     
     var speechToTextService: SpeechToText!
     var isStreaming = false
@@ -31,9 +33,9 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         "Results are released publically"
     ]
     let trialProcedureTypeData: [String] = [
-        "Blood Sample",
         "Visual Sample",
-        "Audio Sample"
+        "Audio Sample",
+        "Other"
     ]
     let api = APIManager()
     var trialDiseasesData = [Diseases]()
@@ -47,19 +49,7 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         self.trialProcedureType.delegate = self
         self.trialProcedureType.dataSource = self
         
-        self.trialDiseasePicker.delegate = self
-        self.trialDiseasePicker.dataSource = self
-        self.trialDescription.layer.borderColor = UIColor.black.cgColor
-        self.trialDescription.layer.borderWidth = 1.0
-        api.getDiseases{
-            diseaseData in
-            self.trialDiseasesData = diseaseData
-            DispatchQueue.main.async {
-                self.trialDiseasePicker.reloadAllComponents()
-            }
-            
-        }
-        
+        self.applyStylingToPickerViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,13 +57,16 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func createTrial(_ sender: Any){
+        var startDate = getDateString(date: trialDate.date)
+        var endDate = getDateString(date: trialEndData.date)
         let trialData = TrialModel(
             Name: trialNameField.text!,
             Description: trialDescription.text,
-            DiseaseId: trialDiseasePicker.selectedRow(inComponent: 0),
+            TrialObjective: trialOjbectField.text!,
             Procedure: trialProcedureType.selectedRow(inComponent: 0),
             AvailableResults: trialPrivacyType.selectedRow(inComponent: 0),
-            UserUniqueId: "Random123")
+            StartDate: startDate,
+            TargetEndDate: endDate)
         api.createTrial(trial: trialData, onComplete: {(success) in
             let alert: UIAlertController
             if(!success) {
@@ -156,11 +149,8 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         if pickerView == trialPrivacyType {
             return trialPrivacyTypeData.count
         }
-        else if pickerView == trialProcedureType{
-            return trialProcedureTypeData.count
-        }
         else{
-            return trialDiseasesData.count
+            return trialProcedureTypeData.count
         }
     }
     
@@ -168,11 +158,8 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         if pickerView == trialPrivacyType{
             return trialPrivacyTypeData[row]
         }
-        else if pickerView == trialProcedureType{
-            return trialProcedureTypeData[row]
-        }
         else{
-            return trialDiseasesData[row].name
+            return trialProcedureTypeData[row]
         }
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -184,6 +171,32 @@ class CreateTrialViewController: UIViewController, UIPickerViewDelegate, UIPicke
         if(self.trialDescription.text.isEmpty){
             textView.text = "Enter Description"
         }
+    }
+    
+    func applyStylingToPickerViews(){
+        self.trialProcedureType.layer.borderWidth = 0.5
+        self.trialProcedureType.layer.cornerRadius = 4
+        self.trialProcedureType.layer.borderColor = UIColor.gray.cgColor
+        
+        self.trialPrivacyType.layer.borderWidth = 0.5
+        self.trialPrivacyType.layer.cornerRadius = 4
+        self.trialPrivacyType.layer.borderColor = UIColor.gray.cgColor
+        
+        self.trialDate.layer.borderWidth = 0.5
+        self.trialDate.layer.cornerRadius = 4
+        self.trialDate.layer.borderColor = UIColor.gray.cgColor
+        
+        self.trialEndData.layer.borderWidth = 0.5
+        self.trialEndData.layer.cornerRadius = 4
+        self.trialEndData.layer.borderColor = UIColor.gray.cgColor
+        
+        self.trialDescription.layer.borderColor = UIColor.gray.cgColor
+        self.trialDescription.layer.borderWidth = 0.5
+        self.trialDescription.layer.cornerRadius = 4
+        
+        self.trialNameField.borderStyle = UITextField.BorderStyle.roundedRect
+        self.trialOjbectField.borderStyle = UITextField.BorderStyle.roundedRect
+        self.createButton.layer.cornerRadius = 10
     }
     
 }
