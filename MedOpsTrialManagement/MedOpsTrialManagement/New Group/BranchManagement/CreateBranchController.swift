@@ -18,15 +18,44 @@ class CreateBranchController: UIViewController {
     var availableQuestionnaires : [Questionnaire] = []
     // Tracks the questionnaires selected by the researcher
     var selectedQuestionnaires : [Questionnaire] = []
+    
+    // Determines whether or not to create the view as read only
+    var readOnly = false
+    
+    // For read only field
+    var branch : Branch?
+    
     var trialId : Int = 0
     let api = APIManager()
     
     var promptedQuestionnaireId = 0
     
+    func loadQuestionnaires(){
+        // Load the available questionnaires from the list
+        self.api.getQuestionnaires(trialId: trialId, onComplete: {questionnaire in
+            
+            DispatchQueue.main.async {
+                self.availableQuestionnaires = questionnaire
+                print("questionnaire loading successful")
+                if (self.readOnly){
+                    self.initReadOnly()
+                }
+            }
+
+        })
+    }
+    
 
     @IBOutlet weak var hypoTextField: UITextField!
+    
+    @IBOutlet weak var saveBranchBtn: UIButton!
+    
     @IBOutlet weak var noBranchLbl: UILabel!
     @IBAction func addStep(_ sender: Any) {
+        
+        if(readOnly){
+            return
+        }
         
         
         let alert = UIAlertController(title: "Assign Questionnaire", message: "Would you like to add a new questionnaire or an existing one?", preferredStyle: .alert)
@@ -40,16 +69,7 @@ class CreateBranchController: UIViewController {
             self.onAssignQuestionnaire()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        
-        
-        if (availableQuestionnaires.count == 0){
-            let alert = UIAlertController(title: "No Available Questionnaires", message: "There are no available questionnaires. Please create one from the Questionnaire Management Panel", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
-        }
-        
+    
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -62,9 +82,38 @@ class CreateBranchController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert!.textFields![0]
-            let newQuestionnaire = Questionnaire(id: 0, title: textField.text!, questions: [], trialId: self.trialId)
-            self.availableQuestionnaires.append(newQuestionnaire)
-            self.createField(questionnaire: newQuestionnaire)
+            var newQuestionnaire = Questionnaire(id: 0, title: textField.text!, questions: [], trialId: self.trialId)
+            
+            if (textField.text == ""){
+        let errorAlert = UIAlertController(title: "Blank Title", message: "No questionnaire title was provided!", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(errorAlert, animated: true)
+                return
+            }
+
+            self.api.postQuestionnaire(questionnaire: newQuestionnaire, onComplete: {result in
+                
+                if (result){
+                    self.loadQuestionnaires()
+                    let resultAlert = UIAlertController(title: "Success", message: "Successfully created the new questionnaire", preferredStyle: .alert)
+                    
+                    resultAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { handler in
+                        newQuestionnaire = self.getQuestionnaire(title: newQuestionnaire.title)!
+                        self.createField(questionnaire: newQuestionnaire, step: nil)
+                    }))
+                    
+                    DispatchQueue.main.async {
+                         self.present(resultAlert, animated: true)
+                    }
+                } else {
+                    let resultAlert = UIAlertController(title: "Error", message: "An error occured while attempting to create the new questionnaire", preferredStyle: .alert)
+                    
+                    resultAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    DispatchQueue.main.async {
+                        self.present(resultAlert, animated: true)
+                    }
+                }
+            })
         }))
         
         self.present(alert, animated: true)
@@ -77,7 +126,7 @@ class CreateBranchController: UIViewController {
         
         for q in availableQuestionnaires{
             alert.addAction(UIAlertAction(title: q.title, style: .default, handler: {action in
-                self.createField(questionnaire: q)
+                self.createField(questionnaire: q, step: nil)
             }))
         }
         
@@ -86,7 +135,7 @@ class CreateBranchController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func createField(questionnaire: Questionnaire){
+    func createField(questionnaire: Questionnaire, step: Step?){
         if (noBranchLbl != nil){
             // If it appears, remove it from the view
             noBranchLbl.removeFromSuperview()
@@ -106,6 +155,12 @@ class CreateBranchController: UIViewController {
         newStepField.returnKeyType = UIReturnKeyType.done
         newStepField.borderStyle = UITextBorderStyle.roundedRect
         newStepField.placeholder = "Step Name"
+        
+        // If the view is in read only mode, disable the field
+        if (readOnly){
+            newStepField.isUserInteractionEnabled = false
+            newStepField.text = step?.summary
+        }
         self.view.addSubview(newStepField)
         self.view.addSubview(button)
         pivot += 50
@@ -116,6 +171,16 @@ class CreateBranchController: UIViewController {
     func getQuestionnaire(title: String) -> Questionnaire? {
         for q in availableQuestionnaires{
             if q.title == title {
+                return q
+            }
+        }
+        
+        return nil
+    }
+    
+    func getQuestionnaire(id: Int) -> Questionnaire? {
+        for q in availableQuestionnaires{
+            if q.id == id {
                 return q
             }
         }
@@ -204,6 +269,11 @@ class CreateBranchController: UIViewController {
                 return false
             }
         }
+        // Check the branch name
+        if (hypoTextField.text == ""){
+            return false
+        }
+        
         // All fields are filled in
         return true
     }
@@ -215,11 +285,25 @@ class CreateBranchController: UIViewController {
         screenWidth = self.view.frame.size.width
         // Do any additional setup after loading the view.
         
-        // Load the available questionnaires from the list
-        self.api.getQuestionnaires(trialId: trialId, onComplete: {questionnaire in
-            self.availableQuestionnaires = questionnaire
-            print("questionnaire loading successful")
-        })
+        self.loadQuestionnaires()
+    }
+    
+    func initReadOnly(){
+        saveBranchBtn.isHidden = true
+        // Set the text and make it read only
+        hypoTextField.text = branch?.hypothesis
+        hypoTextField.isUserInteractionEnabled = false
+        
+        
+        
+        for step in (branch?.steps)! {
+            let stepQuestionnaire = getQuestionnaire(id: step.questionnaireId)
+            if (stepQuestionnaire == nil){
+                // TODO exception handling
+                return
+            }
+            createField(questionnaire: stepQuestionnaire!, step: step)
+        }
     }
     
 

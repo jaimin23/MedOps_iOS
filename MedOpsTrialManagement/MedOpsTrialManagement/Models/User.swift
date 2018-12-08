@@ -57,4 +57,8 @@ class User: Codable {
             return ""
         }
     }
+    
+    func getName() -> String {
+        return self.firstName! + " " + self.lastName!
+    }
 }

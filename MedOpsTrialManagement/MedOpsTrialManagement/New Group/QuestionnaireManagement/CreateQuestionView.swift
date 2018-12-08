@@ -21,7 +21,7 @@ class CreateQuestionView: UIViewController {
     
 
     @IBOutlet weak var _questionTypeSelector: UIPickerView!
-    @IBOutlet weak var _questionPhaseSelector: UIPickerView!
+
     
     @IBOutlet weak var _questionText: UITextField!
     
@@ -39,8 +39,8 @@ class CreateQuestionView: UIViewController {
         
         _questionTypeSelector.dataSource = self
         _questionTypeSelector.delegate = self
-        _questionPhaseSelector.delegate = self
-        _questionPhaseSelector.dataSource = self
+//        _questionPhaseSelector.delegate = self
+//        _questionPhaseSelector.dataSource = self
         super.viewDidLoad()
         
         _questionText.delegate = self
@@ -53,11 +53,28 @@ class CreateQuestionView: UIViewController {
     }
     
     
+    func displayGenericAlert(title: String, body: String){
+        let alert = UIAlertController(title: title, message: body, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
+    
+    
+    
     @IBAction func onAddQuestion(_ sender: Any) {
         
+        
         let questionId = _questionTypeSelector.selectedRow(inComponent: 0)
-        let questionPhaseId = _questionPhaseSelector.selectedRow(inComponent: 0)
+        let questionPhaseId = 1
         let questionString = _questionText.text!
+        
+        if (questionString == ""){
+            displayGenericAlert(title: "Blank Question", body: "No question text was provided")
+            return
+        }
         var question = Question(text: questionString, questionType: questionId+1, questionnaireId: self.questionniareId, questionPhase: questionPhaseId)
         
         let apiCaller = APIManager()
@@ -83,6 +100,21 @@ class CreateQuestionView: UIViewController {
                 let answer = Answer(value: _answerFive.text!)
                 question.answers.append(answer)
             }
+        } else if (questionId == 1){
+            if (_answerOne.text == "" || _answerTwo.text == ""){
+                displayGenericAlert(title: "Blank Field", body: "Please ensure all fields are filled in")
+                return
+            }
+            
+            let lowerBound = Int(_answerOne.text!)!
+            let upperBound = Int(_answerTwo.text!)!
+            
+            if (lowerBound >= upperBound){
+                displayGenericAlert(title: "Invalid Values", body: "The minimum value cannot be more than the maximum value!")
+            } else {
+                question.answers.append(Answer(value: String(lowerBound)))
+                question.answers.append(Answer(value: String(upperBound)))
+            }
         }
         
         apiCaller.postQuestion(question: question, onComplete: {(success) in
@@ -102,6 +134,37 @@ class CreateQuestionView: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         })
+        
+    }
+    
+    func resetFields(option: String){
+        _answerOne.text = ""
+        _answerTwo.text = ""
+        _answerThree.text = ""
+        _answerFour.text = ""
+        _answerFive.text = ""
+        
+        _answerOne.placeholder = "Please Enter Answer Value"
+        _answerTwo.placeholder = "Please Enter Answer Value"
+        _answerThree.placeholder = "Please Enter Answer Value"
+        _answerFour.placeholder = "Please Enter Answer Value"
+        
+        _answerFive.placeholder = "Please Enter Answer Value"
+        
+        if (option == _pickerItems[1]){
+            _answerThree.isHidden = true
+            _answerFour.isHidden = true
+            _answerFive.isHidden = true
+            
+            _answerOne.placeholder = "Lower Bound Value"
+            _answerOne.keyboardType = UIKeyboardType.numberPad
+            _answerTwo.placeholder = "Upper Bound Value"
+            _answerTwo.keyboardType = UIKeyboardType.numberPad
+        } else {
+            _answerThree.isHidden = false
+            _answerFour.isHidden = false
+            _answerFive.isHidden = false
+        }
     }
 }
 
@@ -114,25 +177,26 @@ extension CreateQuestionView: UIPickerViewDelegate, UIPickerViewDataSource, UITe
         if pickerView == _questionTypeSelector{
             return _pickerItems.count
         }
-        else if pickerView == _questionPhaseSelector{
-            return _pickerQuestionnairePhase.count
-        }
+//        else if pickerView == _questionPhaseSelector{
+//            return _pickerQuestionnairePhase.count
+//        }
         else{
             return 0
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-       
+       print(_pickerItems[row])
+        self.resetFields(option: _pickerItems[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == _questionTypeSelector{
             return _pickerItems[row]
         }
-        else if pickerView == _questionPhaseSelector{
-            return _pickerQuestionnairePhase[row]
-        }
+//        else if pickerView == _questionPhaseSelector{
+//            return _pickerQuestionnairePhase[row]
+//        }
         else{
             return ""
         }

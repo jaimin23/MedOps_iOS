@@ -29,17 +29,16 @@ class LoginViewController: UIViewController {
         authenticate(user: user, handler: {result in
             if result == self.FAILED_LOGIN {
                 DispatchQueue.main.async {
-                    self.messageLbl.text = "Invalid username or password"
-                    self.messageLbl.textColor = UIColor.red
+                    let alert = UIAlertController(title: "Login Failure", message: "Failed to login. Please check that your credentials are valid", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {action in
+                        self.handlePostLogin(jwt: result)
+                    }))
+                    
+                    self.present(alert, animated: true)
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.messageLbl.text = "Login Success!"
-                    let alert = UIAlertController(title: "Login Successful", message: "Login successful!", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Proceed", style: UIAlertActionStyle.default, handler: {action in
-                        self.handlePostLogin(jwt: result)
-                    }))
-                    self.present(alert, animated: true)
+                    self.handlePostLogin(jwt: result)
                 }
             }
         })

@@ -27,6 +27,15 @@ class ListOfQuestionnairesController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: { action in
             let questionnaireTitle = alert.textFields![0] as UITextField
+            
+            if (questionnaireTitle.text == ""){
+                let errorAlert = UIAlertController(title: "Blank Title", message: "No questionnaire title was provided!", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(errorAlert, animated: true)
+                return
+            }
+            
+            
             // Add it
             let questionnaire = Questionnaire(id: 0, title: questionnaireTitle.text!, questions: [], trialId: trialId)
             self.api.postQuestionnaire(questionnaire: questionnaire, onComplete: { result in

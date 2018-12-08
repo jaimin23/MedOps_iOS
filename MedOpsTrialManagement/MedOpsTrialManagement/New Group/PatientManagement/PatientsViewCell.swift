@@ -21,7 +21,7 @@ class PatientsViewCell: UITableViewCell{
     @IBOutlet weak var ApproveBtn: UIButton!
     var patientItem: User!
     var delegate: PatientCellDelegate?
-    func setPatient(patient: User){
+    func setPatient(patient: User, approved: Bool){
         patientItem = patient
         uniqueIdLbl.text = "\(patient.firstName!) \(patient.lastName!)"
         userType.text = getUserTypeValue(userType: patient.userType!)
@@ -29,11 +29,23 @@ class PatientsViewCell: UITableViewCell{
         if patient.userType != 0{
             applicationStatusLbl.text = "Evaluating Patients"
         } else {
-            applicationStatusLbl.text = getApplicationStatusValue(status: patient.status!)
+            applicationStatusLbl.text = getApprovalText(approved: approved)
+        }
+        
+        if(approved){
+            ApproveBtn.isHidden = true
         }
     }
     @IBAction func didTapApprove(_ sender: Any) {
         delegate?.didTapApprovePatient(patient: patientItem)
+    }
+    
+    func getApprovalText(approved: Bool) -> String {
+        if (approved){
+            return "Approved"
+        } else {
+            return "Pending"
+        }
     }
     func getUserTypeValue(userType: Int) -> String{
         switch userType {
