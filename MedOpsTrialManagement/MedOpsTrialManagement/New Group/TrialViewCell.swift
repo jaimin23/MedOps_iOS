@@ -30,23 +30,34 @@ class TrialViewCell : UITableViewCell {
         let completedCount = Float((trial.stats?.evaluationCount)!)
         let totalCount = Float((trial.stats?.totalNumberOfEvaluations)!)
         
-        let progress = (completedCount/totalCount)
-        
-        progressBar.setProgress(progress, animated: false)
-        
-        percentageLbl.text = "\(Int(progress * 100))%"
-        
-        
-        if (progress == 1){
-            progressBar.progressTintColor = UIColor.green
-        } else if (progress >= 0.3333){
-            progressBar.progressTintColor = UIColor.orange
+        if (totalCount != 0){
+            let progress = (completedCount/totalCount)
+            
+            progressBar.setProgress(progress, animated: false)
+            
+            percentageLbl.text = "\(Int(progress * 100))%"
+            
+            
+            if (progress == 1){
+                progressBar.progressTintColor = UIColor.green
+            } else if (progress >= 0.3333){
+                progressBar.progressTintColor = UIColor.orange
+            } else {
+                progressBar.progressTintColor = UIColor.red
+            }
+            
+            
+            totalProgressLabel.text = "\(String(trial.stats?.evaluationCount ?? 0)) of \(String(trial.stats?.totalNumberOfEvaluations ?? 0)) evaluations completed"
+            
         } else {
-            progressBar.progressTintColor = UIColor.red
+            progressBar.setProgress(0, animated: false)
+            
+            percentageLbl.text = "\(Int(0 * 100))%"
+            
+            totalProgressLabel.text = "No patients currently enrolled"
         }
         
         
-        totalProgressLabel.text = "\(String(trial.stats?.evaluationCount ?? 0)) of \(String(trial.stats?.totalNumberOfEvaluations ?? 0)) evaluations completed"
         
         if (trial.status == Status.Todo){
             statusLabel.text = "Setup"
