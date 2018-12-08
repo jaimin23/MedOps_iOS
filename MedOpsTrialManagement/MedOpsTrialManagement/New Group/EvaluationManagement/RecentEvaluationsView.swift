@@ -52,7 +52,13 @@ class RecentEvaluationsView: UIViewController {
                 self.evaluationList.reloadData()
                 self.patientNameLbl.text = self._evaluationProfile?.patient.getName()
                 self.branchNameLbl.text = self._evaluationProfile?.branch.hypothesis
-                self.stepNumberLbl.text = "\(self._evaluationProfile?.currentStepNumber ?? 0)"
+                
+                if((self._evaluationProfile?.active)!){
+                     self.stepNumberLbl.text = "\(self._evaluationProfile?.currentStepNumber ?? 0)"
+                }
+                else {
+                    self.stepNumberLbl.text = "N/A"
+                }
                 self.statusLbl.layer.masksToBounds = true
                 self.statusLbl.layer.cornerRadius = 10
                 self.patientEmailLbl.text = self._evaluationProfile?.patient.email
