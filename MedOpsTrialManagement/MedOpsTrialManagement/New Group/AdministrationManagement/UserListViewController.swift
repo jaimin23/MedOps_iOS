@@ -32,6 +32,8 @@ class UserListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @objc func refresh(_ sender: Any){
+        self.users.removeAll()
+        self.allUsers.removeAll()
         self.loadUsers()
         self.pullToRefresh.endRefreshing()
     }

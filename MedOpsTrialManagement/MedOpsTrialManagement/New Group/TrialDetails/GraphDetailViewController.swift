@@ -80,6 +80,7 @@ class GraphDetailViewController: UIViewController {
         lineChart.isHidden = true
         graphView.isHidden = false
         var barEntries = [BarChartDataEntry]()
+        var entries = [String: Int]()
         let question = questionDetail?.question
         for i in 0..<answers.count{
             let dataEntry = BarChartDataEntry(x: Double(answers[i].option) ?? 0 , y: Double(i))
