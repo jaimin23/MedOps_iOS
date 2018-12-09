@@ -295,7 +295,9 @@ class APIManager {
 
                     let id = uData["userId"] as? Int
                     let firstName = uData["firstName"] as? String
+
                     let lastName = uData["lastName"] as? String ?? ""
+
                     let userType = uData["userType"] as? Int
                     let uniqueId = ""
                     let applicationStatus = uData["applicationStatus"] as? Int

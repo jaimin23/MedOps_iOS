@@ -50,6 +50,7 @@ class TrialDetailsOverViewController: UIViewController {
                 if(self.patientList.count != 0){
                     self.setupPieChart(item: self.patientList)
                 }
+                self.patientCountLbl.text = String(self.patientList.count)
             }
         }
     }
@@ -101,9 +102,11 @@ class TrialDetailsOverViewController: UIViewController {
             pieCharEntries.append(entry)
         }
         let dataSet = PieChartDataSet(values: pieCharEntries, label: "Gender Population")
+        dataSet.valueFont = UIFont.systemFont(ofSize: 20)
         dataSet.colors = ChartColorTemplates.joyful()
         let data = PieChartData(dataSet: dataSet)
         pieChartView.data = data
+        pieChartView.legend.font = UIFont.systemFont(ofSize: 20)
         pieChartView.isUserInteractionEnabled = true
         pieChartView.animate(yAxisDuration: 2.0)
     }
