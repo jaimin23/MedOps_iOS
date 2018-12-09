@@ -106,7 +106,7 @@ class TrialDetailsOverViewController: UIViewController {
         dataSet.colors = ChartColorTemplates.joyful()
         let data = PieChartData(dataSet: dataSet)
         pieChartView.data = data
-        pieChartView.legend.font = UIFont.systemFont(ofSize: 14)
+        pieChartView.legend.font = UIFont.systemFont(ofSize: 12)
         pieChartView.isUserInteractionEnabled = true
         pieChartView.animate(yAxisDuration: 2.0)
     }

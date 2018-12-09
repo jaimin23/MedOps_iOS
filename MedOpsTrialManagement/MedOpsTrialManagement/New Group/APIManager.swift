@@ -1043,7 +1043,7 @@ class APIManager {
     }
     
     func getBranchesWithQuestionnaire(trialId: Int, onComplete questions: @escaping (_ questions: [Question]) -> Void){
-        let urlString : String = cloudDomain + "/api/trial/branch?trialId=\(trialId)"
+        let urlString : String = cloudDomain + "/api/questionnaire/trialQuestionnaires?trialId=\(trialId)"
         let requestString = URL(string: urlString)
         var questionList: [Question] = []
         let request = URLRequest(url: requestString!)
@@ -1058,25 +1058,21 @@ class APIManager {
                 guard let jsonArray = jsonRes as? [[String: Any]] else {
                     return
                 }
-                for branches in jsonArray {
+                for questionnaire in jsonArray {
                     // Cycle and parse the branch
-                    guard let steps = branches["steps"] as? [[String: Any]] else {return}
-                    for step in steps{
-                        guard let questionnaire = step["questionnaire"] as? [String:Any] else {return}
-                        guard let questions = questionnaire["questions"] as? [[String:Any]] else {return}
-                        for question in questions{
-                            guard let text = question["text"] as? String else {return}
-                            guard let answers = question["answers"] as? [[String: Any]] else {return}
-                            var answersList: [Answer] = []
-                            for answer in answers{
-                                guard let value = answer["value"] as? String else{return}
-                                let newAnswer = Answer(value: value)
-                                answersList.append(newAnswer)
-                            }
-                            var newQuestion = Question(text: text, questionType: 0, questionnaireId: 0, questionPhase: 0)
-                            newQuestion.answers = answersList
-                            questionList.append(newQuestion)
+                guard let questions = questionnaire["questions"] as? [[String: Any]] else {return}
+                    for question in questions{
+                        guard let text = question["text"] as? String else {return}
+                        guard let answers = question["answers"] as? [[String: Any]] else {return}
+                        var answersList: [Answer] = []
+                        for answer in answers{
+                            guard let value = answer["value"] as? String else{return}
+                            let newAnswer = Answer(value: value)
+                            answersList.append(newAnswer)
                         }
+                        var newQuestion = Question(text: text, questionType: 0, questionnaireId: 0, questionPhase: 0)
+                        newQuestion.answers = answersList
+                        questionList.append(newQuestion)
                     }
                 }
             } catch let parsingError {
@@ -1106,7 +1102,8 @@ class APIManager {
                     return
                 }
                 for eval in jsonArray {
-                    guard let patientInfo = eval["patient"] as? [String: Any] else{return}
+                    guard let evaluation = eval["evaluationProfile"] as? [String: Any] else{return}
+                    guard let patientInfo = evaluation["user"] as? [String: Any] else{return}
                     guard let age = patientInfo["age"] as? Int else{return}
                     guard let gender = patientInfo["gender"] as? Int else{return}
                     guard let pResponses = eval["patientResponses"] as? [[String: Any]] else {return}

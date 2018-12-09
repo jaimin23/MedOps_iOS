@@ -81,18 +81,28 @@ class GraphDetailViewController: UIViewController {
         graphView.isHidden = false
         var barEntries = [BarChartDataEntry]()
         var entries = [String: Int]()
+        for option in options{
+            entries[option] = 0
+        }
+        for answer in answers{
+            if entries.keys.contains(answer.option) == true{
+                entries[answer.option]! += 1
+            }
+        }
         let question = questionDetail?.question
-        for i in 0..<answers.count{
-            let dataEntry = BarChartDataEntry(x: Double(answers[i].option) ?? 0 , y: Double(i))
+        for i in 0..<entries.count{
+            let dataEntry = BarChartDataEntry(x: Double(i), y: Double(Array(entries)[i].value) , data:options as AnyObject)
             barEntries.append(dataEntry)
         }
 
         let dataSet = BarChartDataSet(values: barEntries, label: question)
         dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.valueFont = UIFont.systemFont(ofSize: 20)
         let data = BarChartData(dataSet: dataSet)
         graphView.data = data
         graphView.chartDescription?.text = "Options for the question"
         graphView.xAxis.labelPosition = .bottom
+        graphView.legend.font = UIFont.systemFont(ofSize: 12)
         graphView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
 //
     }
@@ -102,16 +112,28 @@ class GraphDetailViewController: UIViewController {
         lineChart.isHidden = true
         pieChart.isHidden = false
         var pieChartEntries = [PieChartDataEntry]()
-        for i in 0..<options.count{
-            let dataEntry = PieChartDataEntry(value: Double(answers[i].option)!, label: options[i])
+        var entries = [String: Int]()
+        for option in options{
+            entries[option] = 0
+        }
+        for answer in answers{
+            if entries.keys.contains(answer.option) == true{
+                entries[answer.option]! += 1
+            }
+        }
+        for i in 0..<entries.count{
+            let dataEntry = PieChartDataEntry(value: Double(Array(entries)[i].value), label: Array(entries)[i].key)
             pieChartEntries.append(dataEntry)
         }
         let dataSet = PieChartDataSet(values: pieChartEntries, label: "Options for the question")
-        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.colors = ChartColorTemplates.material()
+        dataSet.valueFont = UIFont.systemFont(ofSize: 20)
         let data = PieChartData(dataSet: dataSet)
         pieChart.data = data
         pieChart.isUserInteractionEnabled = true
+        pieChart.legend.font = UIFont.systemFont(ofSize: 12)
         pieChart.animate(yAxisDuration: 2.0)
+
     }
     
     func generateLineChart(){
@@ -119,18 +141,28 @@ class GraphDetailViewController: UIViewController {
         lineChart.isHidden = false
         pieChart.isHidden = true
         var lineChartEntries = [ChartDataEntry]()
-        for i in 0..<options.count{
-            let dataEntry = ChartDataEntry(x: Double(options[i])!, y: Double(answers[i].option)!)
+        var entries = [String: Int]()
+        for option in options{
+            entries[option] = 0
+        }
+        for answer in answers{
+            if entries.keys.contains(answer.option) == true{
+                entries[answer.option]! += 1
+            }
+        }
+        for i in 0..<entries.count{
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(Array(entries)[i].value))
             lineChartEntries.append(dataEntry)
         }
         let dataSet = LineChartDataSet(values: lineChartEntries, label: "Options for the question")
         dataSet.colors = ChartColorTemplates.material()
+        dataSet.valueFont = UIFont.systemFont(ofSize: 20)
         let data = LineChartData(dataSet: dataSet)
         lineChart.data = data
         lineChart.isUserInteractionEnabled = true
+        lineChart.legend.font = UIFont.systemFont(ofSize: 12)
         lineChart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
     }
-    
     
 }
 //extension GraphDetailViewController: QuestionSelectionDelegate{
