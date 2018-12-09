@@ -35,7 +35,11 @@ class PatientsListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @objc func refresh(_ sender: Any){
+        self._userTrials.removeAll()
+        self._branches.removeAll()
+        self.patients.removeAll()
         loadData()
+        self.pullToRefresh.endRefreshing()
         //loadPatients()
     }
     

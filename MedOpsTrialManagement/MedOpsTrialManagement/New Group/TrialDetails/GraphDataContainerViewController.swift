@@ -68,7 +68,8 @@ class GraphDataContainerViewController: UIViewController {
         default:break
         }
         let dataSet = PieChartDataSet(values: pieChartEntries, label: "Patient Population")
-        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.colors = ChartColorTemplates.material()
+        dataSet.valueFont = UIFont.systemFont(ofSize: 20)
         let data = PieChartData(dataSet: dataSet)
         dataTypePieChart.data = data
         dataTypePieChart.chartDescription?.text = "Data Type"
@@ -107,11 +108,13 @@ class GraphDataContainerViewController: UIViewController {
         default:break
         }
         let dataSet = BarChartDataSet(values: barEntries, label: "Patient Population")
-        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.colors = ChartColorTemplates.material()
+        dataSet.valueFont = UIFont.systemFont(ofSize: 20)
         let data = BarChartData(dataSet: dataSet)
         dataTypeBarChart.data = data
         dataTypeBarChart.chartDescription?.text = "Data Type"
         dataTypeBarChart.xAxis.labelPosition = .bottom
+        dataTypeBarChart.legend.font = UIFont.systemFont(ofSize: 12)
         dataTypeBarChart.animate(xAxisDuration: 2.0,yAxisDuration: 2.0)
     }
     
@@ -130,11 +133,13 @@ class GraphDataContainerViewController: UIViewController {
         default:break
         }
         let dataSet = LineChartDataSet(values: chartEntries, label: "Patient Population")
-        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.colors = ChartColorTemplates.material()
+        dataSet.valueFont = UIFont.systemFont(ofSize: 20)
         let data = LineChartData(dataSet: dataSet)
         dataTypeLineChart.data = data
         dataTypeLineChart.chartDescription?.text = "Data Type"
         dataTypeLineChart.xAxis.labelPosition = .bottom
+        dataTypeLineChart.legend.font = UIFont.systemFont(ofSize: 12)
         dataTypeLineChart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
     }
 

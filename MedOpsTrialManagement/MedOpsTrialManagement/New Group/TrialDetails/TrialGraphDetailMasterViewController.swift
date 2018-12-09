@@ -33,22 +33,22 @@ class TrialGraphDetailMasterViewController: UITableViewController {
         api.getBranchesWithQuestionnaire(trialId: trialId, onComplete: {(questions) in
             DispatchQueue.main.async {
                 self.questions = questions
-                self.api.getPatientEvaluationsForGraph(trialId: self.trialId, onComplete: {(evals) in
-                    DispatchQueue.main.async {
-                        self.evaluations = evals
-                        self.graphData = self.getGraphData(questionList: self.questions, evals: self.evaluations) ?? []
-                    }
-                })
+            }
+        })
+        self.api.getPatientEvaluationsForGraph(trialId: self.trialId, onComplete: {(evals) in
+            DispatchQueue.main.async {
+                self.evaluations = evals
+                self.graphData = self.getGraphData(questionList: self.questions, evals: self.evaluations) ?? []
             }
         })
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        let tbvc = self.tabBarController as? TrialTabController
-//        guard let id = tbvc?._trial?.id else {return}
-//        self.trialId = id
-//        loadData()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let tbvc = self.tabBarController as? TrialTabController
+        guard let id = tbvc?._trial?.id else {return}
+        self.trialId = id
+        loadData()
+    }
 //
     // MARK: - Table view data source
 
