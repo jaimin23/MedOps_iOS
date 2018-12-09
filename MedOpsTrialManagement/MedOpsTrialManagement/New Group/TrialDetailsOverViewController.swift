@@ -172,8 +172,7 @@ class TrialDetailsOverViewController: UIViewController {
             trialStatusBtn.backgroundColor = UIColor.red
         }
         else if(_trial?.status == Status.Completed){
-            trialStatusBtn.setTitle("Trial Completed", for: .disabled)
-            trialStatusBtn.backgroundColor = UIColor.gray
+            trialStatusBtn.isHidden = true
         }
     }
     

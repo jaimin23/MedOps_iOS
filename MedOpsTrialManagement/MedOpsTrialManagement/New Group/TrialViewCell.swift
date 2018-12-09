@@ -64,7 +64,7 @@ class TrialViewCell : UITableViewCell {
             statusLabel.textColor = UIColor.red
         } else if (trial.status == Status.InProgress){
             statusLabel.text = "In Progress"
-            statusLabel.textColor = UIColor.green
+            statusLabel.textColor = UIColor.orange
         } else if (trial.status ==  Status.Completed){
             statusLabel.text = "Trial Completed"
             statusLabel.textColor = UIColor.black

@@ -75,7 +75,7 @@ class RegistrationController: UIViewController {
             "email": user.email,
             "password": user.password,
             "firstName": user.firstName,
-            "astName": user.lastName
+            "lastName": user.lastName
         ]
         request.httpMethod = "POST"
         
