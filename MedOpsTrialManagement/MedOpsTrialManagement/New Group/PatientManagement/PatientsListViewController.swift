@@ -58,6 +58,9 @@ class PatientsListViewController: UIViewController {
 //        })
 //    }
     func loadData(){
+        self._userTrials.removeAll()
+        self._branches.removeAll()
+        self.patients.removeAll()
         guard let trialId = _trial?.id else {return}
         api.getBranches(trialId: trialId, onComplete: {result in
             DispatchQueue.main.async {

@@ -832,7 +832,7 @@ class APIManager {
         
         let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
             guard let dataRes = data, error == nil else {
-                // handle error
+                print(error)
                 return
             }
             

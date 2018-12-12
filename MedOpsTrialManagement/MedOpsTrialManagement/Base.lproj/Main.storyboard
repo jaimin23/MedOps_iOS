@@ -259,7 +259,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trial Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk7-0E-4Cv">
                                                     <rect key="frame" x="15" y="11" width="424" height="41"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1137,7 +1137,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Drv-5G-XiM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Patient List" id="yZk-Se-V8d"/>
+                    <tabBarItem key="tabBarItem" title="Patient List" image="icons8-user-account-50" id="yZk-Se-V8d"/>
                     <navigationItem key="navigationItem" id="KSU-p8-Oeb">
                         <barButtonItem key="rightBarButtonItem" title="Assign Nurse" id="pOU-bA-niD">
                             <connections>
@@ -1734,6 +1734,9 @@
                                         <state key="normal" title="Play">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="playBtnPressed:" destination="Ocz-qo-vHD" eventType="touchUpInside" id="yVM-0B-E9z"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1768,7 +1771,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWU-iE-gpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687.5" y="2422.8515625"/>
+            <point key="canvasLocation" x="1534" y="2442"/>
         </scene>
         <!--Create Question View-->
         <scene sceneID="8Z6-bd-Ryb">
@@ -2008,7 +2011,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKl-wo-hvJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKl-wo-hvJ">
                                 <rect key="frame" x="300" y="894" width="168" height="48"/>
                                 <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -2027,10 +2030,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jKl-wo-hvJ" firstAttribute="top" secondItem="qvF-S8-06z" secondAttribute="bottom" constant="8" symbolic="YES" id="9On-vN-0bP"/>
+                            <constraint firstItem="Bbr-Fj-M2R" firstAttribute="trailing" secondItem="jKl-wo-hvJ" secondAttribute="trailing" constant="300" id="20g-16-0Sx"/>
                             <constraint firstItem="qvF-S8-06z" firstAttribute="leading" secondItem="E5t-x4-1nx" secondAttribute="leading" id="UhC-v4-I7m"/>
-                            <constraint firstItem="qvF-S8-06z" firstAttribute="centerX" secondItem="jKl-wo-hvJ" secondAttribute="centerX" id="e5D-QX-vvQ"/>
                             <constraint firstAttribute="trailing" secondItem="qvF-S8-06z" secondAttribute="trailing" id="lpW-dd-IDi"/>
+                            <constraint firstItem="jKl-wo-hvJ" firstAttribute="top" secondItem="qvF-S8-06z" secondAttribute="bottom" constant="8" id="tAn-6G-qXb"/>
+                            <constraint firstItem="jKl-wo-hvJ" firstAttribute="leading" secondItem="Bbr-Fj-M2R" secondAttribute="leading" constant="300" id="x7h-XM-TY7"/>
                             <constraint firstItem="qvF-S8-06z" firstAttribute="top" secondItem="Bbr-Fj-M2R" secondAttribute="top" id="zdG-mT-cvc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bbr-Fj-M2R"/>
